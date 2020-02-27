@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TinyIoC;
 
 namespace Saplin.xOPS.UI.ViewModels
@@ -21,7 +18,7 @@ namespace Saplin.xOPS.UI.ViewModels
 
         static async void EagerCreateViewModels()
         {
-            await Task.Run(() => {  });
+            await Task.Run(() => { _ = TestRun; });
         }
     }
 }

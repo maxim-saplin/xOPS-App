@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Saplin.xOPS.UI.ViewModels;
 using Xamarin.Forms;
 
 namespace Saplin.xOPS.UI
@@ -21,6 +22,12 @@ namespace Saplin.xOPS.UI
 
             //macOS workaround, Rotation property on Element is not working
             stLabel.RotateTo(-90);
+            mtLabel.RotateTo(-90);
+
+            var started = false;
+
+            this.SizeChanged += (s, e) => { if (!started) { started = true; VmLocator.TestRun.StartTest(); } };
+
         }
     }
 }

@@ -13,7 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />
     <Reference Include="Saplin.xOPS">
-      <HintPath Condition="'$(Configuration)'=='Debug'">..\..\Saplin.xOPS\Saplin.xOPS\bin\Debug\netstandard2.0\Saplin.xOPS.dll</HintPath>
+      <HintPath Condition="'$(Configuration)'=='Debug'">..\..\xOPS-Console\Saplin.xOPS\bin\Debug\netstandard2.0\Saplin.xOPS.dll</HintPath>
       <HintPath Condition="'$(Configuration)'=='Release'">..\References\Saplin.xOPS.dll</HintPath>
     </Reference>
   </ItemGroup>

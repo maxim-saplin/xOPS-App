@@ -17,6 +17,12 @@
                 <Setter Property="Font" Value="{StaticResource FontNormal}" />
                 <Setter Property="TextColor" Value="Red" />
             </Style>
+           <Style TargetType="Button" ApplyToDerivedTypes="True">
+                <Setter Property="Font" Value="{StaticResource FontNormal}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BorderWidth" Value="0" />
+                <Setter Property="BackgroundColor" Value="Red" />
+            </Style>
             <Style TargetType="ContentPage"  ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor" Value="Black" />
             </Style>
