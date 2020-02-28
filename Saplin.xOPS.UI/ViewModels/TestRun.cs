@@ -17,47 +17,70 @@ namespace Saplin.xOPS.UI.ViewModels
             RaisePropertyChanged(nameof(IntSingleThreaded));
             RaisePropertyChanged(nameof(FloatMultiThreaded));
             RaisePropertyChanged(nameof(IntMultiThreaded));
+
+            breakTest = false;
         }
 
         public Command Retry => new Command(StartTest);
+        private volatile bool breakTest = false;
 
         public void StartTest()
         {
-            const int iterations = 100 * 1000 * 1000;
+            const int iterations = 50 * 1000 * 1000;
             const int threads = 16;
+
+            TestNotStarted = false;
 
             ResetValues();
 
             Task.Run(() => {
-                compute.RunFlops64Bit(iterations);
-                FloatSingleThreaded = compute.LastResultGigaOPS;
-                Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(FloatSingleThreaded)));
-                
+                try
+                {
+                    compute.RunFlops64Bit(iterations);
+                    FloatSingleThreaded = compute.LastResultGigaOPS;
+                    Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(FloatSingleThreaded)));
 
-                compute.RunInops32Bit(iterations);
-                IntSingleThreaded = compute.LastResultGigaOPS;
-                Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(IntSingleThreaded)));
+                    if (breakTest) return;
 
-                compute.RunXopsMultiThreaded(iterations, threads, inops: false, precision64Bit: true);
-                FloatMultiThreaded = compute.LastResultGigaOPS;
-                Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(FloatMultiThreaded)));
+                    compute.RunInops32Bit(iterations);
+                    IntSingleThreaded = compute.LastResultGigaOPS;
+                    Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(IntSingleThreaded)));
 
-                compute.RunXopsMultiThreaded(iterations, threads, inops: true);
-                IntMultiThreaded = compute.LastResultGigaOPS;
-                Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(IntMultiThreaded)));
+                    if (breakTest) return;
+
+                    compute.RunXopsMultiThreaded(iterations, threads, inops: false, precision64Bit: true);
+                    FloatMultiThreaded = compute.LastResultGigaOPS;
+                    Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(FloatMultiThreaded)));
+
+                    if (breakTest) return;
+
+                    compute.RunXopsMultiThreaded(iterations, threads, inops: true);
+                    IntMultiThreaded = compute.LastResultGigaOPS;
+                    Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(IntMultiThreaded)));
+                 }
+                 finally
+                 {
+                    Device.BeginInvokeOnMainThread(() => TestNotStarted = true);
+                 }
             });
 
         }
 
+        public Command Break => new Command(BreakTest);
+
         public void BreakTest()
         {
-
+            breakTest = true;
         }
 
-        public bool TestStarted
+        private bool testNotStarted = true;
+        public bool TestNotStarted
         {
-            get { return false; }
+            get { return testNotStarted; }
+            set { testNotStarted = value; RaisePropertyChanged(); RaisePropertyChanged(nameof(TestStarted)); } 
         }
+
+        public bool TestStarted => !TestNotStarted;
 
         public double? FloatSingleThreaded { get; private set; }
         public double? FloatMultiThreaded { get; private set; }

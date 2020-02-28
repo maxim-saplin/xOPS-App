@@ -7,7 +7,7 @@ namespace Saplin.xOPS.UI
 {
     public partial class StartPage : ContentPage
     {
-        private int countdown = 1;
+        private int countdown = 3;
 
         public StartPage()
         {
