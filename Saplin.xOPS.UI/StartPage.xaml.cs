@@ -7,7 +7,7 @@ namespace Saplin.xOPS.UI
 {
     public partial class StartPage : ContentPage
     {
-        private int countdown = 3;
+        private int countdown = 1;
 
         public StartPage()
         {
@@ -20,7 +20,11 @@ namespace Saplin.xOPS.UI
                 countdown--;
                 countdownLabel.Text = "Starting in " + countdown + " seconds";
 
-                if (countdown == 0) Navigation.PushModalAsync(new MainPage());
+                if (countdown == 0)
+                {
+                    //Navigation.PushModalAsync(new MainPage());
+                    App.Current.MainPage = Pages.MainPage;
+                }
 
                 return countdown > 0;
             });

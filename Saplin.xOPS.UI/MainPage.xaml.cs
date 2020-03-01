@@ -24,10 +24,27 @@ namespace Saplin.xOPS.UI
             stLabel.RotateTo(-90);
             mtLabel.RotateTo(-90);
 
-            var started = false;
+            //var started = false;
 
-            this.SizeChanged += (s, e) => { if (!started) { started = true; VmLocator.TestRun.StartTest(); } };
+            //this.SizeChanged += (s, e) => { if (!started) { started = true; VmLocator.TestRun.StartTest(); } };
 
+        }
+
+        private bool startedBefore = false;
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (!startedBefore)
+            {
+                startedBefore = true;
+                VmLocator.TestRun.StartTest();
+            }
+        }
+
+        void AboutLabel_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushModalAsync(Pages.About);
         }
     }
 }

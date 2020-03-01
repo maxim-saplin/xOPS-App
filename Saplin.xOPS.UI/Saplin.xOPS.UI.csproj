@@ -17,4 +17,7 @@
       <HintPath Condition="'$(Configuration)'=='Release'">..\References\Saplin.xOPS.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
+  </ItemGroup>
 </Project>
