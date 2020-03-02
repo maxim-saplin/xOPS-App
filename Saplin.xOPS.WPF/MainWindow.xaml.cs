@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Windows.Media;
+using Xamarin.Forms;
 using Xamarin.Forms.Platform.WPF;
 
 namespace Saplin.xOPS.WPF
@@ -11,9 +13,10 @@ namespace Saplin.xOPS.WPF
         public MainWindow()
         {
             InitializeComponent();
-
             Forms.Init();
-            LoadApplication(new Saplin.xOPS.UI.App());
+            var app = new Saplin.xOPS.UI.App();
+            LoadApplication(app);
         }
+
     }
 }

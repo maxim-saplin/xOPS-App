@@ -17,17 +17,6 @@ namespace Saplin.xOPS.UI
         public MainPage()
         {
             InitializeComponent();
-
-            //lbl.RotateTo(90);
-
-            //macOS workaround, Rotation property on Element is not working
-            stLabel.RotateTo(-90);
-            mtLabel.RotateTo(-90);
-
-            //var started = false;
-
-            //this.SizeChanged += (s, e) => { if (!started) { started = true; VmLocator.TestRun.StartTest(); } };
-
         }
 
         private bool startedBefore = false;

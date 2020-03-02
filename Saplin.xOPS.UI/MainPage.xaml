@@ -5,18 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:vm="clr-namespace:Saplin.xOPS.UI.ViewModels"
+             xmlns:vv="clr-namespace:Saplin.xOPS.UI.Views"
              xmlns:cn="clr-namespace:Saplin.xOPS.UI.Controls"
              x:Class="Saplin.xOPS.UI.MainPage"
              BindingContext="{x:Static vm:VmLocator.TestRun}"
-             >
-
-    <!--<StackLayout Rotation="-90" >
-
-        <Label x:Name="lbl" Text="Welcome to Xamarin.Forms!"
-               BackgroundColor="Black"
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>-->
+             NavigationPage.HasNavigationBar="False" 
+             NavigationPage.HasBackButton="False">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -33,91 +27,30 @@
         </Grid.ColumnDefinitions>
 
 
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" x:Name="stLabel" Text="Single Threaded" Rotation="-90" Margin="-78, 0, 0, 50" 
-        VerticalOptions="End" HorizontalOptions="Center" HeightRequest="70" WidthRequest="160" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" x:Name="mtLabel" Text="Multi Threaded" Rotation="-90" Margin="78, 0, 0, 50"
-        VerticalOptions="End" HorizontalOptions="Center" HeightRequest="70" WidthRequest="160" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
-
-
-        <Label Text="Floating" HeightRequest="70" Grid.Row="1" Grid.Column="0" Margin="0,0,6,0"
-        VerticalOptions="End" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
-        <Label Text="Integer" HeightRequest="70" Grid.Row="2" Grid.Column="0" Margin="0,0,6,0"
-        VerticalOptions="End" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
-
-        <Label Grid.Row="1" Grid.Column="1"           
-             WidthRequest="70" HeightRequest="70" BackgroundColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span Style="{StaticResource BoldSpan}" FontSize="16"
-                          Text="{Binding FloatSingleThreaded, TargetNullValue='↖', StringFormat='{0:0.00}'}"/>
-                    <Span Style="{StaticResource SmallerSpan}" 
-                          Text="{Binding FloatSingleThreaded, TargetNullValue='', StringFormat='&#10;GFLOPS'}" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-
-        <Label Grid.Row="1" Grid.Column="2"           
-             WidthRequest="70" HeightRequest="70" BackgroundColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span Style="{StaticResource BoldSpan}" FontSize="16"
-                          Text="{Binding FloatMultiThreaded, TargetNullValue='↗', StringFormat='{0:0.00}'}"/>
-                    <Span Style="{StaticResource SmallerSpan}"
-                          Text="{Binding FloatMultiThreaded, TargetNullValue='', StringFormat='&#10;GFLOPS'}" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-
-        <Label Grid.Row="2" Grid.Column="1"           
-             WidthRequest="70" HeightRequest="70" BackgroundColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span Style="{StaticResource BoldSpan}" FontSize="16"
-                          Text="{Binding IntSingleThreaded, TargetNullValue='↙', StringFormat='{0:0.00}'}"/>
-                    <Span Style="{StaticResource SmallerSpan}"
-                          Text="{Binding IntSingleThreaded, TargetNullValue='', StringFormat='&#10;GINOPS'}" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-
-        <Label Grid.Row="2" Grid.Column="2"           
-             WidthRequest="70" HeightRequest="70" BackgroundColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span Style="{StaticResource BoldSpan}" FontSize="16"
-                          Text="{Binding IntMultiThreaded, TargetNullValue='↘', StringFormat='{0:0.00}'}"/>
-                    <Span Style="{StaticResource SmallerSpan}"
-                          Text="{Binding IntMultiThreaded, TargetNullValue='', StringFormat='&#10;GINOPS'}" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-
-        <cn:TappableLabel Grid.Row="1" Text=" ? →" Grid.Column="3" Style="{StaticResource BoldLabel}" IsVisible="{Binding TestNotStarted}"
+        <cn:TappableLabel Grid.Row="1" Text=" ? →" Grid.Column="3" IsVisible="{Binding TestNotStarted}"
              Clicked="AboutLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Start" Margin="10, 0, 0, 0"/>
-        <Label Grid.Row="2" Text=" ← #" Grid.Column="3" Style="{StaticResource BoldLabel}" IsVisible="{Binding TestNotStarted}"
-             VerticalOptions="Center" HorizontalOptions="Start" Margin="10, 0, 0, 0">
-            <!--<Label.FormattedText>
-              <FormattedString>
-                  <Span Style="{StaticResource BoldSpan}">?#</Span>
-                  <Span Style="{StaticResource BoldSpan}">→</Span>
-              </FormattedString>
-          </Label.FormattedText>-->
-        </Label>
+
 
         <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
                      HorizontalOptions="FillAndExpand" Margin="0,0,0,25">
             <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="↻ Retry" BackgroundColor="Blue"
                 HorizontalOptions="EndAndExpand" Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
-            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="≈ Repeat" BackgroundColor="Red"
+            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="≈ Stress" BackgroundColor="Red"
                 HorizontalOptions="Center" Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
             <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="↪ Share" BackgroundColor="Green"
                 HorizontalOptions="StartAndExpand" Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
 
-            <Button Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="¾ Break" BackgroundColor="DarkGray"
+            <Button Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="¾ Break" BackgroundColor="DimGray"
                 HorizontalOptions="CenterAndExpand" Command="{Binding Break}" IsVisible="{Binding TestStarted}"/>
         </StackLayout>
 
+        <vv:TestRunResults Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible, Converter = {StaticResource BoolNot}}" />
+        <vv:TestRunOptions Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible}"/>
 
+
+        <cn:TappableLabel  Grid.Row="2" Text="{Binding Source={x:Static vm:VmLocator.Options}, ButtonCaption}" Grid.Column="3" IsVisible="{Binding TestNotStarted}"
+             Command="{Binding Source={x:Static vm:VmLocator.Options}, SwitchOptionsVisibility }"
+             VerticalOptions="Center" HorizontalOptions="Start" Margin="10, 0, 0, 0"/>
     </Grid>
 
 </ContentPage>

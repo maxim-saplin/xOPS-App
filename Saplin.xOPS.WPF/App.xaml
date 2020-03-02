@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:Saplin.xOPS.WPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+      <SolidColorBrush x:Key="CommandBarBackgroundColor" Color="Black" />
+      <SolidColorBrush x:Key="CommandBarTextColor" Color="Red" />
+
     </Application.Resources>
 </Application>

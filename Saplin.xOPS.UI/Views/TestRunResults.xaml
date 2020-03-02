@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Saplin.xOPS.UI.Views.TestRunResults">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="70" />
+        <RowDefinition Height="70" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="70" />
+        <ColumnDefinition Width="70" />
+    </Grid.ColumnDefinitions>
+    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="stLabel" Text="Single Threaded" Rotation="-90" Margin="0, 0, 30, 75" 
+            VerticalOptions="End" HorizontalOptions="End"  WidthRequest="160" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="mtLabel" Text="Multi Threaded" Rotation="-90" Margin="0, 0, -45, 75"
+            VerticalOptions="End" HorizontalOptions="End" WidthRequest="160" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+
+    <Label Text="Floating" Grid.Row="1" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" />
+    <Label Text="Integer" Grid.Row="2" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" />
+
+    <Label Grid.Row="1" Grid.Column="1"           
+             WidthRequest="70" HeightRequest="70" BackgroundColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+        <Label.FormattedText>
+            <FormattedString>
+                <Span>
+                    <Span.Text>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="WPF" Value="&#10;" />
+                        </OnPlatform>
+                    </Span.Text>
+                </Span>
+                <Span Style="{StaticResource BoldSpan}" 
+                          Text="{Binding FloatSingleThreaded, TargetNullValue='↖', StringFormat='{0:0.00}'}"/>
+                <Span Style="{StaticResource SmallerSpan}" 
+                          Text="{Binding FloatSingleThreaded, TargetNullValue='', StringFormat='&#10;GFLOPS'}" />
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Label Grid.Row="1" Grid.Column="2"           
+             WidthRequest="70" HeightRequest="70" BackgroundColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+        <Label.FormattedText>
+            <FormattedString>
+                <Span>
+                    <Span.Text>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="WPF" Value="&#10;" />
+                        </OnPlatform>
+                    </Span.Text>
+                </Span>
+                <Span Style="{StaticResource BoldSpan}" 
+                          Text="{Binding FloatMultiThreaded, TargetNullValue='↗', StringFormat='{0:0.00}'}"/>
+                <Span Style="{StaticResource SmallerSpan}"
+                          Text="{Binding FloatMultiThreaded, TargetNullValue='', StringFormat='&#10;GFLOPS'}" />
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Label Grid.Row="2" Grid.Column="1"           
+             WidthRequest="70" HeightRequest="70" BackgroundColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+        <Label.FormattedText>
+            <FormattedString>
+                <Span>
+                    <Span.Text>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="WPF" Value="&#10;" />
+                        </OnPlatform>
+                    </Span.Text>
+                </Span>
+                <Span Style="{StaticResource BoldSpan}" 
+                          Text="{Binding IntSingleThreaded, TargetNullValue='↙', StringFormat='{0:0.00}'}"/>
+                <Span Style="{StaticResource SmallerSpan}"
+                          Text="{Binding IntSingleThreaded, TargetNullValue='', StringFormat='&#10;GINOPS'}" />
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Label Grid.Row="2" Grid.Column="2"           
+             WidthRequest="70" HeightRequest="70" BackgroundColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+        <Label.FormattedText>
+            <FormattedString>
+                <Span>
+                    <Span.Text>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="WPF" Value="&#10;" />
+                        </OnPlatform>
+                    </Span.Text>
+                </Span>
+                <Span Style="{StaticResource BoldSpan}" 
+                          Text="{Binding IntMultiThreaded, TargetNullValue='↘', StringFormat='{0:0.00}'}"/>
+                <Span Style="{StaticResource SmallerSpan}"
+                          Text="{Binding IntMultiThreaded, TargetNullValue='', StringFormat='&#10;GINOPS'}" />
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+</Grid>

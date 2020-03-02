@@ -71,11 +71,11 @@
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\drawable\splash_screen.xml">
+    <AndroidResource Include="Resources\drawable-xhdpi\splash_screen.xml">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\splash.png">
+    <AndroidResource Include="Resources\drawable-xhdpi\splash.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
@@ -101,7 +101,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\mipmap-hdpi\" />
     <Folder Include="Resources\mipmap-mdpi\" />
     <Folder Include="Resources\mipmap-xhdpi\" />

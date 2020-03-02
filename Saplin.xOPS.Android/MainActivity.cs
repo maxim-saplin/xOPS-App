@@ -3,6 +3,8 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Saplin.xOPS.UI;
+using Android.Content.Res;
+using Android.Content;
 
 namespace Saplin.xOPS.Droid
 {
@@ -26,6 +28,28 @@ namespace Saplin.xOPS.Droid
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        protected override void AttachBaseContext(Context @base)
+        {
+            var configuration = new Configuration(@base.Resources.Configuration);
+
+            int minDimension = @base.Resources.Configuration.ScreenWidthDp > @base.Resources.Configuration.ScreenHeightDp
+               ? @base.Resources.Configuration.ScreenHeightDp : @base.Resources.Configuration.ScreenWidthDp;
+
+            if (minDimension > 640)
+            {
+                configuration.FontScale = 1.2f;
+            }
+            else if (minDimension > 360)
+            {
+                configuration.FontScale = 1f;
+            }
+            else configuration.FontScale = 0.8f;
+
+            var config = Android.App.Application.Context.CreateConfigurationContext(configuration);
+
+            base.AttachBaseContext(config);
         }
     }
 }

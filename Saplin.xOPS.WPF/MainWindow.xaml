@@ -6,6 +6,4 @@
         xmlns:local="clr-namespace:Saplin.xOPS.WPF"
         xmlns:wpf="clr-namespace:Xamarin.Forms.Platform.WPF;assembly=Xamarin.Forms.Platform.WPF"
         mc:Ignorable="d"
-        Title="xOPS" Height="600" Width="400">
-
-</wpf:FormsApplicationPage>
+        Title="xOPS" Height="600" Width="400" MinWidth="350" MinHeight="500" Background="Black" WindowStyle="ToolWindow"/>
