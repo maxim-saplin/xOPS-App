@@ -27,28 +27,41 @@
         </Grid.ColumnDefinitions>
 
 
-        <cn:TappableLabel Grid.Row="1" Text=" ? →" Grid.Column="3" IsVisible="{Binding TestNotStarted}"
+        <cn:TappableLabel Grid.Row="1" Text=" ? →" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
              Clicked="AboutLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Start" Margin="10, 0, 0, 0"/>
 
 
         <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
-                     HorizontalOptions="FillAndExpand" Margin="0,0,0,25">
-            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="↻ Retry" BackgroundColor="Blue"
-                HorizontalOptions="EndAndExpand" Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
-            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="≈ Stress" BackgroundColor="Red"
-                HorizontalOptions="Center" Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
-            <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="↪ Share" BackgroundColor="Green"
-                HorizontalOptions="StartAndExpand" Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
+                     HorizontalOptions="Center" Margin="0,0,0,25" BackgroundColor="Yellow">
 
-            <Button Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="¾ Break" BackgroundColor="DimGray"
-                HorizontalOptions="CenterAndExpand" Command="{Binding Break}" IsVisible="{Binding TestStarted}"/>
+            <Button Text="↻ Retry" BackgroundColor="Blue"
+                Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
+            <Button Text="≈ Stress" BackgroundColor="Red"
+                Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
+
+
+            <ContentView>
+                <OnPlatform x:TypeArguments="View">
+                    <On Platform="Android">
+                        <Button  Text="↪ Share" BackgroundColor="Green" 
+                            Clicked="Share_Clicked" IsVisible="{Binding TestNotStarted}"/>
+                    </On>
+                </OnPlatform>
+            </ContentView>
+
+
         </StackLayout>
 
-        <vv:TestRunResults Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible, Converter = {StaticResource BoolNot}}" />
+        <Button Text="¾ Break" BackgroundColor="DimGray" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
+                     HorizontalOptions="Center" Margin="0,0,0,25"
+                Command="{Binding Break}" IsVisible="{Binding TestStarted}"/>
+
+        <vv:TestRunResults x:Name="testResults" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible, Converter = {StaticResource BoolNot}}" />
         <vv:TestRunOptions Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible}"/>
 
-
-        <cn:TappableLabel  Grid.Row="2" Text="{Binding Source={x:Static vm:VmLocator.Options}, ButtonCaption}" Grid.Column="3" IsVisible="{Binding TestNotStarted}"
+        <!-- Keeping it on top of other controls, aslo on top of Options modal dialog-->
+        <cn:TappableLabel  Grid.Row="2" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
+             Text="{Binding Source={x:Static vm:VmLocator.Options}, ButtonCaption}" 
              Command="{Binding Source={x:Static vm:VmLocator.Options}, SwitchOptionsVisibility }"
              VerticalOptions="Center" HorizontalOptions="Start" Margin="10, 0, 0, 0"/>
     </Grid>

@@ -16,6 +16,10 @@
       <HintPath Condition="'$(Configuration)'=='Debug'">..\..\xOPS-Console\Saplin.xOPS\bin\Debug\netstandard2.0\Saplin.xOPS.dll</HintPath>
       <HintPath Condition="'$(Configuration)'=='Release'">..\References\Saplin.xOPS.dll</HintPath>
     </Reference>
+    <Reference Include="Saplin.xOPS.Extra">
+      <HintPath Condition="'$(Configuration)'=='Debug'">..\..\xOPS-Extra\Saplin.xOPS.Extra\bin\Debug\netstandard2.0\Saplin.xOPS.Extra.dll</HintPath>
+      <HintPath Condition="'$(Configuration)'=='Release'">..\References\Saplin.xOPS.Extra.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />

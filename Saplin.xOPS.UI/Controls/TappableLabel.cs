@@ -81,5 +81,20 @@ namespace Saplin.xOPS.UI.Controls
             get { return GetValue(CommandParameterProperty); }
             set { SetValue(CommandParameterProperty, value); }
         }
+
+        public static readonly BindableProperty SelectedProperty =
+            BindableProperty.Create(
+                propertyName: nameof(CommandParameter),
+                returnType: typeof(bool),
+                declaringType: typeof(TappableLabel),
+                defaultValue: false,
+                defaultBindingMode: BindingMode.OneWay
+             );
+
+        public bool Selected
+        {
+            get { return (bool)GetValue(SelectedProperty); }
+            set { SetValue(SelectedProperty, value); }
+        }
     }
 }

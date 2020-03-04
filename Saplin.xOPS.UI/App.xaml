@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vc="clr-namespace:Saplin.CPDT.UICore.ValueConverters"
+             xmlns:cn="clr-namespace:Saplin.xOPS.UI.Controls"
              mc:Ignorable="d"
              x:Class="Saplin.xOPS.UI.App">
     <Application.Resources>
@@ -29,6 +30,19 @@
             <Setter Property="TextColor" Value="White" />
             <Setter Property="Font" Value="{StaticResource FontBold}" />
         </Style>
+        <Style x:Key="NavLabel" TargetType="Label" >
+            <Setter Property="TextColor" Value="Red" />
+            <Setter Property="Font" Value="{StaticResource FontBold}" />
+        </Style>
+        <Style x:Key="LocaleLabel" TargetType="Label" >
+            <Setter Property="TextColor" Value="Red" />
+            <Setter Property="Font" Value="{StaticResource FontBold}" />
+            <Style.Triggers>
+                    <Trigger TargetType="cn:TappableLabel" Property="Selected" Value="True">
+                        <Setter Property="TextColor" Value="White" />
+                    </Trigger>
+           </Style.Triggers>
+        </Style>
         <Style x:Key="BoldSpan" TargetType="Span" >
             <Setter Property="TextColor" Value="White" />
             <Setter Property="Font" Value="{StaticResource FontBold}" />
@@ -44,7 +58,7 @@
             <Setter Property="TextColor" Value="White" />
             <Setter Property="BorderWidth" Value="0" />
             <Setter Property="BackgroundColor" Value="Red" />
-            <Setter Property="WidthRequest" Value="100" />
+            <Setter Property="WidthRequest" Value="90" />
             <Setter Property="HeightRequest" Value="30" />
             <Setter Property="Padding" Value="3, 3, 3, 3" />
         </Style>

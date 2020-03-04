@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="Saplin.xOPS.UI.About"
              xmlns:cn="clr-namespace:Saplin.xOPS.UI.Controls"
+             xmlns:vm="clr-namespace:Saplin.xOPS.UI.ViewModels"
              NavigationPage.HasNavigationBar="False" 
              NavigationPage.HasBackButton="False">
     <ContentPage.Content>
@@ -19,15 +20,34 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <cn:TappableLabel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Text=" ← " Style="{StaticResource BoldLabel}"
+            <cn:TappableLabel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Text=" ← " Style="{StaticResource NavLabel}"
                  Clicked="BackLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Center"/>
 
             <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="Center">
-                <cn:TappableLabel Text="РУ" Style="{StaticResource BoldLabel}" WidthRequest="60" HorizontalTextAlignment="Center" HorizontalOptions="EndAndExpand"/>
-                <cn:TappableLabel Text="EN" Style="{StaticResource BoldLabel}" WidthRequest="60" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
-                <cn:TappableLabel Text="FR" Style="{StaticResource BoldLabel}" WidthRequest="60" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
-                <cn:TappableLabel Text="中国" Style="{StaticResource BoldLabel}" WidthRequest="60" HorizontalTextAlignment="Center" HorizontalOptions="StartAndExpand"/>
+                <cn:TappableLabel Text="РУ" Command="{Binding Source={x:Static vm:VmLocator.L11n}, ChangeLocale}" CommandParameter="ru"
+                    Selected="{Binding Source={x:Static vm:VmLocator.L11n}, Ru}"
+                    Style="{StaticResource LocaleLabel}" WidthRequest="60" HorizontalTextAlignment="Center" HorizontalOptions="EndAndExpand"/>
+                <cn:TappableLabel Text="EN" Command="{Binding Source={x:Static vm:VmLocator.L11n}, ChangeLocale}" CommandParameter="en"
+                    Selected="{Binding Source={x:Static vm:VmLocator.L11n}, En}"
+                    Style="{StaticResource LocaleLabel}" WidthRequest="60" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                <cn:TappableLabel Text="FR" Command="{Binding Source={x:Static vm:VmLocator.L11n}, ChangeLocale}" CommandParameter="fr"
+                    Selected="{Binding Source={x:Static vm:VmLocator.L11n}, Fr}"
+                    Style="{StaticResource LocaleLabel}" WidthRequest="60" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                <cn:TappableLabel Text="中国" Command="{Binding Source={x:Static vm:VmLocator.L11n}, ChangeLocale}" CommandParameter="zh"
+                    Selected="{Binding Source={x:Static vm:VmLocator.L11n}, Zh}"
+                    Style="{StaticResource LocaleLabel}" WidthRequest="60" HorizontalTextAlignment="Center" HorizontalOptions="StartAndExpand"/>
             </StackLayout>
+
+            <ScrollView Grid.Row="1" Grid.Column="1" VerticalOptions="Fill" HorizontalOptions="Fill" >
+                <Label Text="{Binding Source={x:Static vm:VmLocator.L11n}, About}" TextColor="White" VerticalOptions="Start">
+                    <Label.GestureRecognizers>
+                        <SwipeGestureRecognizer Direction="Left" Command="{Binding Source={x:Static vm:VmLocator.L11n}, Next}"/>
+                        <SwipeGestureRecognizer Direction="Right" Command="{Binding Source={x:Static vm:VmLocator.L11n}, Previous}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                
+            </ScrollView>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

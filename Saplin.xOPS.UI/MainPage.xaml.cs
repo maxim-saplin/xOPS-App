@@ -4,13 +4,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Saplin.xOPS.Extra;
 using Saplin.xOPS.UI.ViewModels;
 using Xamarin.Forms;
 
 namespace Saplin.xOPS.UI
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
@@ -34,6 +33,16 @@ namespace Saplin.xOPS.UI
         void AboutLabel_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushModalAsync(Pages.About);
+        }
+
+        void Share_Clicked(System.Object sender, System.EventArgs e)
+        {
+            var share = DependencyService.Get<IShareViewAsImage>();
+
+            if (share != null)
+            {
+                share.Share(testResults, true, "xOPS CPU Benchmakrk - https://play.google.com/store/apps/details?id=com.Saplin.xOPS");
+            }
         }
     }
 }
