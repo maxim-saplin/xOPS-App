@@ -32,7 +32,7 @@
 
 
         <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
-                     HorizontalOptions="Center" Margin="0,0,0,25" BackgroundColor="Yellow">
+                     HorizontalOptions="Center" Margin="5,0,0,25">
 
             <Button Text="↻ Retry" BackgroundColor="Blue"
                 Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
@@ -56,8 +56,8 @@
                      HorizontalOptions="Center" Margin="0,0,0,25"
                 Command="{Binding Break}" IsVisible="{Binding TestStarted}"/>
 
-        <vv:TestRunResults x:Name="testResults" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible, Converter = {StaticResource BoolNot}}" />
-        <vv:TestRunOptions Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible}"/>
+        <vv:TestRun x:Name="testResults" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible, Converter = {StaticResource BoolNot}}" />
+        <vv:Options Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible}"/>
 
         <!-- Keeping it on top of other controls, aslo on top of Options modal dialog-->
         <cn:TappableLabel  Grid.Row="2" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"

@@ -20,7 +20,7 @@ namespace Saplin.xOPS.UI.ViewModels
         public static Options Options => container.Resolve<Options>();
         public static L11n L11n => container.Resolve<L11n>();
 
-        static async void EagerCreateViewModels()
+        public static async void EagerCreateViewModels()
         {
             await Task.Run(() => 
             { 

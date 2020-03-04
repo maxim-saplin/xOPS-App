@@ -25,15 +25,21 @@
     <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\TestRunOptions.xaml.cs">
-      <DependentUpon>TestRunOptions.xaml</DependentUpon>
+    <Compile Update="Views\Options.xaml.cs">
+      <DependentUpon>Options.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TestRun.xaml.cs">
+      <DependentUpon>TestRun.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="About.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TestRunResults.xaml">
+    <EmbeddedResource Update="OnlineDb.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TestRun.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

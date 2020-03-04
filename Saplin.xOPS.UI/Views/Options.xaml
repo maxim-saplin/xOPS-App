@@ -3,8 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:cn="clr-namespace:Saplin.xOPS.UI.Controls"
+             xmlns:vm="clr-namespace:Saplin.xOPS.UI.ViewModels"
              mc:Ignorable="d"
-             x:Class="Saplin.xOPS.UI.Views.TestRunOptions">
+             x:Class="Saplin.xOPS.UI.Views.Options"
+             BindingContext="{x:Static vm:VmLocator.Options}">
     <Grid.RowDefinitions>
         <RowDefinition Height="*" />
         <RowDefinition Height="70" />
@@ -30,8 +33,7 @@
     <Label Text="Floating" Grid.Row="1" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" TextColor="Green"/>
     <Label Text="Integer" Grid.Row="2" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" TextColor="Green"/>
 
-    <Label Grid.Row="1" Grid.Column="1"           
-             WidthRequest="70" HeightRequest="70" BackgroundColor="Green" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+    <cn:TappableLabel Grid.Row="1" Grid.Column="1" Command="{Binding SwicthFloatPrecision}" Style="{StaticResource OptionTileLabel}">
         <Label.FormattedText>
             <FormattedString>
                 <Span>
@@ -41,16 +43,12 @@
                         </OnPlatform>
                     </Span.Text>
                 </Span>
-                <Span Style="{StaticResource BoldSpan}" FontSize="16"
-                          Text="32"/>
-                <Span Style="{StaticResource SmallerSpan}" 
-                          Text="&#10;Bit" />
+                <Span FontSize="16" Text="{Binding FloatPrecision, Mode=OneWay}"/>
             </FormattedString>
         </Label.FormattedText>
-    </Label>
+    </cn:TappableLabel>
 
-    <Label Grid.Row="1" Grid.Column="2"           
-             WidthRequest="70" HeightRequest="70" BackgroundColor="Green" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+    <cn:TappableLabel Grid.Row="1" Grid.Column="2" AnimateOnTap="True" Command="{Binding SwitchFloatThreads}" Style="{StaticResource OptionTileLabel}">
         <Label.FormattedText>
             <FormattedString>
                 <Span>
@@ -60,16 +58,12 @@
                         </OnPlatform>
                     </Span.Text>
                 </Span>
-                <Span Style="{StaticResource BoldSpan}" FontSize="16"
-                          Text="16"/>
-                <Span Style="{StaticResource SmallerSpan}"
-                          Text="&#10;Thrds." />
+                <Span Style="{StaticResource BoldSpan}" FontSize="16" Text="{Binding FloatThreads, Mode=OneWay}"/>
             </FormattedString>
         </Label.FormattedText>
-    </Label>
+    </cn:TappableLabel>
 
-    <Label Grid.Row="2" Grid.Column="1"           
-             WidthRequest="70" HeightRequest="70" BackgroundColor="Green" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+    <cn:TappableLabel Grid.Row="2" Grid.Column="1" AnimateOnTap="True" Command="{Binding SwicthIntPrecision}" Style="{StaticResource OptionTileLabel}">
         <Label.FormattedText>
             <FormattedString>
                 <Span>
@@ -79,32 +73,25 @@
                         </OnPlatform>
                     </Span.Text>
                 </Span>
-                <Span Style="{StaticResource BoldSpan}" FontSize="16"
-                          Text="32"/>
-                <Span Style="{StaticResource SmallerSpan}"
-                          Text="&#10;Bit" />
+                <Span Style="{StaticResource BoldSpan}" FontSize="16" Text="{Binding IntPrecision, Mode=OneWay}"/>
             </FormattedString>
         </Label.FormattedText>
-    </Label>
+    </cn:TappableLabel>
 
-    <Label Grid.Row="2" Grid.Column="2"           
-             WidthRequest="70" HeightRequest="70" BackgroundColor="Green" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+    <cn:TappableLabel Grid.Row="2" Grid.Column="2" AnimateOnTap="True" Command="{Binding SwitchIntThreads}" Style="{StaticResource OptionTileLabel}">
         <Label.FormattedText>
             <FormattedString>
                 <Span>
                     <Span.Text>
                         <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="WPF" Value="&#10;" />
+                            <On Platform="WPF" Value="&#10;&#10;" />
                         </OnPlatform>
                     </Span.Text>
                 </Span>
-                <Span Style="{StaticResource BoldSpan}" FontSize="16"
-                          Text="16"/>
-                <Span Style="{StaticResource SmallerSpan}"
-                          Text="{Binding IntMultiThreaded, TargetNullValue='', StringFormat='&#10;Thrds.'}" />
+                <Span Style="{StaticResource BoldSpan}" FontSize="16" Text="{Binding IntThreads, Mode=OneWay}"/>
             </FormattedString>
         </Label.FormattedText>
-    </Label>
+    </cn:TappableLabel>
 
     <Label Text="Options" TextColor="Green" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" />
 </Grid>

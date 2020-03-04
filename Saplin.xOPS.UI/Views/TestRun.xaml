@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:cn="clr-namespace:Saplin.xOPS.UI.Controls"
              mc:Ignorable="d"
-             x:Class="Saplin.xOPS.UI.Views.TestRunResults">
+             x:Class="Saplin.xOPS.UI.Views.TestRun">
     <Grid.RowDefinitions>
         <RowDefinition Height="*" />
         <RowDefinition Height="70" />
@@ -23,8 +24,7 @@
     <Label Text="Floating" Grid.Row="1" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" />
     <Label Text="Integer" Grid.Row="2" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" />
 
-    <Label Grid.Row="1" Grid.Column="1"           
-             WidthRequest="70" HeightRequest="70" BackgroundColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+    <cn:TappableLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource TestTileLabel}">
         <Label.FormattedText>
             <FormattedString>
                 <Span>
@@ -40,10 +40,9 @@
                           Text="{Binding FloatSingleThreaded, TargetNullValue='', StringFormat='&#10;GFLOPS'}" />
             </FormattedString>
         </Label.FormattedText>
-    </Label>
+    </cn:TappableLabel>
 
-    <Label Grid.Row="1" Grid.Column="2"           
-             WidthRequest="70" HeightRequest="70" BackgroundColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+    <cn:TappableLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource TestTileLabel}">
         <Label.FormattedText>
             <FormattedString>
                 <Span>
@@ -59,10 +58,9 @@
                           Text="{Binding FloatMultiThreaded, TargetNullValue='', StringFormat='&#10;GFLOPS'}" />
             </FormattedString>
         </Label.FormattedText>
-    </Label>
+    </cn:TappableLabel>
 
-    <Label Grid.Row="2" Grid.Column="1"           
-             WidthRequest="70" HeightRequest="70" BackgroundColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+    <cn:TappableLabel Grid.Row="2" Grid.Column="1" Style="{StaticResource TestTileLabel}">
         <Label.FormattedText>
             <FormattedString>
                 <Span>
@@ -78,10 +76,9 @@
                           Text="{Binding IntSingleThreaded, TargetNullValue='', StringFormat='&#10;GINOPS'}" />
             </FormattedString>
         </Label.FormattedText>
-    </Label>
+    </cn:TappableLabel>
 
-    <Label Grid.Row="2" Grid.Column="2"           
-             WidthRequest="70" HeightRequest="70" BackgroundColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+    <cn:TappableLabel Grid.Row="2" Grid.Column="2" Style="{StaticResource TestTileLabel}">
         <Label.FormattedText>
             <FormattedString>
                 <Span>
@@ -97,5 +94,5 @@
                           Text="{Binding IntMultiThreaded, TargetNullValue='', StringFormat='&#10;GINOPS'}" />
             </FormattedString>
         </Label.FormattedText>
-    </Label>
+    </cn:TappableLabel>
 </Grid>

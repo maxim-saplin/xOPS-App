@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Saplin.xOPS.UI.ViewModels;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Saplin.xOPS.UI
 {
@@ -8,9 +7,12 @@ namespace Saplin.xOPS.UI
     {
         public App()
         {
+            VmLocator.EagerCreateViewModels();
+            Pages.EagerCreatePages();
+            
             InitializeComponent();
 
-            MainPage = new StartPage();
+            MainPage = Pages.StartPage;
         }
 
         protected override void OnStart()

@@ -4,9 +4,9 @@ using Xamarin.Forms.Xaml;
 namespace Saplin.xOPS.UI.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TestRunResults : Grid
+    public partial class Options : Grid
     {
-        public TestRunResults()
+        public Options()
         {
             InitializeComponent();
 
