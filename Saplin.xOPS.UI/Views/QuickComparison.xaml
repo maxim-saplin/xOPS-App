@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<vc:LabelRepeater xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Saplin.xOPS.UI.Views.QuickComparison"
+             xmlns:vc="clr-namespace:Saplin.xOPS.UI.Controls"
+             xmlns:vm="clr-namespace:Saplin.xOPS.UI.ViewModels"
+             Items="{Binding Source={x:Static vm:VmLocator.QuickComparison}, Comparisons}"
+             Orientation="Vertical"
+             Spacing="0"
+             LabelStyle="{StaticResource ComparisonLabel}">
+</vc:LabelRepeater>

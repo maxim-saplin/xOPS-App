@@ -4,6 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:cn="clr-namespace:Saplin.xOPS.UI.Controls"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:vm="clr-namespace:Saplin.xOPS.UI.ViewModels"
              mc:Ignorable="d"
              x:Class="Saplin.xOPS.UI.Views.TestRun">
     <Grid.RowDefinitions>
@@ -24,7 +26,12 @@
     <Label Text="Floating" Grid.Row="1" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" />
     <Label Text="Integer" Grid.Row="2" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" />
 
-    <cn:TappableLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource TestTileLabel}">
+    <cn:TappableLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource TestTileLabel}"
+        Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}">
+        <!-- Binding context seem not propagating to below instance, using complete path instead-->
+        <cn:TappableLabel.CommandParameter>
+            <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, FloatSingleThreaded}" Int="False" MultiThreaded="False"/>
+        </cn:TappableLabel.CommandParameter>
         <Label.FormattedText>
             <FormattedString>
                 <Span>
@@ -42,7 +49,11 @@
         </Label.FormattedText>
     </cn:TappableLabel>
 
-    <cn:TappableLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource TestTileLabel}">
+    <cn:TappableLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource TestTileLabel}"
+        Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}">
+        <cn:TappableLabel.CommandParameter>
+            <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, FloatMultiThreaded}" Int="False" MultiThreaded="True"/>
+        </cn:TappableLabel.CommandParameter>
         <Label.FormattedText>
             <FormattedString>
                 <Span>
@@ -60,7 +71,11 @@
         </Label.FormattedText>
     </cn:TappableLabel>
 
-    <cn:TappableLabel Grid.Row="2" Grid.Column="1" Style="{StaticResource TestTileLabel}">
+    <cn:TappableLabel Grid.Row="2" Grid.Column="1" Style="{StaticResource TestTileLabel}"
+        Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}">
+        <cn:TappableLabel.CommandParameter>
+            <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, IntSingleThreaded}" Int="True" MultiThreaded="False"/>
+        </cn:TappableLabel.CommandParameter>
         <Label.FormattedText>
             <FormattedString>
                 <Span>
@@ -78,7 +93,11 @@
         </Label.FormattedText>
     </cn:TappableLabel>
 
-    <cn:TappableLabel Grid.Row="2" Grid.Column="2" Style="{StaticResource TestTileLabel}">
+    <cn:TappableLabel Grid.Row="2" Grid.Column="2" Style="{StaticResource TestTileLabel}"
+        Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}" CommandParameter="{Binding IntMultiThreaded}">
+        <cn:TappableLabel.CommandParameter>
+            <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, IntMultiThreaded}" Int="True" MultiThreaded="True"/>
+        </cn:TappableLabel.CommandParameter>
         <Label.FormattedText>
             <FormattedString>
                 <Span>

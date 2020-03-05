@@ -43,12 +43,12 @@
                         </OnPlatform>
                     </Span.Text>
                 </Span>
-                <Span FontSize="16" Text="{Binding FloatPrecision, Mode=OneWay}"/>
+                <Span Style="{StaticResource BoldSpan}" FontSize="16" Text="{Binding FloatPrecision, Mode=OneWay}"/>
             </FormattedString>
         </Label.FormattedText>
     </cn:TappableLabel>
 
-    <cn:TappableLabel Grid.Row="1" Grid.Column="2" AnimateOnTap="True" Command="{Binding SwitchFloatThreads}" Style="{StaticResource OptionTileLabel}">
+    <cn:TappableLabel Grid.Row="1" Grid.Column="2" Command="{Binding SwitchFloatThreads}" Style="{StaticResource OptionTileLabel}">
         <Label.FormattedText>
             <FormattedString>
                 <Span>
@@ -63,7 +63,7 @@
         </Label.FormattedText>
     </cn:TappableLabel>
 
-    <cn:TappableLabel Grid.Row="2" Grid.Column="1" AnimateOnTap="True" Command="{Binding SwicthIntPrecision}" Style="{StaticResource OptionTileLabel}">
+    <cn:TappableLabel Grid.Row="2" Grid.Column="1" Command="{Binding SwicthIntPrecision}" Style="{StaticResource OptionTileLabel}">
         <Label.FormattedText>
             <FormattedString>
                 <Span>
@@ -78,7 +78,7 @@
         </Label.FormattedText>
     </cn:TappableLabel>
 
-    <cn:TappableLabel Grid.Row="2" Grid.Column="2" AnimateOnTap="True" Command="{Binding SwitchIntThreads}" Style="{StaticResource OptionTileLabel}">
+    <cn:TappableLabel Grid.Row="2" Grid.Column="2" Command="{Binding SwitchIntThreads}" Style="{StaticResource OptionTileLabel}">
         <Label.FormattedText>
             <FormattedString>
                 <Span>

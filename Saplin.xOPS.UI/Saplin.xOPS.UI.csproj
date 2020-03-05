@@ -25,12 +25,18 @@
     <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="Views\LabelRepaetger.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Views\Options.xaml.cs">
       <DependentUpon>Options.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\TestRun.xaml.cs">
       <DependentUpon>TestRun.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Styles.css" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="About.xaml">

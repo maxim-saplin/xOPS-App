@@ -7,8 +7,8 @@ namespace Saplin.xOPS.UI
     {
         public App()
         {
-            VmLocator.EagerCreateViewModels();
-            Pages.EagerCreatePages();
+            //VmLocator.EagerCreateViewModels();
+            //Pages.EagerCreatePages();
             
             InitializeComponent();
 
