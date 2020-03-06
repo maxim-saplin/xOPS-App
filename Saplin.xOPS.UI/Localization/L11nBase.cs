@@ -54,5 +54,21 @@ namespace Saplin.xOPS.UI.ViewModels
                 return ResourceManager.GetString("About", resourceCulture);
             }
         }
+
+        public string Options
+        {
+            get
+            {
+                return ResourceManager.GetString("Options", resourceCulture);
+            }
+        }
+
+        public string Close
+        {
+            get
+            {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
     }
 }

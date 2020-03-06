@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using Xamarin.Forms;
 
@@ -13,21 +12,32 @@ namespace Saplin.xOPS.UI
         {
             InitializeComponent();
 
-            countdownLabel.Text = "Starting in " + countdown + " seconds";
+        }
 
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (countdown == 0) App.Current.MainPage = Pages.MainPage;
+            else
             {
-                countdown--;
+
                 countdownLabel.Text = "Starting in " + countdown + " seconds";
 
-                if (countdown == 0)
+                Device.StartTimer(TimeSpan.FromSeconds(1), () =>
                 {
-                    //Navigation.PushModalAsync(new MainPage());
-                    App.Current.MainPage = Pages.MainPage;
-                }
+                    countdown--;
+                    countdownLabel.Text = "Starting in " + countdown + " seconds";
 
-                return countdown > 0;
-            });
+                    if (countdown == 0)
+                    {
+                        countdownLabel.Text = "� � �";
+                        App.Current.MainPage = Pages.MainPage;
+                    }
+
+                    return countdown > 0;
+                });
+            }
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿
-using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Saplin.xOPS.UI.ViewModels
@@ -30,6 +28,7 @@ namespace Saplin.xOPS.UI.ViewModels
             const int iterations = 50 * 1000 * 1000;
 
             TestNotStarted = false;
+            TestInterrupted = false;
 
             ResetValues();
 
@@ -38,13 +37,13 @@ namespace Saplin.xOPS.UI.ViewModels
             Task.Run(() => {
                 try
                 {
-                    if (options.Float64Bit) compute.RunFlops64Bit(iterations); else compute.RunFlops32Bit(iterations);
+                    compute.RunXops(iterations, inops: false, options.Float64Bit); 
                     FloatSingleThreaded = breakTest ? (double?)null : compute.LastResultGigaOPS;
                     Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(FloatSingleThreaded)));
 
                     if (breakTest) return;
 
-                    if (options.Int64Bit) compute.RunInops64Bit(iterations); else compute.RunInops32Bit(iterations);
+                    compute.RunXops(iterations, inops: true, options.Int64Bit);
                     IntSingleThreaded = breakTest ? (double?)null : compute.LastResultGigaOPS;
                     Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(IntSingleThreaded)));
 
@@ -61,6 +60,14 @@ namespace Saplin.xOPS.UI.ViewModels
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         RaisePropertyChanged(nameof(IntMultiThreaded));
+                    });
+                 }
+                 catch{}
+                 finally
+                 {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        TestNotStarted = true;
                         VmLocator.QuickComparison.Compare.Execute(new SingleResult()
                         {
                             Value = FloatSingleThreaded.Value,
@@ -68,14 +75,6 @@ namespace Saplin.xOPS.UI.ViewModels
                             MultiThreaded = false
                         });
                     });
-                 }
-                catch(Exception ex)
-                {
-                    var i = ex.Message;
-                }
-                 finally
-                 {
-                    Device.BeginInvokeOnMainThread(() => TestNotStarted = true);
                  }
             });
 
@@ -86,31 +85,46 @@ namespace Saplin.xOPS.UI.ViewModels
         public void BreakTest()
         {
             breakTest = true;
-            compute?.AbortMultiThreadedExecution();
+            compute?.BreakExecution();
+            TestInterrupted = true;
         }
 
         private bool testNotStarted = true;
         public bool TestNotStarted
         {
             get { return testNotStarted; }
-            set { testNotStarted = value; RaisePropertyChanged(); RaisePropertyChanged(nameof(TestStarted)); } 
+            set 
+            { 
+                testNotStarted = value; 
+                RaisePropertyChanged(); 
+                RaisePropertyChanged(nameof(TestStarted)); 
+                RaisePropertyChanged(nameof(ShowQuickComparison));
+                RaisePropertyChanged(nameof(ShowRunning));
+            } 
         }
 
         public bool TestStarted => !TestNotStarted;
+
+        private bool testInterrupted = false;
+        public bool TestInterrupted
+        {
+            get { return testInterrupted; }
+            set 
+            { 
+                testInterrupted = value; 
+                RaisePropertyChanged(); 
+                RaisePropertyChanged(nameof(ShowRunning)); 
+            }
+        }
+
+        public bool ShowQuickComparison => TestNotStarted && !TestInterrupted;
+
+        public bool ShowRunning => TestStarted && !TestInterrupted;
 
         public double? FloatSingleThreaded { get; private set; }
         public double? FloatMultiThreaded { get; private set; }
         public double? IntSingleThreaded { get; private set; }
         public double? IntMultiThreaded { get; private set; }
-
-
-        //public Tuple<double, bool, bool> CurrentSelection
-        //{
-        //    get
-        //    {
-        //        return new Tuple<double, bool, bool>();
-        //    }
-        //}
 
     }
 }

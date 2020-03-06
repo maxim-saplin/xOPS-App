@@ -20,8 +20,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <cn:TappableLabel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Text=" ← " Style="{StaticResource NavLabel}"
-                 Clicked="BackLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <cn:TappableLabel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Text="&#10;&#10;&#10; ← &#10;&#10;&#10;" Style="{StaticResource NavLabel}"
+                 Clicked="BackLabel_Clicked" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
 
             <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="Center">
                 <cn:TappableLabel Text="РУ" Command="{Binding Source={x:Static vm:VmLocator.L11n}, ChangeLocale}" CommandParameter="ru"
@@ -40,11 +40,12 @@
 
             <ScrollView Grid.Row="1" Grid.Column="1" VerticalOptions="Fill" HorizontalOptions="Fill" 
                         HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" >
+                <ScrollView.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Left" Command="{Binding Source={x:Static vm:VmLocator.L11n}, Next}"/>
+                    <SwipeGestureRecognizer Direction="Right" Command="{Binding Source={x:Static vm:VmLocator.L11n}, Previous}"/>
+                </ScrollView.GestureRecognizers>
                 <Label Text="{Binding Source={x:Static vm:VmLocator.L11n}, About}" TextColor="White" VerticalOptions="Start">
-                    <Label.GestureRecognizers>
-                        <SwipeGestureRecognizer Direction="Left" Command="{Binding Source={x:Static vm:VmLocator.L11n}, Next}"/>
-                        <SwipeGestureRecognizer Direction="Right" Command="{Binding Source={x:Static vm:VmLocator.L11n}, Previous}"/>
-                    </Label.GestureRecognizers>
+
                 </Label>
                 
             </ScrollView>

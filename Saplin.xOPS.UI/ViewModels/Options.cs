@@ -23,7 +23,7 @@ namespace Saplin.xOPS.UI.ViewModels
 
         public string ButtonCaption
         {
-            get { return IsVisible ? " #❌#" : " # #"; }
+            get { return !IsVisible ? "\n ± ⇆\n" : "\n"+VmLocator.L11n.Close+"\n"; }
         }
 
         public ICommand SwicthFloatPrecision => new Command(() => Float64Bit = !Float64Bit);

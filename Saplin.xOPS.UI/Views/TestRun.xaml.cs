@@ -17,5 +17,7 @@ namespace Saplin.xOPS.UI.Views
                 mtLabel.RotateTo(-90);
             }
         }
+
+        public Grid Core => core;
     }
 }

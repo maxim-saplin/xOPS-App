@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -43,7 +43,6 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidLinkMode>Full</AndroidLinkMode>
     <AndroidDexTool>d8</AndroidDexTool>
-    <AndroidLinkTool>r8</AndroidLinkTool>
     <AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86;x86_64</AndroidSupportedAbis>
     <AndroidLinkSkip>Saplin.xOPS.UI;Saplin.xOPS; Saplin.xOPS.Extra; Saplin.xOPS.Extra.Android</AndroidLinkSkip>
   </PropertyGroup>
@@ -65,16 +64,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShareViewProxy.cs" />
+    <Compile Include="Properties\TestRun.xaml.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' ">
+      <DependentUpon>TestRun.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -123,7 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Saplin.xOPS.UI\Saplin.xOPS.UI.csproj">
-      <Project>{C36F6CBD-D3FF-45A7-8239-E716F094258F}</Project>
+      <Project>{22AB2BE1-1E83-459B-86B1-1387F4A30FD7}</Project>
       <Name>Saplin.xOPS.UI</Name>
     </ProjectReference>
   </ItemGroup>
@@ -131,6 +133,12 @@
     <AndroidAsset Include="Assets\IBMPlexMono-Italic.ttf" />
     <AndroidAsset Include="Assets\IBMPlexMono-Medium.ttf" />
     <AndroidAsset Include="Assets\IBMPlexMono-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\TestRun.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -27,7 +27,7 @@
 
     <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="stLabel" Text="Precision" Rotation="-90" Margin="0, 0, 30, 75" TextColor="Green"
             VerticalOptions="End" HorizontalOptions="End"  WidthRequest="160" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
-    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="mtLabel" Text="Threads Number" Rotation="-90" Margin="0, 0, -45, 75" TextColor="Green"
+    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="mtLabel" Text="Threads Number" Rotation="-90" Margin="0, 0, -40, 75" TextColor="Green"
             VerticalOptions="End" HorizontalOptions="End" WidthRequest="160" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
 
     <Label Text="Floating" Grid.Row="1" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" TextColor="Green"/>
@@ -93,5 +93,6 @@
         </Label.FormattedText>
     </cn:TappableLabel>
 
-    <Label Text="Options" TextColor="Green" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Label Text="{Binding Source={Static vm:VmLocator.L11n}, Options}" TextColor="Green"
+           Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center"/>
 </Grid>

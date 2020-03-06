@@ -11,7 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />
     <Reference Include="Saplin.xOPS">
       <HintPath Condition="'$(Configuration)'=='Debug'">..\..\xOPS-Console\Saplin.xOPS\bin\Debug\netstandard2.0\Saplin.xOPS.dll</HintPath>
       <HintPath Condition="'$(Configuration)'=='Release'">..\References\Saplin.xOPS.dll</HintPath>
@@ -22,31 +21,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Views\LabelRepaetger.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Views\Options.xaml.cs">
-      <DependentUpon>Options.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\TestRun.xaml.cs">
-      <DependentUpon>TestRun.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Remove="Styles.css" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="About.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="OnlineDb.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\TestRun.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
   </ItemGroup>
 </Project>

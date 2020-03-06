@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using Saplin.xOPS.Extra;
 using Saplin.xOPS.UI.ViewModels;
+using Saplin.xOPS.UI.Views;
 using Xamarin.Forms;
 
 namespace Saplin.xOPS.UI
@@ -41,8 +37,25 @@ namespace Saplin.xOPS.UI
 
             if (share != null)
             {
-                share.Share(testResults, true, "xOPS CPU Benchmakrk - https://play.google.com/store/apps/details?id=com.Saplin.xOPS");
+                share.Share(testResults.Core, true, "xOPS CPU Benchmakrk - https://play.google.com/store/apps/details?id=com.Saplin.xOPS");
             }
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (VmLocator.TestRun.TestStarted)
+            {
+                VmLocator.TestRun.BreakTest();
+                return true;
+            }
+
+            if (VmLocator.Options.IsVisible)
+            {
+                VmLocator.Options.IsVisible = false;
+                return true;
+            }
+
+            return base.OnBackButtonPressed();
         }
     }
 }

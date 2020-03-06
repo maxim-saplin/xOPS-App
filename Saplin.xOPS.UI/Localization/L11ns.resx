@@ -135,4 +135,10 @@ The tests are "isolated", meaning that they focus on creating CPU load only (and
 The app is cross platform (supports Android/ChromeOS, Windows, macOS): LINKS
     </value>
   </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
 </root>

@@ -27,12 +27,13 @@
         </Grid.ColumnDefinitions>
 
 
-        <cn:TappableLabel Grid.Row="1" Text=" ? →" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
+        <cn:TappableLabel Grid.Row="1" Text="&#10; ? → &#10;" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
              Clicked="AboutLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Start" Margin="10, 0, 0, 0"/>
 
-        <vv:QuickComparison Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding TestNotStarted}"/>
+        <vv:QuickComparison Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding ShowQuickComparison}"/>
 
-         <Label Text="Running..." Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding TestStarted}"/>
+        <Label Text="Running..." Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding ShowRunning}"/>
+        <Label Text="Test Interrupted" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding TestInterrupted}"/>
 
         <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
                      HorizontalOptions="Center" Margin="5,0,0,25">
@@ -47,7 +48,7 @@
                 <OnPlatform x:TypeArguments="View">
                     <On Platform="Android">
                         <Button  Text="↪ Share" BackgroundColor="Green" 
-                            Clicked="Share_Clicked" IsVisible="{Binding TestNotStarted}"/>
+                            Clicked="Share_Clicked" IsVisible="{Binding TestNotStarted}" IsEnabled="{Binding ShowQuickComparison}"/>
                     </On>
                 </OnPlatform>
             </ContentView>
@@ -55,7 +56,7 @@
 
         </StackLayout>
 
-        <Button Text="¾ Break" BackgroundColor="DimGray" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
+        <Button Text="¾ Break" BackgroundColor="Red" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
                      HorizontalOptions="Center" Margin="0,0,0,25"
                 Command="{Binding Break}" IsVisible="{Binding TestStarted}"/>
 
@@ -66,7 +67,7 @@
         <cn:TappableLabel  Grid.Row="2" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
              Text="{Binding Source={x:Static vm:VmLocator.Options}, ButtonCaption}" 
              Command="{Binding Source={x:Static vm:VmLocator.Options}, SwitchOptionsVisibility }"
-             VerticalOptions="Center" HorizontalOptions="Start" Margin="10, 0, 0, 0"/>
+             VerticalOptions="Center" HorizontalOptions="Start" Margin="10, 0, 0, 0" />
     </Grid>
 
 </ContentPage>
