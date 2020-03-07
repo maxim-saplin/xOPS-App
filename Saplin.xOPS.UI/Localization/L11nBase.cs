@@ -70,5 +70,117 @@ namespace Saplin.xOPS.UI.ViewModels
                 return ResourceManager.GetString("Close", resourceCulture);
             }
         }
+
+        public string CountdownMany
+        {
+            get
+            {
+                return ResourceManager.GetString("CountdownMany", resourceCulture);
+            }
+        }
+
+        public string CountdownOne
+        {
+            get
+            {
+                return ResourceManager.GetString("CountdownOne", resourceCulture);
+            }
+        }
+
+        public string Floating
+        {
+            get
+            {
+                return ResourceManager.GetString("Floating", resourceCulture);
+            }
+        }
+
+        public string Integer
+        {
+            get
+            {
+                return ResourceManager.GetString("Integer", resourceCulture);
+            }
+        }
+
+        public string ST
+        {
+            get
+            {
+                return ResourceManager.GetString("ST", resourceCulture);
+            }
+        }
+
+        public string MT
+        {
+            get
+            {
+                return ResourceManager.GetString("MT", resourceCulture);
+            }
+        }
+
+        public string Break
+        {
+            get
+            {
+                return ResourceManager.GetString("Break", resourceCulture);
+            }
+        }
+
+        public string Retry
+        {
+            get
+            {
+                return ResourceManager.GetString("Retry", resourceCulture);
+            }
+        }
+
+        public string Share
+        {
+            get
+            {
+                return ResourceManager.GetString("Share", resourceCulture);
+            }
+        }
+
+        public string Running
+        {
+            get
+            {
+                return ResourceManager.GetString("Running", resourceCulture);
+            }
+        }
+
+        public string TestInterrupted
+        {
+            get
+            {
+                return ResourceManager.GetString("TestInterrupted", resourceCulture);
+            }
+        }
+
+        public string Precision
+        {
+            get
+            {
+                return ResourceManager.GetString("Precision", resourceCulture);
+            }
+        }
+
+        public string ThreadsNumber
+        {
+            get
+            {
+                return ResourceManager.GetString("ThreadsNumber", resourceCulture);
+            }
+        }
+
+        public string Bit
+        {
+            get
+            {
+                return ResourceManager.GetString("Bit", resourceCulture);
+            }
+        }
     }
 }

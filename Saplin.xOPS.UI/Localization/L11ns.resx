@@ -141,4 +141,46 @@ The app is cross platform (supports Android/ChromeOS, Windows, macOS): LINKS
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="CountdownMany" xml:space="preserve">
+    <value>Starting in {0} seconds...</value>
+  </data>
+  <data name="CountdownOne" xml:space="preserve">
+    <value>Starting in 1 second..</value>
+  </data>
+  <data name="Floating" xml:space="preserve">
+    <value>Floating</value>
+  </data>
+  <data name="Integer" xml:space="preserve">
+    <value>Integer</value>
+  </data>
+  <data name="ST" xml:space="preserve">
+    <value>Single Threaded</value>
+  </data>
+  <data name="MT" xml:space="preserve">
+    <value>Multi Threaded</value>
+  </data>
+  <data name="Break" xml:space="preserve">
+    <value>¾ Break</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>↻ Retry</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>↪ Share</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>Running...</value>
+  </data>
+  <data name="TestInterrupted" xml:space="preserve">
+    <value>Test interrupted</value>
+  </data>
+  <data name="Precision" xml:space="preserve">
+    <value>Precision</value>
+  </data>
+  <data name="ThreadsNumber" xml:space="preserve">
+    <value>Threads Number</value>
+  </data>
+  <data name="Bit" xml:space="preserve">
+    <value>Bit</value>
+  </data>
 </root>

@@ -32,22 +32,21 @@
 
         <vv:QuickComparison Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding ShowQuickComparison}"/>
 
-        <Label Text="Running..." Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding ShowRunning}"/>
-        <Label Text="Test Interrupted" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding TestInterrupted}"/>
+        <Label Text="{Binding Source={Static vm:VmLocator.L11n}, Running}"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding ShowRunning}"/>
+        <Label Text="{Binding Source={Static vm:VmLocator.L11n}, TestInterrupted}"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding TestInterrupted}"/>
 
         <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
                      HorizontalOptions="Center" Margin="5,0,0,25">
 
-            <Button Text="↻ Retry" BackgroundColor="Blue"
+            <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Retry}" BackgroundColor="Blue"
                 Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
             <!--<Button Text="≈ Stress" BackgroundColor="Red"
                 Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>-->
 
-
             <ContentView>
                 <OnPlatform x:TypeArguments="View">
                     <On Platform="Android">
-                        <Button  Text="↪ Share" BackgroundColor="Green" 
+                        <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Share}" BackgroundColor="Green" 
                             Clicked="Share_Clicked" IsVisible="{Binding TestNotStarted}" IsEnabled="{Binding ShowQuickComparison}"/>
                     </On>
                 </OnPlatform>
@@ -56,7 +55,7 @@
 
         </StackLayout>
 
-        <Button Text="¾ Break" BackgroundColor="Red" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
+        <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Break}" BackgroundColor="Red" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
                      HorizontalOptions="Center" Margin="0,0,0,25"
                 Command="{Binding Break}" IsVisible="{Binding TestStarted}"/>
 

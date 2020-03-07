@@ -4,7 +4,7 @@
              NavigationPage.HasBackButton="False">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
-            <Label x:Name="countdownLabel" Text="Starting in ..." VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+            <Label x:Name="countdownLabel" Text="..." VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

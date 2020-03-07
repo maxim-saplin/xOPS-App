@@ -25,13 +25,13 @@
     <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" BackgroundColor="#D5000000" VerticalOptions="Fill" HorizontalOptions="Fill">
     </StackLayout>
 
-    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="stLabel" Text="Precision" Rotation="-90" Margin="0, 0, 30, 75" Style="{StaticResource OptionLabel}"
+    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="stLabel" Text="{Binding Source={Static vm:VmLocator.L11n}, Precision}" Rotation="-90" Margin="0, 0, 30, 75" Style="{StaticResource OptionLabel}"
             VerticalOptions="End" HorizontalOptions="End"  WidthRequest="160" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
-    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="mtLabel" Text="Threads Number" Rotation="-90" Margin="0, 0, -40, 75" Style="{StaticResource OptionLabel}"
+    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="mtLabel" Text="{Binding Source={Static vm:VmLocator.L11n}, ThreadsNumber}" Rotation="-90" Margin="0, 0, -40, 75" Style="{StaticResource OptionLabel}"
             VerticalOptions="End" HorizontalOptions="End" WidthRequest="160" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
 
-    <Label Text="Floating" Grid.Row="1" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" Style="{StaticResource OptionLabel}"/>
-    <Label Text="Integer" Grid.Row="2" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" Style="{StaticResource OptionLabel}"/>
+    <Label Text="{Binding Source={Static vm:VmLocator.L11n}, Floating}" Grid.Row="1" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" Style="{StaticResource OptionLabel}"/>
+    <Label Text="{Binding Source={Static vm:VmLocator.L11n}, Integer}" Grid.Row="2" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" Style="{StaticResource OptionLabel}"/>
 
     <cn:TappableLabel Grid.Row="1" Grid.Column="1" Command="{Binding SwicthFloatPrecision}" Style="{StaticResource OptionTileLabel}">
         <Label.FormattedText>

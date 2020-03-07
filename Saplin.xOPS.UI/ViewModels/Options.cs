@@ -10,6 +10,15 @@ namespace Saplin.xOPS.UI.ViewModels
         public Options()
         {
             initThreadOptions();
+
+            VmLocator.L11n.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(L11n._Locale))
+                {
+                    RaisePropertyChanged(nameof(FloatPrecision));
+                    RaisePropertyChanged(nameof(IntPrecision));
+                }
+            };
         }
         
         private bool isVisible = false;
@@ -63,7 +72,7 @@ namespace Saplin.xOPS.UI.ViewModels
         {
             get
             {
-                return Float64Bit ? "64\nBit" : "32\nBit";
+                return Float64Bit ? "64\n" + VmLocator.L11n.Bit : "32\n" + VmLocator.L11n.Bit;
             }
         }
 
@@ -87,7 +96,7 @@ namespace Saplin.xOPS.UI.ViewModels
         {
             get
             {
-                return Int64Bit ? "64\nBit" : "32\nBit";
+                return Int64Bit ? "64\n" + VmLocator.L11n.Bit : "32\n" + VmLocator.L11n.Bit;
             }
         }
 

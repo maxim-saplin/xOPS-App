@@ -135,4 +135,52 @@
 Приложение кроссплатформенное (поддерживает Android/ChromeOS, Windows, macOS): LINKS   
     </value>
   </data>
+  <data name="Options" xml:space="preserve">
+    <value>Опции</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="CountdownMany" xml:space="preserve">
+    <value>Запуск через {0} секунд...</value>
+  </data>
+  <data name="CountdownOne" xml:space="preserve">
+    <value>Запуск через 1 секунду..</value>
+  </data>
+  <data name="Floating" xml:space="preserve">
+    <value>Дробные</value>
+  </data>
+  <data name="Integer" xml:space="preserve">
+    <value>Целые</value>
+  </data>
+  <data name="ST" xml:space="preserve">
+    <value>Однопоточный</value>
+  </data>
+  <data name="MT" xml:space="preserve">
+    <value>Многопоточный</value>
+  </data>
+  <data name="Break" xml:space="preserve">
+    <value>¾ Стоп</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>↻ Повтор</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>↪ Выслать</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>Тестирование...</value>
+  </data>
+  <data name="TestInterrupted" xml:space="preserve">
+    <value>Тест прерван</value>
+  </data>
+  <data name="Precision" xml:space="preserve">
+    <value>Точность</value>
+  </data>
+  <data name="ThreadsNumber" xml:space="preserve">
+    <value>Число потоков</value>
+  </data>
+  <data name="Bit" xml:space="preserve">
+    <value>бита</value>
+  </data>
 </root>

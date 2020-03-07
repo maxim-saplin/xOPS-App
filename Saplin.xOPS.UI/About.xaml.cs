@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +10,8 @@ namespace Saplin.xOPS.UI
         public About()
         {
             InitializeComponent();
+
+            if (((Saplin.xOPS.UI.App)App.Current).Rose) rose.IsVisible = true;
         }
 
         private void BackLabel_Clicked(object sender, EventArgs e)

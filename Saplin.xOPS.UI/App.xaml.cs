@@ -14,7 +14,7 @@ namespace Saplin.xOPS.UI
 
             MainPage = Pages.StartPage;
 
-            if (Resources["Rose"] is bool && (bool)Resources["Rose"])
+            if (Rose)
             {
                 ApplyTheme();
             }
@@ -22,7 +22,6 @@ namespace Saplin.xOPS.UI
 
         private void ApplyTheme()
         {
-
             var theme = new Rose();
 
             foreach (var key in theme.Keys)
@@ -30,7 +29,14 @@ namespace Saplin.xOPS.UI
                 if (Xamarin.Forms.Application.Current.Resources.ContainsKey(key))
                     Xamarin.Forms.Application.Current.Resources[key] = theme[key];
             }
+        }
 
+        public bool Rose
+        {
+            get
+            {
+                return Resources["Rose"] is bool && (bool)Resources["Rose"];
+            }
         }
 
         protected override void OnStart()

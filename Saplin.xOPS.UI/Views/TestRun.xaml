@@ -17,13 +17,13 @@
         <ColumnDefinition Width="70" />
         <ColumnDefinition Width="70" />
     </Grid.ColumnDefinitions>
-    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="stLabel" Text="Single Threaded" Rotation="-90" Margin="0, 0, 30, 75" 
+    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="stLabel" Text="{Binding Source={Static vm:VmLocator.L11n}, ST}"  Rotation="-90" Margin="0, 0, 30, 75" 
             VerticalOptions="End" HorizontalOptions="End"  WidthRequest="160" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
-    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="mtLabel" Text="Multi Threaded" Rotation="-90" Margin="0, 0, -40, 75"
+    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="mtLabel" Text="{Binding Source={Static vm:VmLocator.L11n}, MT}"  Rotation="-90" Margin="0, 0, -40, 75"
             VerticalOptions="End" HorizontalOptions="End" WidthRequest="160" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
 
-    <Label Text="Floating" Grid.Row="1" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" />
-    <Label Text="Integer" Grid.Row="2" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" />
+    <Label Text="{Binding Source={Static vm:VmLocator.L11n}, Floating}"  Grid.Row="1" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" />
+    <Label Text="{Binding Source={Static vm:VmLocator.L11n}, Integer}"  Grid.Row="2" Grid.Column="0" Margin="0,0,6,0" VerticalOptions="Center" HorizontalOptions="End" />
 
     <Grid x:Name="placeholder" Grid.Row="1"  Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
     </Grid>

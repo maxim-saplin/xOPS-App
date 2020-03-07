@@ -9,7 +9,7 @@
              x:Class="Saplin.xOPS.UI.App">
     <Application.Resources>
         <x:Boolean x:Key="Rose">
-            False
+            True
         </x:Boolean>
         <!-- FONTS -->
         <OnPlatform x:TypeArguments="Font" x:Key="FontNormal">
@@ -89,7 +89,7 @@
             <Setter Property="TextColor" Value="White" />
             <Setter Property="BorderWidth" Value="0" />
             <Setter Property="BackgroundColor" Value="Red" />
-            <Setter Property="WidthRequest" Value="90" />
+            <Setter Property="WidthRequest" Value="96" />
             <Setter Property="HeightRequest" Value="30" />
             <Setter Property="Padding" Value="3, 3, 3, 3" />
             <Style.Triggers>
