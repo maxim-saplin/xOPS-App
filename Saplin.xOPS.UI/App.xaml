@@ -8,6 +8,9 @@
              mc:Ignorable="d"
              x:Class="Saplin.xOPS.UI.App">
     <Application.Resources>
+        <x:Boolean x:Key="Rose">
+            False
+        </x:Boolean>
         <!-- FONTS -->
         <OnPlatform x:TypeArguments="Font" x:Key="FontNormal">
             <On Platform="macOS" Value="IBM Plex Mono, 15" />
@@ -43,6 +46,10 @@
         <Style x:Key="ComparisonLabel" TargetType="Label" >
             <Setter Property="TextColor" Value="Gray" />
             <Setter Property="Font" Value="{StaticResource FontSmall}" />
+        </Style>
+        <Style x:Key="OptionLabel" TargetType="Label" ApplyToDerivedTypes="True">
+            <Setter Property="Font" Value="{StaticResource FontNormal}" />
+            <Setter Property="TextColor" Value="Green" />
         </Style>
         <Style x:Key="OptionTileLabel" TargetType="cn:TappableLabel" >
             <Setter Property="TextColor" Value="White" />
@@ -91,6 +98,7 @@
                     </Trigger>
             </Style.Triggers>
         </Style>
+        <!-- PAGE -->
         <Style TargetType="ContentPage"  ApplyToDerivedTypes="True">
             <Setter Property="BackgroundColor" Value="Black" />
         </Style>

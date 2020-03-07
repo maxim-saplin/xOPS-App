@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Reflection;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Saplin.xOPS.UI.Views
@@ -16,6 +17,25 @@ namespace Saplin.xOPS.UI.Views
                 stLabel.RotateTo(-90);
                 mtLabel.RotateTo(-90);
             }
+
+            try
+            {
+                if ((bool)App.Current.Resources["Rose"])
+                {
+                    var img = new Image
+                    {
+                        Source = ImageSource.FromResource(
+                        "Saplin.xOPS.UI.Misc.rose.png",
+                        typeof(TestRun).GetTypeInfo().Assembly
+                      )
+                    };
+
+                    img.Margin = new Thickness(-10, -10, -10, -10);
+
+                    placeholder.Children.Add(img);
+                }
+            }
+            catch { }
         }
 
         public Grid Core => core;

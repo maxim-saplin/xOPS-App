@@ -13,6 +13,24 @@ namespace Saplin.xOPS.UI
             InitializeComponent();
 
             MainPage = Pages.StartPage;
+
+            if (Resources["Rose"] is bool && (bool)Resources["Rose"])
+            {
+                ApplyTheme();
+            }
+        }
+
+        private void ApplyTheme()
+        {
+
+            var theme = new Rose();
+
+            foreach (var key in theme.Keys)
+            {
+                if (Xamarin.Forms.Application.Current.Resources.ContainsKey(key))
+                    Xamarin.Forms.Application.Current.Resources[key] = theme[key];
+            }
+
         }
 
         protected override void OnStart()

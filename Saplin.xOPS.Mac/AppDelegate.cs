@@ -14,7 +14,7 @@ namespace Saplin.xOPS.Mac
         {
             var style = NSWindowStyle.Resizable | NSWindowStyle.Titled | NSWindowStyle.FullSizeContentView;
 
-            var rect = new CoreGraphics.CGRect(200, 1000, 400, 600);
+            var rect = new CoreGraphics.CGRect(200, 1000, 400, 650);
             _window = new NSWindow(rect, style, NSBackingStore.Buffered, false);
             _window.Title = "xOPS";
             _window.StandardWindowButton(NSWindowButton.CloseButton).Enabled = true;

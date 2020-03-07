@@ -23,4 +23,13 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Misc\rose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Misc\rose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="App %28copy%29.xaml.cs" />
+  </ItemGroup>
 </Project>

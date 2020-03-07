@@ -43,17 +43,16 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidLinkMode>Full</AndroidLinkMode>
     <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidLinkTool>r8</AndroidLinkTool>
+    <!-- R8 no tree shaking seems helping with app crash on A4.4 -->
+    <AndroidR8ExtraArguments>--no-tree-shaking</AndroidR8ExtraArguments>
     <AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86;x86_64</AndroidSupportedAbis>
     <AndroidLinkSkip>Saplin.xOPS.UI;Saplin.xOPS; Saplin.xOPS.Extra; Saplin.xOPS.Extra.Android</AndroidLinkSkip>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors" />
+
     <Reference Include="Saplin.xOPS.Extra.Android">
       <HintPath Condition="'$(Configuration)'=='Debug'">..\..\xOPS-Extra\Saplin.xOPS.Extra.Android\bin\Debug\Saplin.xOPS.Extra.Android.dll</HintPath>
       <HintPath Condition="'$(Configuration)'=='Release'">..\References\Saplin.xOPS.Extra.Android.dll</HintPath>  
