@@ -38,13 +38,13 @@ namespace Saplin.xOPS.UI.ViewModels
                 try
                 {
                     compute.RunXops(iterations, inops: false, options.Float64Bit); 
-                    FloatSingleThreaded = breakTest ? (double?)null : compute.LastResultGigaOPS;
+                    FloatSingleThreaded = breakTest ? (double?)null : compute.LastResultSTGigaOPSAveraged;
                     Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(FloatSingleThreaded)));
 
                     if (breakTest) return;
 
                     compute.RunXops(iterations, inops: true, options.Int64Bit);
-                    IntSingleThreaded = breakTest ? (double?)null : compute.LastResultGigaOPS;
+                    IntSingleThreaded = breakTest ? (double?)null : compute.LastResultSTGigaOPSAveraged;
                     Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(IntSingleThreaded)));
 
                     if (breakTest) return;

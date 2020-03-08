@@ -9,7 +9,7 @@
              x:Class="Saplin.xOPS.UI.App">
     <Application.Resources>
         <x:Boolean x:Key="Rose">
-            True
+            False
         </x:Boolean>
         <!-- FONTS -->
         <OnPlatform x:TypeArguments="Font" x:Key="FontNormal">
