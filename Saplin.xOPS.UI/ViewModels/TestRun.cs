@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Saplin.xOPS.UI.ViewModels
@@ -62,7 +63,10 @@ namespace Saplin.xOPS.UI.ViewModels
                         RaisePropertyChanged(nameof(IntMultiThreaded));
                     });
                  }
-                 catch{}
+                 catch(Exception ex)
+                 {
+
+                 }
                  finally
                  {
                     Device.BeginInvokeOnMainThread(() =>
