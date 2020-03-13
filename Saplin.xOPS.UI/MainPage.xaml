@@ -26,6 +26,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" TextColor="Red" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,25,0,0"
+               Text="{Binding NumberOfRepeatsText}" IsVisible="{Binding ShowQuickComparison}"/>
 
         <cn:TappableLabel Grid.Row="1" Text="&#10; ? → &#10;" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
              Clicked="AboutLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Start" Margin="10, 0, 0, 0"/>

@@ -183,4 +183,10 @@ The app is cross platform (supports Android/ChromeOS, Windows, macOS): LINKS
   <data name="Bit" xml:space="preserve">
     <value>Bit</value>
   </data>
+  <data name="AveragesMany" xml:space="preserve">
+    <value>Averages, {0} tests</value>
+  </data>
+  <data name="AveragesOne" xml:space="preserve">
+    <value>1 test</value>
+  </data>
 </root>

@@ -8,17 +8,42 @@ namespace Saplin.xOPS.UI.ViewModels
     {
         Compute compute = new Compute();
 
+        public TestRun()
+        {
+            NumberOfRepeats = 0;
+
+            VmLocator.Options.OptionsChanged += (s, e) =>
+            {
+                NumberOfRepeats = 0;
+                sumIntSingleThreaded = sumIntMultiThreaded
+                 = sumFloatSingleThreaded = sumFloatMultiThreaded = 0;
+            };
+
+            VmLocator.L11n.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(L11n._Locale))
+                {
+                    RaisePropertyChanged(nameof(NumberOfRepeatsText));
+                }
+            };
+        }
+
         private void ResetValues()
         {
             IntMultiThreaded = IntSingleThreaded
-                = FloatMultiThreaded = FloatSingleThreaded = null;
+                = FloatMultiThreaded = FloatSingleThreaded
+                = RecentIntMultiThreaded = RecentIntSingleThreaded
+                = RecentFloatMultiThreaded = RecentFloatSingleThreaded = null;
 
             RaisePropertyChanged(nameof(FloatSingleThreaded));
             RaisePropertyChanged(nameof(IntSingleThreaded));
             RaisePropertyChanged(nameof(FloatMultiThreaded));
             RaisePropertyChanged(nameof(IntMultiThreaded));
 
-            breakTest = false;
+            RaisePropertyChanged(nameof(RecentFloatSingleThreaded));
+            RaisePropertyChanged(nameof(RecentIntSingleThreaded));
+            RaisePropertyChanged(nameof(RecentFloatMultiThreaded));
+            RaisePropertyChanged(nameof(RecentIntMultiThreaded));
         }
 
         public Command Retry => new Command(StartTest);
@@ -30,6 +55,7 @@ namespace Saplin.xOPS.UI.ViewModels
 
             TestNotStarted = false;
             TestInterrupted = false;
+            breakTest = false;
 
             ResetValues();
 
@@ -39,28 +65,28 @@ namespace Saplin.xOPS.UI.ViewModels
                 try
                 {
                     compute.RunXops(iterations, inops: false, options.Float64Bit); 
-                    FloatSingleThreaded = breakTest ? (double?)null : compute.LastResultSTGigaOPSAveraged;
-                    Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(FloatSingleThreaded)));
+                    RecentFloatSingleThreaded = breakTest ? (double?)null : compute.LastResultSTGigaOPSAveraged;
+                    Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(RecentFloatSingleThreaded)));
 
                     if (breakTest) return;
 
                     compute.RunXops(iterations, inops: true, options.Int64Bit);
-                    IntSingleThreaded = breakTest ? (double?)null : compute.LastResultSTGigaOPSAveraged;
-                    Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(IntSingleThreaded)));
+                    RecentIntSingleThreaded = breakTest ? (double?)null : compute.LastResultSTGigaOPSAveraged;
+                    Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(RecentIntSingleThreaded)));
 
                     if (breakTest) return;
 
                     compute.RunXopsMultiThreaded(iterations, options.FloatThreads, inops: false, precision64Bit: options.Float64Bit);
-                    FloatMultiThreaded = breakTest ? (double?)null : compute.LastResultGigaOPS;
-                    Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(FloatMultiThreaded)));
+                    RecentFloatMultiThreaded = breakTest ? (double?)null : compute.LastResultGigaOPS;
+                    Device.BeginInvokeOnMainThread(() => RaisePropertyChanged(nameof(RecentFloatMultiThreaded)));
 
                     if (breakTest) return;
 
                     compute.RunXopsMultiThreaded(iterations, options.IntThreads, inops: true, precision64Bit: options.Int64Bit);
-                    IntMultiThreaded = breakTest ? (double?)null : compute.LastResultGigaOPS;
+                    RecentIntMultiThreaded = breakTest ? (double?)null : compute.LastResultGigaOPS;
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        RaisePropertyChanged(nameof(IntMultiThreaded));
+                        RaisePropertyChanged(nameof(RecentIntMultiThreaded));
                     });
                  }
                  catch(Exception ex)
@@ -72,8 +98,30 @@ namespace Saplin.xOPS.UI.ViewModels
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         TestNotStarted = true;
-                        if (!testInterrupted && FloatSingleThreaded.HasValue)
+                        if (!breakTest && RecentFloatSingleThreaded.HasValue)
                         {
+                            NumberOfRepeats++;
+
+                            sumFloatMultiThreaded += RecentFloatMultiThreaded.Value;
+                            sumFloatSingleThreaded += RecentFloatSingleThreaded.Value;
+                            sumIntMultiThreaded += RecentIntMultiThreaded.Value;
+                            sumIntSingleThreaded += RecentIntSingleThreaded.Value;
+
+                            FloatMultiThreaded = sumFloatMultiThreaded / NumberOfRepeats;
+                            RaisePropertyChanged(nameof(FloatMultiThreaded));
+
+                            FloatSingleThreaded = sumFloatSingleThreaded / NumberOfRepeats;
+                            RaisePropertyChanged(nameof(FloatSingleThreaded));
+
+                            IntMultiThreaded = sumIntMultiThreaded / NumberOfRepeats;
+                            RaisePropertyChanged(nameof(IntMultiThreaded));
+
+                            IntSingleThreaded = sumIntSingleThreaded / NumberOfRepeats;
+                            RaisePropertyChanged(nameof(IntSingleThreaded));
+
+                            RaisePropertyChanged(nameof(NumberOfRepeats));
+                            RaisePropertyChanged(nameof(NumberOfRepeatsText));
+
                             VmLocator.QuickComparison.Compare.Execute(new SingleResult()
                             {
                                 Value = FloatSingleThreaded.Value,
@@ -128,10 +176,54 @@ namespace Saplin.xOPS.UI.ViewModels
 
         public bool ShowRunning => TestStarted && !TestInterrupted;
 
+        private double sumFloatSingleThreaded = 0;
+        private double sumFloatMultiThreaded = 0;
+        private double sumIntSingleThreaded = 0;
+        private double sumIntMultiThreaded = 0;
+
+        public int NumberOfRepeats { get; private set; }
+
         public double? FloatSingleThreaded { get; private set; }
         public double? FloatMultiThreaded { get; private set; }
         public double? IntSingleThreaded { get; private set; }
         public double? IntMultiThreaded { get; private set; }
 
+        public double? RecentFloatSingleThreaded { get; private set; }
+        public double? RecentFloatMultiThreaded { get; private set; }
+        public double? RecentIntSingleThreaded { get; private set; }
+        public double? RecentIntMultiThreaded { get; private set; }
+
+        public string NumberOfRepeatsText
+        {
+            get
+            {
+                var s = "";
+
+                if (NumberOfRepeats == 1)
+                {
+                    s = VmLocator.L11n.AveragesOne;
+                }
+                else if (NumberOfRepeats > 1)
+                {
+                    s = string.Format(VmLocator.L11n.AveragesMany, NumberOfRepeats);
+
+                    if (VmLocator.L11n._Locale == Locales.ru && (NumberOfRepeats < 5 || NumberOfRepeats > 20))
+                    {
+                        var nor = NumberOfRepeats.ToString();
+
+                        if (nor.EndsWith("1"))
+                        {
+                            s = string.Format(VmLocator.L11n.AveragesOneRu, NumberOfRepeats);
+                        }
+                        else if (nor.EndsWith("2") || nor.EndsWith("3") || nor.EndsWith("4"))
+                        {
+                            s = string.Format(VmLocator.L11n.AveragesTwoRu, NumberOfRepeats);
+                        }
+                    }
+                }
+
+                return s;
+            }
+        }
     }
 }

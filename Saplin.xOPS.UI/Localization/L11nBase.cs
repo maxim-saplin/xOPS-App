@@ -182,5 +182,38 @@ namespace Saplin.xOPS.UI.ViewModels
                 return ResourceManager.GetString("Bit", resourceCulture);
             }
         }
+
+        public string AveragesMany
+        {
+            get
+            {
+                return ResourceManager.GetString("AveragesMany", resourceCulture);
+            }
+        }
+
+        public string AveragesOne
+        {
+            get
+            {
+                return ResourceManager.GetString("AveragesOne", resourceCulture);
+            }
+        }
+
+        public string AveragesOneRu
+        {
+            get
+            {
+                return ResourceManager.GetString("AveragesOneRu", resourceCulture);
+            }
+        }
+
+        public string AveragesTwoRu
+        {
+            get
+            {
+                return ResourceManager.GetString("AveragesTwoRu", resourceCulture);
+            }
+        }
+
     }
 }

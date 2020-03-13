@@ -17,15 +17,19 @@ namespace Saplin.xOPS.UI.Controls
         public void DoClick()
         {
             if (AnimateOnTap) Animate();
+            if (ControlToAnimateOnTap != null)
+                Animate(ControlToAnimateOnTap);
 
             click?.Invoke(this, null);
             if (Command != null) Command.Execute(CommandParameter);
         }
 
-        private async void Animate()
+        private async void Animate(View view = null)
         {
-            await this.FadeTo(0.5, 150);
-            await this.FadeTo(1.0, 100);
+            if (view == null) view = this;
+
+            await view.FadeTo(0.5, 150);
+            await view.FadeTo(1.0, 100);
         }
 
         public event EventHandler Clicked
@@ -39,6 +43,8 @@ namespace Saplin.xOPS.UI.Controls
                 lock (this) { click -= value; }
             }
         }
+
+        public View ControlToAnimateOnTap { get; set; }
 
         public static readonly BindableProperty CommandProperty =
             BindableProperty.Create(

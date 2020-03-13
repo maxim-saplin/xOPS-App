@@ -183,4 +183,16 @@
   <data name="Bit" xml:space="preserve">
     <value>бита</value>
   </data>
+  <data name="AveragesMany" xml:space="preserve">
+    <value>{0} тестов, средние</value>
+  </data>
+  <data name="AveragesOne" xml:space="preserve">
+    <value>1 тест</value>
+  </data>
+  <data name="AveragesOneRu" xml:space="preserve">
+    <value>{0} тест, средние</value>
+  </data>
+ <data name="AveragesTwoRu" xml:space="preserve">
+    <value>{0} тестa, средние</value>
+  </data>
 </root>

@@ -44,6 +44,10 @@
         <Style x:Key="TestTileLabel" TargetType="cn:TappableLabel" BasedOn="{StaticResource OptionTileLabel}" >
             <Setter Property="BackgroundColor" Value="Transparent" />
         </Style>
+            <!-- BOXES -->
+        <Style TargetType="BoxView" ApplyToDerivedTypes="True">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
 
         <!-- PAGE -->
         <Style TargetType="ContentPage"  ApplyToDerivedTypes="True">

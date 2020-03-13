@@ -19,9 +19,23 @@ namespace Saplin.xOPS.UI.ViewModels
                     RaisePropertyChanged(nameof(IntPrecision));
                 }
             };
+
+            PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(Float64Bit) ||
+                e.PropertyName == nameof(Int64Bit) ||
+                e.PropertyName == nameof(FloatThreads) ||
+                e.PropertyName == nameof(IntThreads))
+                {
+                    OptionsChanged?.Invoke(this, null);
+                }
+            };
         }
-        
+
+        public event EventHandler OptionsChanged;
+
         private bool isVisible = false;
+
         public bool IsVisible
         {
             get { return isVisible; }
@@ -36,7 +50,9 @@ namespace Saplin.xOPS.UI.ViewModels
         }
 
         public ICommand SwicthFloatPrecision => new Command(() => Float64Bit = !Float64Bit);
+
         public ICommand SwicthIntPrecision => new Command(() => Int64Bit = !Int64Bit);
+
         public ICommand SwitchFloatThreads => new Command(() => {
             var i = Array.IndexOf<int>(threadsOptions, FloatThreads)+1;
 
@@ -44,6 +60,7 @@ namespace Saplin.xOPS.UI.ViewModels
 
             FloatThreads = threadsOptions[i];
         });
+
         public ICommand SwitchIntThreads => new Command(() => {
             var i = Array.IndexOf<int>(threadsOptions, IntThreads)+1;
 
@@ -133,6 +150,7 @@ namespace Saplin.xOPS.UI.ViewModels
             if (Array.IndexOf(threadsOptions, val) < 0) return suggestedThreads;
             return val;
         }
+
         public int FloatThreads
         {
             get

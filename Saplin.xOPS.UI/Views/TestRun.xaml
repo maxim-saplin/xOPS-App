@@ -37,93 +37,98 @@
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
         </Grid.ColumnDefinitions>
-        <cn:TappableLabel Grid.Row="0" Grid.Column="0" Style="{StaticResource TestTileLabel}"
-        Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}">
-            <!-- Binding context seem not propagating to below instance, using complete path instead-->
-            <cn:TappableLabel.CommandParameter>
-                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, FloatSingleThreaded}" Int="False" MultiThreaded="False"/>
-            </cn:TappableLabel.CommandParameter>
-            <Label.FormattedText>
+
+        <BoxView x:Name="boxStFlt" Grid.Row="0" Grid.Column="0" />
+        <cn:TappableLabel Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" Margin="0,-10,0,0"
+           VerticalOptions="Center" HorizontalOptions="Center">
+           <Label.FormattedText>
                 <FormattedString>
-                    <Span>
-                        <Span.Text>
-                            <OnPlatform x:TypeArguments="x:String">
-                                <On Platform="WPF" Value="&#10;" />
-                            </OnPlatform>
-                        </Span.Text>
-                    </Span>
                     <Span Style="{StaticResource BoldSpan}" 
-                          Text="{Binding FloatSingleThreaded, TargetNullValue='↖', StringFormat='{0:0.00}'}"/>
+                          Text="{Binding FloatSingleThreaded, StringFormat='{0:0.00}'}"/>
                     <Span Style="{StaticResource SmallerSpan}" 
                           Text="{Binding FloatSingleThreaded, TargetNullValue='', StringFormat='&#10;GFLOPS'}" />
                 </FormattedString>
             </Label.FormattedText>
         </cn:TappableLabel>
-
-        <cn:TappableLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource TestTileLabel}"
-        Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}">
+        <Label Grid.Row="0" Grid.Column="0" Text="{Binding RecentFloatSingleThreaded, TargetNullValue='↖', StringFormat=''}"
+               Style="{StaticResource TestTileArrowLabel}" VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Label Grid.Row="0" Grid.Column="0" Text="{Binding RecentFloatSingleThreaded, StringFormat='{0:0.00}'}"
+               Style="{StaticResource TestTileSmallLabel}"  VerticalOptions="End" HorizontalOptions="End"/>
+        <cn:TappableLabel Grid.Row="0" Grid.Column="0" Style="{StaticResource TestTileLabel}" BackgroundColor="Transparent"
+            Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}" ControlToAnimateOnTap="{x:Reference boxStFlt}" AnimateOnTap="False" >
             <cn:TappableLabel.CommandParameter>
-                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, FloatMultiThreaded}" Int="False" MultiThreaded="True"/>
+                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, FloatSingleThreaded}" Int="False" MultiThreaded="False"/>
             </cn:TappableLabel.CommandParameter>
-            <Label.FormattedText>
+        </cn:TappableLabel>
+
+        <BoxView x:Name="boxMtFlt" Grid.Row="0" Grid.Column="1"/>
+        <cn:TappableLabel Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Margin="0,-10,0,0"
+            VerticalOptions="Center" HorizontalOptions="Center">
+           <Label.FormattedText>
                 <FormattedString>
-                    <Span>
-                        <Span.Text>
-                            <OnPlatform x:TypeArguments="x:String">
-                                <On Platform="WPF" Value="&#10;" />
-                            </OnPlatform>
-                        </Span.Text>
-                    </Span>
                     <Span Style="{StaticResource BoldSpan}" 
-                          Text="{Binding FloatMultiThreaded, TargetNullValue='↗', StringFormat='{0:0.00}'}"/>
-                    <Span Style="{StaticResource SmallerSpan}"
+                          Text="{Binding FloatMultiThreaded, StringFormat='{0:0.00}'}"/>
+                    <Span Style="{StaticResource SmallerSpan}" 
                           Text="{Binding FloatMultiThreaded, TargetNullValue='', StringFormat='&#10;GFLOPS'}" />
                 </FormattedString>
             </Label.FormattedText>
         </cn:TappableLabel>
-
-        <cn:TappableLabel Grid.Row="1" Grid.Column="0" Style="{StaticResource TestTileLabel}"
-        Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}">
+        <Label Grid.Row="0" Grid.Column="1" Text="{Binding RecentFloatMultiThreaded, TargetNullValue='↗', StringFormat=''}"
+               Style="{StaticResource TestTileArrowLabel}" VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Label Grid.Row="0" Grid.Column="1" Text="{Binding RecentFloatMultiThreaded, StringFormat='{0:0.00}'}"
+               Style="{StaticResource TestTileSmallLabel}"  VerticalOptions="End" HorizontalOptions="End"/>
+        <cn:TappableLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource TestTileLabel}" BackgroundColor="Transparent"
+            Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}" ControlToAnimateOnTap="{x:Reference boxMtFlt}" AnimateOnTap="False" >
             <cn:TappableLabel.CommandParameter>
-                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, IntSingleThreaded}" Int="True" MultiThreaded="False"/>
+                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, FloatMultiThreaded}" Int="False" MultiThreaded="False"/>
             </cn:TappableLabel.CommandParameter>
-            <Label.FormattedText>
+        </cn:TappableLabel>
+
+        <BoxView x:Name="boxStInt" Grid.Row="1" Grid.Column="0" />
+        <cn:TappableLabel Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Center" Margin="0,-10,0,0"
+            VerticalOptions="Center" HorizontalOptions="Center">
+           <Label.FormattedText>
                 <FormattedString>
-                    <Span>
-                        <Span.Text>
-                            <OnPlatform x:TypeArguments="x:String">
-                                <On Platform="WPF" Value="&#10;" />
-                            </OnPlatform>
-                        </Span.Text>
-                    </Span>
                     <Span Style="{StaticResource BoldSpan}" 
-                          Text="{Binding IntSingleThreaded, TargetNullValue='↙', StringFormat='{0:0.00}'}"/>
-                    <Span Style="{StaticResource SmallerSpan}"
-                          Text="{Binding IntSingleThreaded, TargetNullValue='', StringFormat='&#10;GINOPS'}" />
+                          Text="{Binding IntSingleThreaded, StringFormat='{0:0.00}'}"/>
+                    <Span Style="{StaticResource SmallerSpan}" 
+                          Text="{Binding IntSingleThreaded, TargetNullValue='', StringFormat='&#10;GFLOPS'}" />
                 </FormattedString>
             </Label.FormattedText>
         </cn:TappableLabel>
-
-        <cn:TappableLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource TestTileLabel}"
-        Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}">
+        <Label Grid.Row="1" Grid.Column="0" Text="{Binding RecentIntSingleThreaded, TargetNullValue='↙', StringFormat=''}"
+               Style="{StaticResource TestTileArrowLabel}" VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Label Grid.Row="1" Grid.Column="0" Text="{Binding RecentIntSingleThreaded, StringFormat='{0:0.00}'}"
+               Style="{StaticResource TestTileSmallLabel}"  VerticalOptions="End" HorizontalOptions="End"/>
+        <cn:TappableLabel Grid.Row="1" Grid.Column="0" Style="{StaticResource TestTileLabel}" BackgroundColor="Transparent"
+            Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}" ControlToAnimateOnTap="{x:Reference boxStInt}" AnimateOnTap="False" >
             <cn:TappableLabel.CommandParameter>
-                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, IntMultiThreaded}" Int="True" MultiThreaded="True"/>
+                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, IntSingleThreaded}" Int="False" MultiThreaded="False"/>
             </cn:TappableLabel.CommandParameter>
-            <Label.FormattedText>
+        </cn:TappableLabel>
+
+
+        <BoxView x:Name="boxMtInt" Grid.Row="1" Grid.Column="1" />
+        <cn:TappableLabel Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" Margin="0,-10,0,0"
+            VerticalOptions="Center" HorizontalOptions="Center">
+           <Label.FormattedText>
                 <FormattedString>
-                    <Span>
-                        <Span.Text>
-                            <OnPlatform x:TypeArguments="x:String">
-                                <On Platform="WPF" Value="&#10;" />
-                            </OnPlatform>
-                        </Span.Text>
-                    </Span>
                     <Span Style="{StaticResource BoldSpan}" 
-                          Text="{Binding IntMultiThreaded, TargetNullValue='↘', StringFormat='{0:0.00}'}"/>
-                    <Span Style="{StaticResource SmallerSpan}"
-                          Text="{Binding IntMultiThreaded, TargetNullValue='', StringFormat='&#10;GINOPS'}" />
+                          Text="{Binding IntMultiThreaded, StringFormat='{0:0.00}'}"/>
+                    <Span Style="{StaticResource SmallerSpan}" 
+                          Text="{Binding IntMultiThreaded, TargetNullValue='', StringFormat='&#10;GFLOPS'}" />
                 </FormattedString>
             </Label.FormattedText>
+        </cn:TappableLabel>
+        <Label Grid.Row="1" Grid.Column="1" Text="{Binding RecentIntMultiThreaded, TargetNullValue='↘', StringFormat=''}"
+               Style="{StaticResource TestTileArrowLabel}" VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Label Grid.Row="1" Grid.Column="1" Text="{Binding RecentIntMultiThreaded, StringFormat='{0:0.00}'}"
+               Style="{StaticResource TestTileSmallLabel}"  VerticalOptions="End" HorizontalOptions="End"/>
+        <cn:TappableLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource TestTileLabel}" BackgroundColor="Transparent"
+            Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}" ControlToAnimateOnTap="{x:Reference boxMtInt}" AnimateOnTap="False" >
+            <cn:TappableLabel.CommandParameter>
+                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, IntMultiThreaded}" Int="False" MultiThreaded="False"/>
+            </cn:TappableLabel.CommandParameter>
         </cn:TappableLabel>
     </Grid>
 
