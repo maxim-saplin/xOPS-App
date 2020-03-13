@@ -72,12 +72,15 @@ namespace Saplin.xOPS.UI.ViewModels
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         TestNotStarted = true;
-                        VmLocator.QuickComparison.Compare.Execute(new SingleResult()
+                        if (!testInterrupted && FloatSingleThreaded.HasValue)
                         {
-                            Value = FloatSingleThreaded.Value,
-                            Int = false,
-                            MultiThreaded = false
-                        });
+                            VmLocator.QuickComparison.Compare.Execute(new SingleResult()
+                            {
+                                Value = FloatSingleThreaded.Value,
+                                Int = false,
+                                MultiThreaded = false
+                            });
+                        }
                     });
                  }
             });

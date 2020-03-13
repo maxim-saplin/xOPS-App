@@ -46,7 +46,9 @@
                         <SwipeGestureRecognizer Direction="Right" Command="{Binding Source={x:Static vm:VmLocator.L11n}, Previous}"/>
                     </StackLayout.GestureRecognizers>
                     <Label Text="{Binding Source={x:Static vm:VmLocator.L11n}, About}" TextColor="White" VerticalOptions="Start"/>
-                    <Label Text="🌹 Оля ♥" x:Name="rose" IsVisible="False" />
+
+                    <Label Text="🌹 Оля ♥" x:Name="rose" IsVisible="False" HorizontalTextAlignment="Center" Margin="-40,0,0,0" />
+                    <Label x:Name="version" HorizontalTextAlignment="Center" Margin="-40,0,0,20" />
                 </StackLayout>
             </ScrollView>
 
