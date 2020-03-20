@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -42,7 +43,11 @@ namespace Saplin.xOPS.UI.ViewModels
             set { isVisible = value; RaisePropertyChanged(); RaisePropertyChanged(nameof(ButtonCaption)); }
         }
 
-        public ICommand SwitchOptionsVisibility => new Command(() => IsVisible = !IsVisible);
+        public ICommand SwitchOptionsVisibility => new Command(() =>
+        {
+            IsVisible = !IsVisible;
+            if (IsVisible) VmLocator.OnlineDb.SendPageHit("options");
+        });
 
         public string ButtonCaption
         {
@@ -178,6 +183,26 @@ namespace Saplin.xOPS.UI.ViewModels
                 App.Current.Properties[nameof(IntThreads)] = ValidateAndFixThreads(value);
                 App.Current.SavePropertiesAsync();
                 RaisePropertyChanged();
+            }
+        }
+
+        public string IID
+        {
+            get
+            {
+                if (!Application.Current.Properties.ContainsKey("IID")) Application.Current.Properties["IID"] = Guid.NewGuid().ToString("N");
+                return Application.Current.Properties["IID"] as string;
+            }
+        }
+
+        public string Version
+        {
+            get
+            {
+                var a = Assembly.GetExecutingAssembly();
+                var v = a.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
+
+                return v?.InformationalVersion;
             }
         }
     }

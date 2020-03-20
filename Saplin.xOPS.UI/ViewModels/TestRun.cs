@@ -51,6 +51,8 @@ namespace Saplin.xOPS.UI.ViewModels
 
         public void StartTest()
         {
+            VmLocator.OnlineDb.SendPageHit("start");
+
             const int iterations = 50 * 1000 * 1000;
 
             TestNotStarted = false;
@@ -128,6 +130,8 @@ namespace Saplin.xOPS.UI.ViewModels
                                 Int = false,
                                 MultiThreaded = false
                             });
+
+                            VmLocator.OnlineDb.PreLoadComparison(this, VmLocator.Options);
                         }
                     });
                  }
@@ -142,6 +146,7 @@ namespace Saplin.xOPS.UI.ViewModels
             breakTest = true;
             compute?.BreakExecution();
             TestInterrupted = true;
+            VmLocator.OnlineDb.SendPageHit("break");
         }
 
         private bool testNotStarted = true;

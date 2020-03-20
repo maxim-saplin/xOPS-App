@@ -5,13 +5,12 @@ using Android.OS;
 using Saplin.xOPS.UI;
 using Android.Content.Res;
 using Android.Content;
-using Saplin.xOPS.Extra;
-using Xamarin.Forms;
-using Saplin.xOPS.Extra.Droid;
 
 namespace Saplin.xOPS.Droid
 {
-    [Activity(Label = "xOPS", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "xOPS", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme",
+        MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
+        NoHistory = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public static MainActivity Instance { get; private set; }

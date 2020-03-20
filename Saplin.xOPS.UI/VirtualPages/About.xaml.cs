@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Reflection;
+using Saplin.xOPS.UI.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Saplin.xOPS.UI
+namespace Saplin.xOPS.UI.VirtualPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class About : ContentPage
+    public partial class About : Grid
     {
         public About()
         {
@@ -14,15 +14,12 @@ namespace Saplin.xOPS.UI
 
             if (((Saplin.xOPS.UI.App)App.Current).Rose) rose.IsVisible = true;
 
-            var a = Assembly.GetExecutingAssembly();
-            var v = a.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
-
-            version.Text = v?.InformationalVersion;
+            version.Text = VmLocator.Options.Version;
         }
 
         private void BackLabel_Clicked(object sender, EventArgs e)
         {
-            Pages.About.Navigation.PopModalAsync();
+            Pages.ShowPage(Pages.MainPage);
         }
     }
 }

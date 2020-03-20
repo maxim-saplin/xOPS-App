@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Saplin.xOPS.UI.HostPage"
+             NavigationPage.HasNavigationBar="False" 
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+                <!-- Used standard Content Pages at first to arrange UI in screens and navigate between them.
+        Though it turned out that upon navigation XF recreated renderers and there's no way
+        one can save the native control tree on already creaated pages in between navigations-->
+        <AbsoluteLayout></AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

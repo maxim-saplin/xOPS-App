@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -7,12 +7,9 @@
              xmlns:vm="clr-namespace:Saplin.xOPS.UI.ViewModels"
              xmlns:vv="clr-namespace:Saplin.xOPS.UI.Views"
              xmlns:cn="clr-namespace:Saplin.xOPS.UI.Controls"
-             x:Class="Saplin.xOPS.UI.MainPage"
-             BindingContext="{x:Static vm:VmLocator.TestRun}"
-             NavigationPage.HasNavigationBar="False" 
-             NavigationPage.HasBackButton="False">
+             x:Class="Saplin.xOPS.UI.VirtualPages.MainPage"
+             BindingContext="{x:Static vm:VmLocator.TestRun}">
 
-    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="70" />
@@ -26,13 +23,15 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" TextColor="Red" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,25,0,0"
-               Text="{Binding NumberOfRepeatsText}" IsVisible="{Binding ShowQuickComparison}"/>
-
         <cn:TappableLabel Grid.Row="1" Text="&#10; ? → &#10;" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
-             Clicked="AboutLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Start" Margin="10, 0, 0, 0"/>
+             Clicked="AboutLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 0, 0, 0"/>
 
-        <vv:QuickComparison Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding ShowQuickComparison}"/>
+        <vv:QuickComparison x:Name="quickComparison" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
+                            VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="False">
+            <vv:QuickComparison.GestureRecognizers>
+                <TapGestureRecognizer Tapped="QuickComparison_Tapped"/>
+            </vv:QuickComparison.GestureRecognizers>
+        </vv:QuickComparison>
 
         <Label Text="{Binding Source={Static vm:VmLocator.L11n}, Running}"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding ShowRunning}"/>
         <Label Text="{Binding Source={Static vm:VmLocator.L11n}, TestInterrupted}"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding TestInterrupted}"/>
@@ -68,7 +67,13 @@
         <cn:TappableLabel  Grid.Row="2" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
              Text="{Binding Source={x:Static vm:VmLocator.Options}, ButtonCaption}" 
              Command="{Binding Source={x:Static vm:VmLocator.Options}, SwitchOptionsVisibility }"
-             VerticalOptions="Center" HorizontalOptions="Start" Margin="10, 0, 0, 0" />
-    </Grid>
+             VerticalOptions="Center" HorizontalOptions="Center" Margin="1, 0, 0, 0" />
 
-</ContentPage>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" TextColor="Red" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,10,0,0"
+               Text="{Binding NumberOfRepeats, Converter={StaticResource NumberToDots}}" IsVisible="{Binding ShowQuickComparison}"/>
+
+        <StackLayout x:Name="status" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" Padding="12"
+                     BackgroundColor="#BB222222" IsVisible="False">
+            <Label TextColor="Red" Text="{Binding NumberOfRepeatsText}" />
+        </StackLayout>
+    </Grid>

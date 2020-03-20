@@ -142,10 +142,10 @@ The app is cross platform (supports Android/ChromeOS, Windows, macOS): LINKS
     <value>Close</value>
   </data>
   <data name="CountdownMany" xml:space="preserve">
-    <value>Starting in {0} seconds...</value>
+    <value>Starting in {0} seconds</value>
   </data>
   <data name="CountdownOne" xml:space="preserve">
-    <value>Starting in 1 second..</value>
+    <value>Starting in 1 second </value>
   </data>
   <data name="Floating" xml:space="preserve">
     <value>Floating</value>
@@ -184,7 +184,7 @@ The app is cross platform (supports Android/ChromeOS, Windows, macOS): LINKS
     <value>Bit</value>
   </data>
   <data name="AveragesMany" xml:space="preserve">
-    <value>Averages, {0} tests</value>
+    <value>Showing averages, {0} tests</value>
   </data>
   <data name="AveragesOne" xml:space="preserve">
     <value>1 test</value>

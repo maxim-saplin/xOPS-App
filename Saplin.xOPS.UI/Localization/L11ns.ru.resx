@@ -142,10 +142,10 @@
     <value>Закрыть</value>
   </data>
   <data name="CountdownMany" xml:space="preserve">
-    <value>Запуск через {0} секунд...</value>
+    <value>Запуск через {0} секунды</value>
   </data>
   <data name="CountdownOne" xml:space="preserve">
-    <value>Запуск через 1 секунду..</value>
+    <value>Запуск через 1 секунду</value>
   </data>
   <data name="Floating" xml:space="preserve">
     <value>Дробные</value>
@@ -190,9 +190,9 @@
     <value>1 тест</value>
   </data>
   <data name="AveragesOneRu" xml:space="preserve">
-    <value>{0} тест, средние</value>
+    <value>{0} тест, средние значения</value>
   </data>
  <data name="AveragesTwoRu" xml:space="preserve">
-    <value>{0} тестa, средние</value>
+    <value>{0} тестa, средние значения</value>
   </data>
 </root>

@@ -8,9 +8,11 @@ namespace Saplin.xOPS.UI.Controls
 
         private async void Animate()
         {
+            if (Opacity == 0) return;
             await this.FadeTo(0.0, 100);
             await this.FadeTo(1.0, 1500);
-        } 
+        }
+
         public static readonly BindableProperty ItemsProperty =
             BindableProperty.Create(
                 propertyName: nameof(Items),

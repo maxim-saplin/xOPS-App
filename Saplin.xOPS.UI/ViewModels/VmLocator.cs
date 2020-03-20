@@ -12,24 +12,27 @@ namespace Saplin.xOPS.UI.ViewModels
             container = new TinyIoCContainer();
 
             container.Register<L11n>().AsSingleton();
-            container.Register<TestRun>().AsSingleton();
             container.Register<Options>().AsSingleton();
+            container.Register<OnlineDb>().AsSingleton();
             container.Register<QuickComparison>().AsSingleton();
+            container.Register<TestRun>().AsSingleton();
         }
 
         public static L11n L11n => container.Resolve<L11n>();
         public static TestRun TestRun => container.Resolve<TestRun>();
         public static Options Options => container.Resolve<Options>();
         public static QuickComparison QuickComparison => container.Resolve<QuickComparison>();
+        public static OnlineDb OnlineDb => container.Resolve<OnlineDb>();
 
-        public static async void EagerCreateViewModels()
+        public static Task EagerCreateViewModels()
         {
-            await Task.Run(() => 
+            return Task.Run(() => 
             {
                 _ = L11n;
-                _ = TestRun;
                 _ = Options;
+                _ = OnlineDb;
                 _ = QuickComparison;
+                _ = TestRun;
             });
         }
     }

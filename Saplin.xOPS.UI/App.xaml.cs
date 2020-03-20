@@ -7,18 +7,28 @@ namespace Saplin.xOPS.UI
     {
         public App()
         {
-            //VmLocator.EagerCreateViewModels();
-            //Pages.EagerCreatePages();
-            
-            InitializeComponent();
+            Pages.Init();
 
-            MainPage = Pages.StartPage;
+            InitializeComponent();
 
             if (Rose)
             {
                 ApplyTheme();
             }
+
+            MainPage = Pages._HostPage;
+
+            if (!Pages.StartPage.Skip)
+                Pages.ShowPage(Pages.StartPage);
+            else Pages.ShowPage(Pages.MainPage);
         }
+
+        //private async void EagerInit()
+        //{
+        //    //await VmLocator.EagerCreateViewModels();
+        //    Pages.Init();
+        //    //await Pages.EagerCreatePages();
+        //}
 
         private void ApplyTheme()
         {

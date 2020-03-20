@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:vm="clr-namespace:Saplin.xOPS.UI.ViewModels"
+             xmlns:vv="clr-namespace:Saplin.xOPS.UI.Views"
+             xmlns:cn="clr-namespace:Saplin.xOPS.UI.Controls"
+             x:Class="Saplin.xOPS.UI.VirtualPages.MainPage"
+             BindingContext="{x:Static vm:VmLocator.TestRun}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <cn:TappableLabel Grid.Row="1" Text="&#10; ? → &#10;" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
+             Clicked="AboutLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 0, 0, 0"/>
+
+        <vv:QuickComparison x:Name="quickComparison" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
+                            VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="False">
+            <vv:QuickComparison.GestureRecognizers>
+                <TapGestureRecognizer Tapped="QuickComparison_Tapped"/>
+            </vv:QuickComparison.GestureRecognizers>
+        </vv:QuickComparison>
+
+        <Label Text="{Binding Source={Static vm:VmLocator.L11n}, Running}"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding ShowRunning}"/>
+        <Label Text="{Binding Source={Static vm:VmLocator.L11n}, TestInterrupted}"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding TestInterrupted}"/>
+
+        <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
+                     HorizontalOptions="Center" Margin="5,0,0,25">
+
+            <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Retry}" BackgroundColor="Blue"
+                Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
+            <!--<Button Text="≈ Stress" BackgroundColor="Red"
+                Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>-->
+
+            <ContentView>
+                <OnPlatform x:TypeArguments="View">
+                    <On Platform="Android">
+                        <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Share}" BackgroundColor="Green" 
+                            Clicked="Share_Clicked" IsVisible="{Binding TestNotStarted}" IsEnabled="{Binding ShowQuickComparison}"/>
+                    </On>
+                </OnPlatform>
+            </ContentView>
+
+
+        </StackLayout>
+
+        <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Break}" BackgroundColor="Red" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
+                     HorizontalOptions="Center" Margin="0,0,0,25"
+                Command="{Binding Break}" IsVisible="{Binding TestStarted}"/>
+
+        <vv:TestRun x:Name="testResults" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible, Converter = {StaticResource BoolNot}}" />
+        <vv:Options Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible}"/>
+
+        <!-- Keeping it on top of other controls, aslo on top of Options modal dialog-->
+        <cn:TappableLabel  Grid.Row="2" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
+             Text="{Binding Source={x:Static vm:VmLocator.Options}, ButtonCaption}" 
+             Command="{Binding Source={x:Static vm:VmLocator.Options}, SwitchOptionsVisibility }"
+             VerticalOptions="Center" HorizontalOptions="Center" Margin="1, 0, 0, 0" />
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" TextColor="Red" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,10,0,0"
+               Text="{Binding NumberOfRepeats, Converter={StaticResource NumberToDots}}" IsVisible="{Binding ShowQuickComparison}"/>
+
+        <StackLayout x:Name="status" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" Padding="12,8,12,8"
+                     BackgroundColor="#BB222222" IsVisible="False">
+            <Label TextColor="Red" Text="{Binding NumberOfRepeatsText}" />
+        </StackLayout>
+    </Grid>

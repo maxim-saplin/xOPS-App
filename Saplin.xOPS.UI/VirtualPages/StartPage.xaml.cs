@@ -2,9 +2,9 @@
 using Saplin.xOPS.UI.ViewModels;
 using Xamarin.Forms;
 
-namespace Saplin.xOPS.UI
+namespace Saplin.xOPS.UI.VirtualPages
 {
-    public partial class StartPage : ContentPage
+    public partial class StartPage : StackLayout, IAppearing
     {
         private int countdown = 3;
 
@@ -14,14 +14,15 @@ namespace Saplin.xOPS.UI
 
         }
 
+        public bool Skip { get; protected set; }
+
         private string[] roseTexts = { "Три Миссисипи", "Два Миссисипи", "Раз Миссисипи" };
 
-        protected override void OnAppearing()
+        public void OnAppearing()
         {
-            base.OnAppearing();
+            var padTo = 0;
 
-            if (countdown == 0) App.Current.MainPage = Pages.MainPage;
-            else
+            if (countdown != 0)
             {
 
                 Func<bool> func = () =>
@@ -29,7 +30,8 @@ namespace Saplin.xOPS.UI
                     if (countdown == 0)
                     {
                         countdownLabel.Text = "� � �";
-                        App.Current.MainPage = Pages.MainPage;
+                        Pages.ShowPage(Pages.MainPage);
+                        Skip = true;
                         return false;
                     }
 
@@ -38,8 +40,20 @@ namespace Saplin.xOPS.UI
                         if (countdown == 1)
                             countdownLabel.Text = VmLocator.L11n.CountdownOne;
                         else countdownLabel.Text = string.Format(VmLocator.L11n.CountdownMany, countdown);
+
+                        if (padTo == 0) padTo = countdownLabel.Text.Length + countdown;
+
+                        for (int i = 0; i < countdown; i++)
+                            countdownLabel.Text += ".";
+
+                        if (padTo != countdownLabel.Text.Length)
+                            countdownLabel.Text = countdownLabel.Text.PadRight(padTo, ' ');
                     }
-                    else countdownLabel.Text = roseTexts[countdown - 1];
+                    else
+                    {
+
+                        countdownLabel.Text = roseTexts[countdown - 1];
+                    }
 
                     countdown--;
 
