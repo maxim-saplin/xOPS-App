@@ -19,7 +19,8 @@ namespace Saplin.xOPS.UI.ViewModels
         const string flt_64b_param = "flt_64b=";
         const string int_64b_param = "int_64b=";
         const string flt_thrd_param = "flt_thrd=";
-        const string int_thrd_param = "int_thrd=";
+        const string int_thrd_param = "cnt=";
+        const string cnt_param = "int_thrd=";
         const string i_param = "i=";
         const string cpu_param = "cpu=";
         const string ram_param = "ram=";
@@ -158,6 +159,7 @@ namespace Saplin.xOPS.UI.ViewModels
 
             var prms = inapp_param + Device.RuntimePlatform +
                 "&" + yd_param + json +
+                "&" + cnt_param + run.NumberOfRepeats +
                 "&" + flt_64b_param + (options.Float64Bit ? "1" : "0") +
                 "&" + int_64b_param + (options.Int64Bit ? "1" : "0") +
                 "&" + flt_thrd_param + options.FloatThreads +
@@ -291,7 +293,7 @@ namespace Saplin.xOPS.UI.ViewModels
                 try // WPF might fail with an unhandled exception if there's no document loaded
                 {
                     webView?.EvaluateJavaScriptAsync(
-                        "gtag('config', 'UA-17809502-2', {page_location:location.toString()+'" + "&" + param + "=" + DateTime.UtcNow.ToString(d_param_format) + "'});");
+                        "gtag('config', 'UA-17809502-3', {page_location:location.toString()+'" + "&" + param + "=" + DateTime.UtcNow.ToString(d_param_format) + "'});");
                 }
                 catch { };
         }

@@ -35,7 +35,16 @@ namespace Saplin.xOPS.UI.ViewModels
         {
             if (!App.Current.Properties.ContainsKey(nameof(_Locale)) || !Locales.IsValid(App.Current.Properties[nameof(_Locale)].ToString()))
             {
-                var sysLocale = CultureInfo.CurrentUICulture.Name.ToLower().Substring(0, 2);
+                var sysLocale = string.Empty;
+
+                // Google Firebase allows to define locale with 2 letters, e.g. Fr, in this case the app
+                // has NULL culture. Though I didn't see that phones allow to set locale without a country,
+                // didn't see a real phone where the below approach didn't work
+                try
+                {
+                    sysLocale = CultureInfo.CurrentUICulture.Name.ToLower().Substring(0, 2);
+                }
+                catch { };
 
                 if (Locales.IsValid(sysLocale)) App.Current.Properties[nameof(_Locale)] = sysLocale;
                 else App.Current.Properties[nameof(_Locale)] = Locales.en;

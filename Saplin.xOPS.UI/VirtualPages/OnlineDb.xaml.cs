@@ -17,9 +17,13 @@ namespace Saplin.xOPS.UI.VirtualPages
             try
             {
                 var webView = new WebView();
-                this.Children.Add(webView, 1, 0);
+                this.Children.Add(webView, 0, 0);
+                Grid.SetColumnSpan(webView, 2);
                 Grid.SetRowSpan(webView, 2);
                 VmLocator.OnlineDb.BindWebView(webView);
+                var lbl = this.Children[0];
+                this.Children.Remove(lbl);
+                this.Children.Add(lbl);
             }
             catch(Exception ex) { }
         }

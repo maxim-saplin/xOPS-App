@@ -51,7 +51,7 @@
             <Setter Property="Font" Value="{StaticResource FontNormal}" />
             <Setter Property="TextColor" Value="Green" />
         </Style>
-        <Style x:Key="OptionTileLabel" TargetType="cn:TappableLabel" >
+        <Style x:Key="OptionTileLabel" TargetType="cn:TappableLabel">
             <Setter Property="TextColor" Value="White" />
             <Setter Property="Font" Value="{StaticResource FontBold}" />
             <Setter Property="AnimateOnTap" Value="True" />
@@ -65,12 +65,18 @@
             <Setter Property="BackgroundColor" Value="Red" />
         </Style>
         <Style x:Key="TestTileSmallLabel" TargetType="Label" ApplyToDerivedTypes="True">
-            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="TextColor" Value="#AA00FF00" />
             <Setter Property="Font" Value="{StaticResource FontSmall}" />
             <Setter Property="VerticalOptions" Value="End" />
-            <Setter Property="HorizontalOptions" Value="End" />
-            <Setter Property="FontSize" Value="10" />
-            <Setter Property="Margin" Value="0,0,0,-4" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Style.Triggers>
+                <Trigger TargetType="cn:TappableLabel" Property="Selected" Value="True">
+                    <Setter Property="VerticalOptions" Value="Center" />
+                    <Setter Property="HorizontalOptions" Value="Center" />
+                    <Setter Property="Margin" Value="0,0,0,0" />
+                </Trigger>
+           </Style.Triggers>
         </Style>
         <Style x:Key="TestTileArrowLabel" TargetType="Label" ApplyToDerivedTypes="True">
             <Setter Property="TextColor" Value="White" />

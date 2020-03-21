@@ -132,7 +132,61 @@ Les tests FPU et ALU sont exécutés en modes simple et multithread et reflèten
 
 Les tests sont "isolés", ce qui signifie qu'ils se concentrent sur la création de charge CPU uniquement (et c'est FPU et ALU) tout en essayant de barrer les interférences provenant d'autres éléments du système (comme la mémoire, le cache, le stockage, le réseau, les optimisations logicielles, etc.). ). De nombreux facteurs déterminent les performances des systèmes et le processeur, bien que le principal ne soit pas le seul. Bien que l'application ne donne pas une seule réponse (ou score) simple aux questions "Quelle est la vitesse du téléphone / ordinateur portable / PC?" (est-ce même possible?), il donne une mesure de performance comparable d'une pièce importante de votre appareil - le CPU.
 
-L'application est multiplateforme (prend en charge Android / ChromeOS, Windows, macOS): LIENS
+Vous pouvez en savoir plus sur les versions d'application et de téléchargement pour d'autres OS (Android / ChromeOS, Windows, macOS) en utilisant le lien:
     </value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="CountdownMany" xml:space="preserve">
+    <value>À partir de {0} secondes</value>
+  </data>
+  <data name="CountdownOne" xml:space="preserve">
+    <value>Démarrage dans 1 seconde</value>
+  </data>
+  <data name="Floating" xml:space="preserve">
+    <value>Flottant</value>
+  </data>
+  <data name="Integer" xml:space="preserve">
+    <value>Entier</value>
+  </data>
+  <data name="ST" xml:space="preserve">
+    <value>Single Threaded</value>
+  </data>
+  <data name="MT" xml:space="preserve">
+    <value>Multi Threaded</value>
+  </data>
+  <data name="Break" xml:space="preserve">
+    <value>¾ Break</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>↻ Répéter</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>↪ Partager</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>En cours d'exécution....</value>
+  </data>
+  <data name="TestInterrupted" xml:space="preserve">
+    <value>Test interrompu</value>
+  </data>
+  <data name="Precision" xml:space="preserve">
+    <value>Précision</value>
+  </data>
+  <data name="ThreadsNumber" xml:space="preserve">
+    <value>Nombre de threads</value>
+  </data>
+  <data name="Bit" xml:space="preserve">
+    <value>Bit</value>
+  </data>
+  <data name="AveragesMany" xml:space="preserve">
+    <value>Affichage des moyennes, {0} tests</value>
+  </data>
+  <data name="AveragesOne" xml:space="preserve">
+    <value>1 test</value>
   </data>
 </root>

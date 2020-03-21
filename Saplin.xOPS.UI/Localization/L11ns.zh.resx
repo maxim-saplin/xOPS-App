@@ -132,7 +132,61 @@ FPU和ALU测试都在单线程和多线程模式下执行，它们反映了CPU�
 
 测试是“隔离的”，这意味着它们仅专注于创建CPU负载（即FPU和ALU），而试图消除来自系统其他部分（例如内存，缓存，存储，网络，软件优化等）的干扰。 ）。有很多因素决定着系统的性能和CPU，尽管不是唯一的因素。虽然该应用程序未对“手机/笔记本电脑/ PC有多快？”的问题给出简单的答案（或分数）。 （甚至可能吗？），它提供了与您设备的一个重要部分-CPU相当的性能指标。
 
-该应用程序是跨平台的（支持Android / ChromeOS，Windows，macOS）：LINKS    
+您可以使用以下链接找到有关该应用程序的更多信息以及其他操作系统（Android / ChromeOS，Windows，macOS）的下载版本：    
     </value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="CountdownMany" xml:space="preserve">
+    <value>在{0}秒内开始</value>
+  </data>
+  <data name="CountdownOne" xml:space="preserve">
+    <value>从1秒开始</value>
+  </data>
+  <data name="Floating" xml:space="preserve">
+    <value>浮动</value>
+  </data>
+  <data name="Integer" xml:space="preserve">
+    <value>整数</value>
+  </data>
+  <data name="ST" xml:space="preserve">
+    <value>单线程</value>
+  </data>
+  <data name="MT" xml:space="preserve">
+    <value>多线程</value>
+  </data>
+  <data name="Break" xml:space="preserve">
+    <value>¾ 中断</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>↻ 重试</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>↪ 分享</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>正在运行...</value>
+  </data>
+  <data name="TestInterrupted" xml:space="preserve">
+    <value>测试中断</value>
+  </data>
+  <data name="Precision" xml:space="preserve">
+    <value>精度</value>
+  </data>
+  <data name="ThreadsNumber" xml:space="preserve">
+    <value>线程数</value>
+  </data>
+  <data name="Bit" xml:space="preserve">
+    <value>位</value>
+  </data>
+  <data name="AveragesMany" xml:space="preserve">
+    <value>显示平均值，{0}个测试</value>
+  </data>
+  <data name="AveragesOne" xml:space="preserve">
+    <value>1个测试</value>
   </data>
 </root>

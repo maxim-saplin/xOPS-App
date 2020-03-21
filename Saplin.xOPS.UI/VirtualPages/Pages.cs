@@ -22,9 +22,11 @@ namespace Saplin.xOPS.UI
 
         public static HostPage _HostPage => container.Resolve<HostPage>();
         public static StartPage StartPage => container.Resolve<StartPage>();
-        public static OnlineDb OnlineDb => container.Resolve<OnlineDb>();
+        public static OnlineDb OnlineDb => onlineDbOk ? container.Resolve<OnlineDb>() : null;
         public static MainPage MainPage => container.Resolve<MainPage>();
         public static About About => container.Resolve<About>();
+
+        private static bool onlineDbOk = true;
 
         private static Task EagerCreatePages()
         {
@@ -37,7 +39,15 @@ namespace Saplin.xOPS.UI
 
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    _HostPage.AddVirtualPage(OnlineDb);
+                    try
+                    {
+                        _HostPage.AddVirtualPage(OnlineDb);
+                        // if there're issues with WebView, don't make the page available
+                    }
+                    catch
+                    {
+                        onlineDbOk = false;
+                    }
                     _HostPage.AddVirtualPage(MainPage);
                     _HostPage.AddVirtualPage(About);
                 });

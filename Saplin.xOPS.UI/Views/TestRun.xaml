@@ -52,7 +52,7 @@
         </cn:TappableLabel>
         <Label Grid.Row="0" Grid.Column="0" Text="{Binding RecentFloatSingleThreaded, TargetNullValue='↖', StringFormat=''}"
                Style="{StaticResource TestTileArrowLabel}" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Grid.Row="0" Grid.Column="0" Text="{Binding RecentFloatSingleThreaded, StringFormat='{0:0.00}'}"
+        <cn:TappableLabel Selected="{Binding TestStarted}" Grid.Row="0" Grid.Column="0" Text="{Binding RecentFloatSingleThreaded, StringFormat='{0:0.00}'}"
                Style="{StaticResource TestTileSmallLabel}" />
         <cn:TappableLabel Grid.Row="0" Grid.Column="0" Style="{StaticResource TestTileLabel}" BackgroundColor="Transparent"
             Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}" ControlToAnimateOnTap="{x:Reference boxStFlt}" AnimateOnTap="False" >
@@ -75,12 +75,12 @@
         </cn:TappableLabel>
         <Label Grid.Row="0" Grid.Column="1" Text="{Binding RecentFloatMultiThreaded, TargetNullValue='↗', StringFormat=''}"
                Style="{StaticResource TestTileArrowLabel}" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Grid.Row="0" Grid.Column="1" Text="{Binding RecentFloatMultiThreaded, StringFormat='{0:0.00}'}"
+        <cn:TappableLabel Selected="{Binding TestStarted}"  Grid.Row="0" Grid.Column="1" Text="{Binding RecentFloatMultiThreaded, StringFormat='{0:0.00}'}"
                Style="{StaticResource TestTileSmallLabel}"  />
         <cn:TappableLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource TestTileLabel}" BackgroundColor="Transparent"
             Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}" ControlToAnimateOnTap="{x:Reference boxMtFlt}" AnimateOnTap="False" >
             <cn:TappableLabel.CommandParameter>
-                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, FloatMultiThreaded}" Int="False" MultiThreaded="False"/>
+                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, FloatMultiThreaded}" Int="False" MultiThreaded="True"/>
             </cn:TappableLabel.CommandParameter>
         </cn:TappableLabel>
 
@@ -98,12 +98,12 @@
         </cn:TappableLabel>
         <Label Grid.Row="1" Grid.Column="0" Text="{Binding RecentIntSingleThreaded, TargetNullValue='↙', StringFormat=''}"
                Style="{StaticResource TestTileArrowLabel}" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Grid.Row="1" Grid.Column="0" Text="{Binding RecentIntSingleThreaded, StringFormat='{0:0.00}'}"
+        <cn:TappableLabel Selected="{Binding TestStarted}"  Grid.Row="1" Grid.Column="0" Text="{Binding RecentIntSingleThreaded, StringFormat='{0:0.00}'}"
                Style="{StaticResource TestTileSmallLabel}" />
         <cn:TappableLabel Grid.Row="1" Grid.Column="0" Style="{StaticResource TestTileLabel}" BackgroundColor="Transparent"
             Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}" ControlToAnimateOnTap="{x:Reference boxStInt}" AnimateOnTap="False" >
             <cn:TappableLabel.CommandParameter>
-                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, IntSingleThreaded}" Int="False" MultiThreaded="False"/>
+                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, IntSingleThreaded}" Int="True" MultiThreaded="False"/>
             </cn:TappableLabel.CommandParameter>
         </cn:TappableLabel>
 
@@ -121,12 +121,12 @@
         </cn:TappableLabel>
         <Label Grid.Row="1" Grid.Column="1" Text="{Binding RecentIntMultiThreaded, TargetNullValue='↘', StringFormat=''}"
                Style="{StaticResource TestTileArrowLabel}" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Grid.Row="1" Grid.Column="1" Text="{Binding RecentIntMultiThreaded, StringFormat='{0:0.00}'}"
+        <cn:TappableLabel Selected="{Binding TestStarted}"  Grid.Row="1" Grid.Column="1" Text="{Binding RecentIntMultiThreaded, StringFormat='{0:0.00}'}"
                Style="{StaticResource TestTileSmallLabel}" />
         <cn:TappableLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource TestTileLabel}" BackgroundColor="Transparent"
             Command="{Binding Source={Static vm:VmLocator.QuickComparison}, Compare}" ControlToAnimateOnTap="{x:Reference boxMtInt}" AnimateOnTap="False" >
             <cn:TappableLabel.CommandParameter>
-                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, IntMultiThreaded}" Int="False" MultiThreaded="False"/>
+                <vm:SingleResult Value="{Binding Source={x:Static vm:VmLocator.TestRun}, IntMultiThreaded}" Int="True" MultiThreaded="True"/>
             </cn:TappableLabel.CommandParameter>
         </cn:TappableLabel>
     </Grid>

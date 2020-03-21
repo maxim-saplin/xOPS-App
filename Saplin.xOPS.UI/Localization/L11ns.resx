@@ -132,7 +132,7 @@ Both FPU and ALU tests are executed in single and multithreaded modes and reflec
 
 The tests are "isolated", meaning that they focus on creating CPU load only (and it's FPU and ALU) while trying to cross out interferences from other pieces of the system (such as memory, cache, storage, network, software optimizations etc.). There're many factors determining systems' performance and CPU although the major one  is not the only. While the app doesn’t give a single simple answer (or score) to the questions "How fast is the phone/laptop/PC?" (is it even possible?), it gives a comparable performance metric of one important piece of your device - the CPU.
 
-The app is cross platform (supports Android/ChromeOS, Windows, macOS): LINKS
+Read more about the app and downlpad other platform versions ( Android/ChromeOS, Windows, macOS) at:
     </value>
   </data>
   <data name="Options" xml:space="preserve">

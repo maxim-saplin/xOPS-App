@@ -13,7 +13,6 @@ namespace Saplin.xOPS.UI.Controls
             GestureRecognizers.Add(g);
         }
 
-        private event EventHandler click;
         public void DoClick()
         {
             if (AnimateOnTap) Animate();
@@ -31,6 +30,8 @@ namespace Saplin.xOPS.UI.Controls
             await view.FadeTo(0.5, 150);
             await view.FadeTo(1.0, 100);
         }
+
+        private event EventHandler click;
 
         public event EventHandler Clicked
         {

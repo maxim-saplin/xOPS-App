@@ -195,6 +195,11 @@ namespace Saplin.xOPS.UI.ViewModels
             }
         }
 
+        public string AboutLink
+        {
+            get { return "https://maxim-saplin.github.io/xOPS-Web/?about="+"&i="+IID.ToString(); }
+        }
+
         public string Version
         {
             get

@@ -56,5 +56,7 @@ namespace Saplin.xOPS.Droid
 
             base.AttachBaseContext(config);
         }
+
+        //protected override void 
     }
 }

@@ -69,7 +69,8 @@ namespace Saplin.xOPS.UI.VirtualPages
 
         void QuickComparison_Tapped(System.Object sender, System.EventArgs e)
         {
-            Pages.ShowPage(Pages.OnlineDb);
+            if (Pages.OnlineDb != null)
+                Pages.ShowPage(Pages.OnlineDb);
         }
     }
 }
