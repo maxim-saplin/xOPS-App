@@ -142,13 +142,13 @@ FPU和ALU测试都在单线程和多线程模式下执行，它们反映了CPU�
     <value>关闭</value>
   </data>
   <data name="CountdownMany" xml:space="preserve">
-    <value>在{0}秒内开始</value>
+    <value>在{0}秒内开始测试  </value>
   </data>
   <data name="CountdownOne" xml:space="preserve">
     <value>从1秒开始</value>
   </data>
   <data name="Floating" xml:space="preserve">
-    <value>浮动</value>
+    <value>浮点数</value>
   </data>
   <data name="Integer" xml:space="preserve">
     <value>整数</value>
