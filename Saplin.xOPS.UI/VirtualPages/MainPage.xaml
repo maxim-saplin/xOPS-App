@@ -27,10 +27,8 @@
              Clicked="AboutLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 0, 0, 0"/>
 
         <vv:QuickComparison x:Name="quickComparison" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
-                            VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="False">
-            <vv:QuickComparison.GestureRecognizers>
-                <TapGestureRecognizer Tapped="QuickComparison_Tapped"/>
-            </vv:QuickComparison.GestureRecognizers>
+                            VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="False"
+                            Tapped="QuickComparison_Tapped">
         </vv:QuickComparison>
 
         <Label Text="{Binding Source={Static vm:VmLocator.L11n}, Running}"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding ShowRunning}"/>

@@ -38,6 +38,8 @@ namespace Saplin.xOPS.UI.ViewModels
             //var di = DependencyService.Get<IWpfWebViewInfo>();
             //if (di != null && !di.InternetConnected()) return;
 
+            if (Device.RuntimePlatform == Device.WPF) throw new InvalidOperationException("WPF WebView not supported");
+
             this.webView = webView;
             webView.Navigating += Navigating;
             webView.Navigated += Navigated;

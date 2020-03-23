@@ -38,14 +38,15 @@
                         HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Margin="0,0,10,0" >
         <StackLayout>
             <Label Text="{Binding Source={x:Static vm:VmLocator.L11n}, About}" TextColor="White">
-            <Label.GestureRecognizers>
+            <!--<Label.GestureRecognizers>
                 <SwipeGestureRecognizer Direction="Left" Command="{Binding Source={x:Static vm:VmLocator.L11n}, Next}"/>
                 <SwipeGestureRecognizer Direction="Right" Command="{Binding Source={x:Static vm:VmLocator.L11n}, Previous}"/>
-                </Label.GestureRecognizers>
+                </Label.GestureRecognizers>-->
             </Label>
-            <cn:Hyperlink Text="https://maxim-saplin.github.io/xOPS-Web/?about="
-                          Url="{Binding AboutLink, Source={Static vm:VmLocator.Options}}"
-                          TextColor="White" TextDecorations="Underline"/>
+
+            <cn:Hyperlink Text="https://maxim-saplin.github.io/xOPS-Web/?about=" x:Name="link"
+                          Url="{Binding AboutLink, Source={Static vm:VmLocator.Options}}" TextColor="LightBlue"
+                          /> <!-- TextDecorations="Underline" isnt working on macOS, TODO check it is fixed ion latter XF versions-->
 
             <Label Text="🌹 Оля ♥" x:Name="rose" IsVisible="False" HorizontalTextAlignment="Center" Margin="-40,0,0,0" />
             <Label x:Name="version" HorizontalTextAlignment="Center" Margin="-40,0,0,20" />

@@ -118,8 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>
-该应用程序将计算小数（浮点数）或整数在给定的秒内CPU可以执行多少次操作（加载数，加，减，乘，除，比较）：
+    <value>该应用程序将计算小数（浮点数）或整数在给定的秒内CPU可以执行多少次操作（加载数，加，减，乘，除，比较）：
 
 •FLOPS-每秒浮点操作数，浮点单元（FPU）的性能度量。
 •INOPS-每秒整数运算，算术逻辑单元（ALU）的度量
@@ -132,8 +131,7 @@ FPU和ALU测试都在单线程和多线程模式下执行，它们反映了CPU�
 
 测试是“隔离的”，这意味着它们仅专注于创建CPU负载（即FPU和ALU），而试图消除来自系统其他部分（例如内存，缓存，存储，网络，软件优化等）的干扰。 ）。有很多因素决定着系统的性能和CPU，尽管不是唯一的因素。虽然该应用程序未对“手机/笔记本电脑/ PC有多快？”的问题给出简单的答案（或分数）。 （甚至可能吗？），它提供了与您设备的一个重要部分-CPU相当的性能指标。
 
-您可以使用以下链接找到有关该应用程序的更多信息以及其他操作系统（Android / ChromeOS，Windows，macOS）的下载版本：    
-    </value>
+您可以使用以下链接找到有关该应用程序的更多信息以及其他操作系统（Android / ChromeOS，Windows，macOS）的下载版本：</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>选项</value>

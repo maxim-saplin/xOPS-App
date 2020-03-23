@@ -28,6 +28,8 @@ namespace Saplin.xOPS.UI
 
         private static bool onlineDbOk = true;
 
+        public static void SetOnlineDbOk(bool ok) => onlineDbOk = ok;
+
         private static Task EagerCreatePages()
         {
             return Task.Run(() =>

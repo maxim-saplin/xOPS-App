@@ -118,22 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>
-The app calculates how many operations (load number, add, subtract, multiply, divide, compare) a CPU can perform in a given second with either fractional (floating-point) or integer numbers:
+    <value>The app calculates how many operations (add, subtract, multiply, divide, etc.) a CPU can perform in a given second with either fractional (floating-point) or integer numbers:
 
     • FLOPS - Floating-point Operations Per Second, performance measurement of Floating Point Unit (FPU). 
-    • INOPS - Integer Operations Per Second, measurement of Arithmetic logic unit (ALU)
+    • INOPS - Integer Operations Per Second, measurement of Arithmetic Logic Unit (ALU)
     
-E.g. 1 GigaFLOPS means that CPU can do 1 billion floating-point operations per second (such as 1.1+2.2=3.3).
+E.g. 1 G(iga)FLOPS means that CPU can do 1 billion floating-point operations per second (such as 1.1+2.2=3.3).
     
-These operations are essentially what CPUs do all the time while running apps. General app logic is typically reliant on integer operations, while graphics and games rely on floating-point ones. The faster your CPU can crunch numbers, the faster your apps can run.
+General app logic is typically reliant on integer operations, while graphics and games rely on floating-point ones. The faster your CPU can crunch numbers, the faster your apps can run.
 
-Both FPU and ALU tests are executed in single and multithreaded modes and reflect both multi-core and single-core performance of the CPU . 
+Tests are executed in single and multithreaded modes and reflect multi-core and single-core performance. 
 
-The tests are "isolated", meaning that they focus on creating CPU load only (and it's FPU and ALU) while trying to cross out interferences from other pieces of the system (such as memory, cache, storage, network, software optimizations etc.). There're many factors determining systems' performance and CPU although the major one  is not the only. While the app doesn’t give a single simple answer (or score) to the questions "How fast is the phone/laptop/PC?" (is it even possible?), it gives a comparable performance metric of one important piece of your device - the CPU.
+The tests are "isolated", meaning that they focus on creating CPU load only while ingoring other parts of the system (such as memory, cache, storage, network etc.). There're many factors determining systems' performance and CPU although the major one  is not the only. While the app doesn’t give a single simple answer/score to the questions "How fast is the phone/laptop/PC?", it gives a comparable performance metric of one important piece of your device - the CPU.
 
-Read more about the app and downlpad other platform versions ( Android/ChromeOS, Windows, macOS) at:
-    </value>
+Read more about the app and downlpad other platform versions ( Android/ChromeOS, Windows, macOS) at:</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>Options</value>

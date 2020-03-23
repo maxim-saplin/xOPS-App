@@ -6,18 +6,18 @@ namespace Saplin.xOPS.UI.Controls
 {
     public class LabelRepeater : StackLayout
     {
-        private BoxView box;
+        private Label label;
 
         public LabelRepeater()
         {
-            box = new BoxView();
+            label = new Label();
 
             var g = new TapGestureRecognizer();
             g.Tapped += (s, e) => DoClick();
-            box.GestureRecognizers.Add(g);
-            box.HorizontalOptions = LayoutOptions.Fill;
-            box.VerticalOptions = LayoutOptions.Fill;
-            box.BackgroundColor = Color.Transparent;
+            label.GestureRecognizers.Add(g);
+            label.FormattedText = new FormattedString();
+
+            Children.Add(label);
         }
 
         public void DoClick()
@@ -35,7 +35,7 @@ namespace Saplin.xOPS.UI.Controls
 
         private event EventHandler click;
 
-        public event EventHandler Clicked
+        public event EventHandler Tapped
         {
             add
             {
@@ -76,9 +76,11 @@ namespace Saplin.xOPS.UI.Controls
 
             if (control == null) return;
 
+            if (control.label.Style == null) control.label.Style = control.LabelStyle;
+
             control.Animate();
 
-            control.Children.Clear();
+            control.label.FormattedText?.Spans?.Clear();
 
             var collection = newValue as IEnumerable<string>;
 
@@ -86,11 +88,10 @@ namespace Saplin.xOPS.UI.Controls
             {
                 foreach (var i in collection)
                 {
-                    control.Children.Add(new Label() { Text = i, Style = control.LabelStyle });
+                    control.label.FormattedText?.Spans?.Add(new Span() { Text = i+"\n" });
                 }
             }
 
-            control.Children.Add(control.box);
         }
 
         public Style LabelStyle
