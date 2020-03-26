@@ -62,7 +62,7 @@ namespace Saplin.xOPS.UI.VirtualPages
 
             if (share != null)
             {
-                share.Share(testResults.Core, true, "xOPS CPU Benchmakrk - https://play.google.com/store/apps/details?id=xcom.Saplin.xOPS");
+                share.Share(testResults.Core, true, "xOPS CPU Benchmakrk - https://play.google.com/store/apps/details?id=xcom.saplin.xOPS");
                 VmLocator.OnlineDb.SendPageHit("share");
             }
         }

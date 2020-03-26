@@ -26,11 +26,6 @@
         <cn:TappableLabel Grid.Row="1" Text="&#10; ? → &#10;" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
              Clicked="AboutLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 0, 0, 0"/>
 
-        <vv:QuickComparison x:Name="quickComparison" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
-                            VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="False"
-                            Tapped="QuickComparison_Tapped">
-        </vv:QuickComparison>
-
         <Label Text="{Binding Source={Static vm:VmLocator.L11n}, Running}"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding ShowRunning}"/>
         <Label Text="{Binding Source={Static vm:VmLocator.L11n}, TestInterrupted}"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding TestInterrupted}"/>
 
@@ -59,13 +54,6 @@
                 Command="{Binding Break}" IsVisible="{Binding TestStarted}"/>
 
         <vv:TestRun x:Name="testResults" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible, Converter = {StaticResource BoolNot}}" />
-        <vv:Options Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible}"/>
-
-        <!-- Keeping it on top of other controls, aslo on top of Options modal dialog-->
-        <cn:TappableLabel  Grid.Row="2" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
-             Text="{Binding Source={x:Static vm:VmLocator.Options}, ButtonCaption}" 
-             Command="{Binding Source={x:Static vm:VmLocator.Options}, SwitchOptionsVisibility }"
-             VerticalOptions="Center" HorizontalOptions="Center" Margin="1, 0, 0, 0" />
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" TextColor="Red" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,10,0,0"
                Text="{Binding NumberOfRepeats, Converter={StaticResource NumberToDots}}" IsVisible="{Binding ShowQuickComparison}"/>
@@ -74,4 +62,18 @@
                      BackgroundColor="#BB222222" IsVisible="False">
             <Label TextColor="Red" Text="{Binding NumberOfRepeatsText}" />
         </StackLayout>
+
+       <!-- When this comntrol was higher there was some other invisible control which blocked certain areas of it and didn't fire taps-->
+       <vv:QuickComparison x:Name="quickComparison" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
+                            VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="False"
+                            Tapped="QuickComparison_Tapped">
+        </vv:QuickComparison>
+
+        <vv:Options Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" IsVisible="{Binding Source={x:Static vm:VmLocator.Options}, IsVisible}"/>
+
+        <!-- Keeping it on top of other controls, aslo on top of Options modal dialog-->
+        <cn:TappableLabel  Grid.Row="2" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
+             Text="{Binding Source={x:Static vm:VmLocator.Options}, ButtonCaption}" 
+             Command="{Binding Source={x:Static vm:VmLocator.Options}, SwitchOptionsVisibility }"
+             VerticalOptions="Center" HorizontalOptions="Center" Margin="1, 0, 0, 0" />
     </Grid>

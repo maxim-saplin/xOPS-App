@@ -7,6 +7,17 @@ namespace Saplin.xOPS.UI.ViewModels
 {
     public class QuickComparison : BaseViewModel
     {
+        public QuickComparison()
+        {
+            VmLocator.TestRun.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(TestRun.TestStarted) && VmLocator.TestRun.TestStarted)
+                {
+                    FS = FM = IS = IM = false;
+                }
+            };
+        }
+
         public class ReferenceRecord
         {
             public string Name { get; set; }
@@ -109,6 +120,46 @@ namespace Saplin.xOPS.UI.ViewModels
             UseInt = v.Int;
             UseMultiThreaded = v.MultiThreaded;
             ComparedValue = v.Value;
+
+            FS = FM = IS = IM = false;
+
+            if (!UseInt && !UseMultiThreaded) FS = true;
+            else if (!UseInt && UseMultiThreaded) FM = true;
+            else if (UseInt && !UseMultiThreaded) IS = true;
+            else if (UseInt && UseMultiThreaded) IM = true;
         });
+
+        private bool fs = false;
+
+        public bool FS
+        {
+            get { return fs; }
+            set { if (value != fs) { fs = value; RaisePropertyChanged(nameof(FS)); } }
+        }
+
+        private bool fm = false;
+
+        public bool FM
+        {
+            get { return fm; }
+            set { if (value != fm) { fm = value; RaisePropertyChanged(nameof(FM)); } }
+        }
+
+        private bool _is = false;
+
+        public bool IS
+        {
+            get { return _is; }
+            set { if (value != _is) { _is = value; RaisePropertyChanged(nameof(IS)); } }
+        }
+
+        private bool im = false;
+
+        public bool IM
+        {
+            get { return im; }
+            set { if (value != im) { im = value; RaisePropertyChanged(nameof(IM)); } }
+        }
+
     }
 }

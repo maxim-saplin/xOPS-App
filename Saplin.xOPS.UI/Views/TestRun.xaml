@@ -39,6 +39,7 @@
         </Grid.ColumnDefinitions>
 
         <BoxView x:Name="boxStFlt" Grid.Row="0" Grid.Column="0" />
+        <Label Text="•" IsVisible="{Binding Source={Static vm:VmLocator.QuickComparison}, FS}" TextColor="White" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="5,-2,0,0"/>
         <cn:TappableLabel Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" Margin="0,0,0,0"
            VerticalOptions="Center" HorizontalOptions="Center">
            <Label.FormattedText>
@@ -62,6 +63,7 @@
         </cn:TappableLabel>
 
         <BoxView x:Name="boxMtFlt" Grid.Row="0" Grid.Column="1"/>
+        <Label Text="•" IsVisible="{Binding Source={Static vm:VmLocator.QuickComparison}, FM}" TextColor="White" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="5,-2,0,0"/>
         <cn:TappableLabel Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Margin="0,0,0,0"
             VerticalOptions="Center" HorizontalOptions="Center">
            <Label.FormattedText>
@@ -85,6 +87,7 @@
         </cn:TappableLabel>
 
         <BoxView x:Name="boxStInt" Grid.Row="1" Grid.Column="0" />
+        <Label Text="•" IsVisible="{Binding Source={Static vm:VmLocator.QuickComparison}, IS}" TextColor="White" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="5,-2,0,0"/>
         <cn:TappableLabel Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Center" Margin="0,0,0,0"
             VerticalOptions="Center" HorizontalOptions="Center">
            <Label.FormattedText>
@@ -108,6 +111,7 @@
         </cn:TappableLabel>
 
         <BoxView x:Name="boxMtInt" Grid.Row="1" Grid.Column="1" />
+        <Label Text="•" IsVisible="{Binding Source={Static vm:VmLocator.QuickComparison}, IM}" TextColor="White" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="5,-2,0,0"/>
         <cn:TappableLabel Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" Margin="0,0,0,0"
             VerticalOptions="Center" HorizontalOptions="Center">
            <Label.FormattedText>

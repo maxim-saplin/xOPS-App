@@ -4,20 +4,23 @@ using Xamarin.Forms;
 
 namespace Saplin.xOPS.UI.Controls
 {
-    public class LabelRepeater : StackLayout
+    public class LabelRepeater : Grid
     {
         private Label label;
+        private TapGestureRecognizer g;
 
         public LabelRepeater()
         {
             label = new Label();
+            label.FormattedText = new FormattedString();
+            RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+            ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
-            var g = new TapGestureRecognizer();
+            g = new TapGestureRecognizer();
             g.Tapped += (s, e) => DoClick();
             label.GestureRecognizers.Add(g);
-            label.FormattedText = new FormattedString();
 
-            Children.Add(label);
+            Children.Add(label, 0, 0);
         }
 
         public void DoClick()
@@ -84,14 +87,16 @@ namespace Saplin.xOPS.UI.Controls
 
             var collection = newValue as IEnumerable<string>;
 
+            bool first = true;
+
             if (collection != null)
             {
                 foreach (var i in collection)
                 {
-                    control.label.FormattedText?.Spans?.Add(new Span() { Text = i+"\n" });
+                    control.label.FormattedText?.Spans?.Add(new Span() { Text = !first ? "\n" + i : i });
+                    first = false;
                 }
             }
-
         }
 
         public Style LabelStyle

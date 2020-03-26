@@ -19,8 +19,8 @@ namespace Saplin.xOPS.UI.ViewModels
         const string flt_64b_param = "flt_64b=";
         const string int_64b_param = "int_64b=";
         const string flt_thrd_param = "flt_thrd=";
-        const string int_thrd_param = "cnt=";
-        const string cnt_param = "int_thrd=";
+        const string int_thrd_param = "int_thrd=";
+        const string cnt_param = "cnt=";
         const string i_param = "i=";
         const string cpu_param = "cpu=";
         const string ram_param = "ram=";

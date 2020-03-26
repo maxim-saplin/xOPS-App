@@ -8,7 +8,5 @@
              xmlns:vc="clr-namespace:Saplin.xOPS.UI.Controls"
              xmlns:vm="clr-namespace:Saplin.xOPS.UI.ViewModels"
              Items="{Binding Source={x:Static vm:VmLocator.QuickComparison}, Comparisons}"
-             Orientation="Vertical"
-             Spacing="0"
              LabelStyle="{StaticResource ComparisonLabel}">
 </vc:LabelRepeater>
