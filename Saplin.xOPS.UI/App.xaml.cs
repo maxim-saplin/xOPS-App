@@ -23,13 +23,6 @@ namespace Saplin.xOPS.UI
             else Pages.ShowPage(Pages.MainPage);
         }
 
-        //private async void EagerInit()
-        //{
-        //    //await VmLocator.EagerCreateViewModels();
-        //    Pages.Init();
-        //    //await Pages.EagerCreatePages();
-        //}
-
         private void ApplyTheme()
         {
             var theme = new Rose();

@@ -192,5 +192,8 @@
   </data>
  <data name="AveragesTwoRu" xml:space="preserve">
     <value>{0} тестa, средние значения</value>
-  </data>
+ </data>
+ <data name="Stress" xml:space="preserve">
+    <value>≈ Стресс</value>
+ </data>
 </root>

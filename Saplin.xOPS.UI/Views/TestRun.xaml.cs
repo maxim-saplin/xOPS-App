@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Saplin.xOPS.UI.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -36,6 +37,38 @@ namespace Saplin.xOPS.UI.Views
                 }
             }
             catch { }
+
+            var skipAnim = true;
+
+            VmLocator.TestRun.PropertyChanged += (s,e) =>
+            {
+                if (e.PropertyName == nameof(VmLocator.TestRun.TestStarted) && !VmLocator.TestRun.TestStarted)
+                {
+
+                    skipAnim = true;
+                    fltStSmall.FadeTo(0, 5000, Easing.SpringIn);
+                    fltMtSmall.FadeTo(0, 5000, Easing.SpringIn);
+                    intStSmall.FadeTo(0, 5000, Easing.SpringIn);
+                    intMtSmall.FadeTo(0, 5000, Easing.SpringIn);
+                }
+            };
+
+            VmLocator.QuickComparison.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(VmLocator.QuickComparison.ComparedValue))
+                {
+                    if (!skipAnim)
+                    {
+                        fltStSmall.Opacity = fltMtSmall.Opacity
+                            = intStSmall.Opacity = intMtSmall.Opacity = 1;
+                        fltStSmall.FadeTo(0, 5000, Easing.SpringIn);
+                        fltMtSmall.FadeTo(0, 5000, Easing.SpringIn);
+                        intStSmall.FadeTo(0, 5000, Easing.SpringIn);
+                        intMtSmall.FadeTo(0, 5000, Easing.SpringIn);
+                    }
+                    skipAnim = false;
+                }
+            };
         }
 
         public Grid Core => core;

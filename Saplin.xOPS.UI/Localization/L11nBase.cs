@@ -215,5 +215,13 @@ namespace Saplin.xOPS.UI.ViewModels
             }
         }
 
+        public string Stress
+        {
+            get
+            {
+                return ResourceManager.GetString("Stress", resourceCulture);
+            }
+        }
+
     }
 }

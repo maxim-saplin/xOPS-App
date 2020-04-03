@@ -34,8 +34,8 @@
 
             <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Retry}" BackgroundColor="Blue"
                 Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
-            <!--<Button Text="≈ Stress" BackgroundColor="Red"
-                Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>-->
+            <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Stress}" BackgroundColor="Red"
+                Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
 
             <ContentView>
                 <OnPlatform x:TypeArguments="View">

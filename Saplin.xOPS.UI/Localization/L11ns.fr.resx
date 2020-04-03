@@ -187,4 +187,7 @@ Vous pouvez en savoir plus sur les versions d'application et de téléchargement
   <data name="AveragesOne" xml:space="preserve">
     <value>1 test</value>
   </data>
+   <data name="Stress" xml:space="preserve">
+    <value>≈ Stress</value>
+  </data>
 </root>

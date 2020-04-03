@@ -187,4 +187,7 @@ FPU和ALU测试都在单线程和多线程模式下执行，它们反映了CPU�
   <data name="AveragesOne" xml:space="preserve">
     <value>1个测试</value>
   </data>
+  <data name="Stress" xml:space="preserve">
+    <value>≈ 压力测试</value>
+  </data>
 </root>

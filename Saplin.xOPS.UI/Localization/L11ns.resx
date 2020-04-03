@@ -187,4 +187,7 @@ Read more about the app and downlpad other platform versions ( Android/ChromeOS,
   <data name="AveragesOne" xml:space="preserve">
     <value>1 test</value>
   </data>
+  <data name="Stress" xml:space="preserve">
+    <value>≈ Stress</value>
+  </data>
 </root>
