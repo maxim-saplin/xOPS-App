@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <SynchReleaseVersion>false</SynchReleaseVersion>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -12,14 +12,33 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType></DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Huawei|AnyCPU' ">
+    <IntermediateOutputPath>obj\Release Huawei</IntermediateOutputPath>
+    <DebugType></DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>TRACE;RELEASE;HUAWEI;RELEASE_HUAWEI;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+    <NoWarn>1701;1702</NoWarn>
+    <NoStdLib>true</NoStdLib>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug Huawei|AnyCPU' ">
+    <IntermediateOutputPath>obj\Debug Huawei</IntermediateOutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;HUAWEI</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Saplin.xOPS">
-      <HintPath Condition="'$(Configuration)'=='Debug'">..\..\xOPS-Console\Saplin.xOPS\bin\Debug\netstandard2.0\Saplin.xOPS.dll</HintPath>
-      <HintPath Condition="'$(Configuration)'=='Release'">..\References\Saplin.xOPS.dll</HintPath>
+      <HintPath Condition="'$(Configuration)'=='Debug' Or '$(Configuration)'=='Debug Huawei'">..\..\xOPS-Console\Saplin.xOPS\bin\Debug\netstandard2.0\Saplin.xOPS.dll</HintPath>
+      <HintPath Condition="'$(Configuration)'=='Release' Or '$(Configuration)'=='Release Huawei'">..\References\Saplin.xOPS.dll</HintPath>
     </Reference>
     <Reference Include="Saplin.xOPS.Extra">
-      <HintPath Condition="'$(Configuration)'=='Debug'">..\..\xOPS-Extra\Saplin.xOPS.Extra\bin\Debug\netstandard2.0\Saplin.xOPS.Extra.dll</HintPath>
-      <HintPath Condition="'$(Configuration)'=='Release'">..\References\Saplin.xOPS.Extra.dll</HintPath>
+      <HintPath Condition="'$(Configuration)'=='Debug' Or '$(Configuration)'=='Debug Huawei'">..\..\xOPS-Extra\Saplin.xOPS.Extra\bin\Debug\netstandard2.0\Saplin.xOPS.Extra.dll</HintPath>
+      <HintPath Condition="'$(Configuration)'=='Release' Or '$(Configuration)'=='Release Huawei'">..\References\Saplin.xOPS.Extra.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -60,9 +60,15 @@ namespace Saplin.xOPS.UI.VirtualPages
         {
             var share = DependencyService.Get<IShareViewAsImage>();
 
+#if HUAWEI
+            var url = "https://appgallery.cloud.huawei.com/uowap/index.jsp?#/detailApp/C101914737";
+#else
+            var url = "https://play.google.com/store/apps/details?id=xcom.saplin.xOPS";
+#endif
+
             if (share != null)
             {
-                share.Share(testResults.Core, true, "xOPS CPU Benchmakrk - https://play.google.com/store/apps/details?id=xcom.saplin.xOPS");
+                share.Share(testResults.Core, true, "xOPS CPU Benchmakrk \n" + url);
                 VmLocator.OnlineDb.SendPageHit("share");
             }
         }

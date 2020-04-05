@@ -38,18 +38,19 @@ namespace Saplin.xOPS.UI.Views
             }
             catch { }
 
-            var skipAnim = true;
-
             VmLocator.TestRun.PropertyChanged += (s,e) =>
             {
-                if (e.PropertyName == nameof(VmLocator.TestRun.TestStarted) && !VmLocator.TestRun.TestStarted)
+                if (e.PropertyName == nameof(VmLocator.TestRun.TestStarted))
                 {
-
-                    skipAnim = true;
-                    fltStSmall.FadeTo(0, 5000, Easing.SpringIn);
-                    fltMtSmall.FadeTo(0, 5000, Easing.SpringIn);
-                    intStSmall.FadeTo(0, 5000, Easing.SpringIn);
-                    intMtSmall.FadeTo(0, 5000, Easing.SpringIn);
+                    if (VmLocator.TestRun.TestStarted)
+                    {
+                        ViewExtensions.CancelAnimations(fltStSmall);
+                        ViewExtensions.CancelAnimations(fltMtSmall);
+                        ViewExtensions.CancelAnimations(intStSmall);
+                        ViewExtensions.CancelAnimations(intMtSmall);
+                        fltStSmall.Opacity = fltMtSmall.Opacity
+                            = intStSmall.Opacity = intMtSmall.Opacity = 1;
+                   }
                 }
             };
 
@@ -57,16 +58,12 @@ namespace Saplin.xOPS.UI.Views
             {
                 if (e.PropertyName == nameof(VmLocator.QuickComparison.ComparedValue))
                 {
-                    if (!skipAnim)
-                    {
-                        fltStSmall.Opacity = fltMtSmall.Opacity
-                            = intStSmall.Opacity = intMtSmall.Opacity = 1;
-                        fltStSmall.FadeTo(0, 5000, Easing.SpringIn);
-                        fltMtSmall.FadeTo(0, 5000, Easing.SpringIn);
-                        intStSmall.FadeTo(0, 5000, Easing.SpringIn);
-                        intMtSmall.FadeTo(0, 5000, Easing.SpringIn);
-                    }
-                    skipAnim = false;
+                    fltStSmall.Opacity = fltMtSmall.Opacity
+                        = intStSmall.Opacity = intMtSmall.Opacity = 1;
+                    fltStSmall.FadeTo(0, 5000, Easing.SpringIn);
+                    fltMtSmall.FadeTo(0, 5000, Easing.SpringIn);
+                    intStSmall.FadeTo(0, 5000, Easing.SpringIn);
+                    intMtSmall.FadeTo(0, 5000, Easing.SpringIn);
                 }
             };
         }

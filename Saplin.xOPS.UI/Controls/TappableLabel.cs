@@ -15,6 +15,8 @@ namespace Saplin.xOPS.UI.Controls
 
         public void DoClick()
         {
+            if (!IsEnabled) return;
+
             if (AnimateOnTap) Animate();
             if (ControlToAnimateOnTap != null)
                 Animate(ControlToAnimateOnTap);
