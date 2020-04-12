@@ -23,6 +23,7 @@ namespace Saplin.xOPS.UI.ViewModels
         const string cnt_param = "cnt=";
         const string i_param = "i=";
         const string cpu_param = "cpu=";
+        const string cores_param = "cores=";
         const string ram_param = "ram=";
         const string mdl_param = "mdl=";
         const string v_param = "v=";
@@ -91,6 +92,8 @@ namespace Saplin.xOPS.UI.ViewModels
                 prms += "&" + mdl_param + Uri.EscapeUriString(di.GetModelName());
                 prms += "&" + ram_param + Uri.EscapeUriString(Math.Round(di.GetRamSizeGb(), 1).ToString());
             }
+
+            prms += "&" + cores_param + Environment.ProcessorCount;
 
             return prms;
         }
