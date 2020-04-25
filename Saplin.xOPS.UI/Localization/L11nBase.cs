@@ -223,5 +223,36 @@ namespace Saplin.xOPS.UI.ViewModels
             }
         }
 
+        public string Cancel
+        {
+            get
+            {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+
+        public string Proceed
+        {
+            get
+            {
+                return ResourceManager.GetString("Proceed", resourceCulture);
+            }
+        }
+
+        public string Achtung
+        {
+            get
+            {
+                return ResourceManager.GetString("Achtung", resourceCulture);
+            }
+        }
+
+        public string StressWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("StressWarning", resourceCulture);
+            }
+        }
     }
 }

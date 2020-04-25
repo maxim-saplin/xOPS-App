@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Media;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Platform.WPF;
 
 namespace Saplin.xOPS.WPF

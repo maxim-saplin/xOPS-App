@@ -190,4 +190,20 @@ Read more about the app and downlpad other platform versions ( Android/ChromeOS,
   <data name="Stress" xml:space="preserve">
     <value>≈ Stress</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>× Cancel</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>* Proceed</value>
+  </data>
+  <data name="Achtung" xml:space="preserve">
+    <value>⚠️ ACHTUNG!</value>
+  </data>
+  <data name="StressWarning" xml:space="preserve">
+    <value>You’re about to start a STRESS TEST. It creates increased load on CPU which may lead to overheating. During the test  your device may hang or reboot. 
+
+If hardware is in bad shape it can even be damaged
+        
+Proceed?</value>
+  </data>
 </root>

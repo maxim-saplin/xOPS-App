@@ -34,8 +34,8 @@
 
             <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Retry}" BackgroundColor="Blue"
                 Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
-            <!--<Button Text="{Binding Source={Static vm:VmLocator.L11n}, Stress}" BackgroundColor="Red"
-                Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>-->
+            <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Stress}" BackgroundColor="Red"
+                Clicked="Stress_Clicked" IsVisible="{Binding TestNotStarted}"/>
 
             <ContentView>
                 <OnPlatform x:TypeArguments="View">
@@ -76,4 +76,6 @@
              Text="{Binding Source={x:Static vm:VmLocator.Options}, ButtonCaption}" 
              Command="{Binding Source={x:Static vm:VmLocator.Options}, SwitchOptionsVisibility }"
              VerticalOptions="Center" HorizontalOptions="Center" Margin="1, 0, 0, 0" />
+
+        <vv:Achtung x:Name="achtung" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" IsVisible="False"/>
     </Grid>

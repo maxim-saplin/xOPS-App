@@ -190,4 +190,20 @@ Vous pouvez en savoir plus sur les versions d'application et de téléchargement
    <data name="Stress" xml:space="preserve">
     <value>≈ Stress</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>× Annuler</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>* Procéder</value>
+  </data>
+  <data name="Achtung" xml:space="preserve">
+    <value>⚠️ ACHTUNG!</value>
+  </data>
+  <data name="StressWarning" xml:space="preserve">
+    <value>Vous êtes sur le point de commencer un TEST DE STRESS. Cela crée une charge accrue sur le processeur, ce qui peut entraîner une surchauffe. Pendant le test, votre appareil peut se bloquer ou redémarrer.
+
+Si le matériel est en mauvais état, il peut même être endommagé.
+        
+Procéder?</value>
+  </data>
 </root>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout BackgroundColor="#88000000" xmlns:vm="clr-namespace:Saplin.xOPS.UI.ViewModels" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Saplin.xOPS.UI.Views.Achtung">
+    <Frame BackgroundColor="Red" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+           WidthRequest="300" HeightRequest="440"
+           CornerRadius="0" BorderColor="Yellow" Padding="2" >
+        <StackLayout VerticalOptions="FillAndExpand" Padding="15, 25, 15, 25">
+            <Label Text="{Binding Source={Static vm:VmLocator.L11n}, Achtung}"  FontSize="20" TextColor="Yellow" VerticalOptions="Start" HorizontalOptions="Center"/>
+            <Label HorizontalTextAlignment="Center" Text="{Binding Source={Static vm:VmLocator.L11n}, StressWarning}" TextColor="Yellow" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+            <StackLayout VerticalOptions="End" HorizontalOptions="Center" Orientation="Horizontal">
+                <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Cancel}"  BackgroundColor="Green" Clicked="Cancel_Clicked"/>
+                <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Proceed}"  BackgroundColor="#FF111111" Clicked="Cancel_Clicked"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </Frame>
+</StackLayout>

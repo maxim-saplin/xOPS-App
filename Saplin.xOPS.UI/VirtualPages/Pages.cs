@@ -18,6 +18,7 @@ namespace Saplin.xOPS.UI
             container.Register<OnlineDb>().AsSingleton();
             container.Register<MainPage>().AsSingleton();
             container.Register<About>().AsSingleton();
+            container.Register<Saplin.xOPS.UI.VirtualPages.StressTest>().AsSingleton();
         }
 
         public static HostPage _HostPage => container.Resolve<HostPage>();
@@ -25,6 +26,7 @@ namespace Saplin.xOPS.UI
         public static OnlineDb OnlineDb => onlineDbOk ? container.Resolve<OnlineDb>() : null;
         public static MainPage MainPage => container.Resolve<MainPage>();
         public static About About => container.Resolve<About>();
+        public static Saplin.xOPS.UI.VirtualPages.StressTest StressTest => container.Resolve<Saplin.xOPS.UI.VirtualPages.StressTest>();
 
         private static bool onlineDbOk = true;
 
@@ -37,6 +39,7 @@ namespace Saplin.xOPS.UI
                 _ = OnlineDb;
                 _ = MainPage;
                 _ = About;
+                _ = StressTest;
                 _HostPage.HomePage = MainPage;
 
                 Device.BeginInvokeOnMainThread(() =>
@@ -52,6 +55,7 @@ namespace Saplin.xOPS.UI
                     }
                     _HostPage.AddVirtualPage(MainPage);
                     _HostPage.AddVirtualPage(About);
+                    _HostPage.AddVirtualPage(StressTest);
                 });
                 //_HostPage.AddVirtualPage(About);
             });

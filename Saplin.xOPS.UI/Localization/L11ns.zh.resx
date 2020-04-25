@@ -190,4 +190,19 @@ FPU和ALU测试都在单线程和多线程模式下执行，它们反映了CPU�
   <data name="Stress" xml:space="preserve">
     <value>≈ 压力测试</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>× 取消</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>* 继续</value>
+  </data>
+  <data name="Achtung" xml:space="preserve">
+    <value>⚠️ 警告!</value>
+  </data>
+  <data name="StressWarning" xml:space="preserve">
+    <value>您即将开始一项压力测试。 它增加了CPU的负载，可能导致过热。 测试期间，您的设备可能会挂起或重启。
+如果硬件变形，甚至会损坏
+
+继续?</value>
+    </data>
 </root>

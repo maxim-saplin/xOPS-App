@@ -56,6 +56,11 @@ namespace Saplin.xOPS.UI.VirtualPages
             VmLocator.OnlineDb.SendPageHit("about");
         }
 
+        void Stress_Clicked(System.Object sender, System.EventArgs e)
+        {
+            achtung.IsVisible = true;
+        }
+
         void Share_Clicked(System.Object sender, System.EventArgs e)
         {
             var share = DependencyService.Get<IShareViewAsImage>();

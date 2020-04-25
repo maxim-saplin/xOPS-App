@@ -42,7 +42,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.617" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.657" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Misc\rose.png" />

@@ -196,4 +196,20 @@
  <data name="Stress" xml:space="preserve">
     <value>≈ Стресс</value>
  </data>
+ <data name="Cancel" xml:space="preserve">
+    <value>× Отмена</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>* Старт</value>
+  </data>
+  <data name="Achtung" xml:space="preserve">
+    <value>⚠️ AХТУНГ!</value>
+  </data>
+  <data name="StressWarning" xml:space="preserve">
+    <value>Вы начинаете СТРЕСС ТЕСТ. При этом создается повышенная нагрузка на процессор. Во время теста он может перегреться, устрйоство может зависнуть или перезагрузиться. 
+
+Старое/неисправное оборудование может выйти из строя.
+        
+Продолжить?</value>
+  </data>
 </root>
