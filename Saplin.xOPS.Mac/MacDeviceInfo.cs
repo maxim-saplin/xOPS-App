@@ -18,6 +18,8 @@ namespace Saplin.xOPS.UI.Mac
 
         public bool IsChromeOs => false;
 
+        public double GetCpuTemp => throw new NotImplementedException();
+
         public string GetCPU()
         {
             if (cpu == null)

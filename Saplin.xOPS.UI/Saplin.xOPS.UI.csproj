@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <SynchReleaseVersion>false</SynchReleaseVersion>
-    <Version>1.0.4</Version>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -40,15 +40,21 @@
       <HintPath Condition="'$(Configuration)'=='Debug' Or '$(Configuration)'=='Debug Huawei'">..\..\xOPS-Extra\Saplin.xOPS.Extra\bin\Debug\netstandard2.0\Saplin.xOPS.Extra.dll</HintPath>
       <HintPath Condition="'$(Configuration)'=='Release' Or '$(Configuration)'=='Release Huawei'">..\References\Saplin.xOPS.Extra.dll</HintPath>
     </Reference>
+    <Reference Include="Saplin.TimeSeries.Xamarin">
+      <HintPath Condition="'$(Configuration)'=='Release' Or '$(Configuration)'=='Release Huawei'">..\References\Saplin.TimeSeries.Xamarin.dll</HintPath>
+       <HintPath Condition="'$(Configuration)'=='Debug' Or '$(Configuration)'=='Debug Huawei'">..\..\TimeSeries-Xamarin\Saplin.TimeSeries.Xamarin\bin\Debug\netstandard2.0\Saplin.TimeSeries.Xamarin.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.657" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Misc\rose.png" />
+    <None Remove="Misc\SourceCodePro-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Misc\rose.png" />
+    <EmbeddedResource Include="Misc\SourceCodePro-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="App %28copy%29.xaml.cs" />

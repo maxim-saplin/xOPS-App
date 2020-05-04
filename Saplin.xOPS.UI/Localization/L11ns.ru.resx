@@ -212,4 +212,10 @@
         
 Продолжить?</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>« Назад</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>@ Стоп</value>
+  </data>
 </root>

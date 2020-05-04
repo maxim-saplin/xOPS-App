@@ -13,5 +13,11 @@ namespace Saplin.xOPS.UI.Views
         {
             IsVisible = false;
         }
+
+        void Proceed_Clicked(System.Object sender, System.EventArgs e)
+        {
+            IsVisible = false;
+            Pages.ShowPage(Pages.StressTest);
+        }
     }
 }

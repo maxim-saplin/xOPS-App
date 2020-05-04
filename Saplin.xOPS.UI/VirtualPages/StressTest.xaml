@@ -1,4 +1,60 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Grid xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Saplin.xOPS.UI.VirtualPages.StressTest">
- 
+<Grid
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Saplin.xOPS.UI.ViewModels"
+    xmlns:cn2="clr-namespace:Saplin.TimeSeries.Xamarin;assembly=Saplin.TimeSeries.Xamarin"
+    x:Class="Saplin.xOPS.UI.VirtualPages.StressTest"
+    BindingContext="{x:Static vm:VmLocator.StressTest}"
+    Padding="0,20,0,0">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="55" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <!-- Odd bug in Grid layout, crash happens if this control is not hidden upon startup -->
+    <cn2:TimeSeries x:Name="gflopsSeries" Style="{StaticResource StressGraph}" IsVisible="False" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   HorizontalOptions="Fill" VerticalOptions="Fill" Min="0" Series="{Binding Gflops}" UpdateTrigger="{Binding UpdateCounter}">
+        <Label Style="{StaticResource GraphLabel}" Text="{Binding GflopsLabel}"/>
+    </cn2:TimeSeries>
+
+    <cn2:TimeSeries x:Name="ginopsSeries" Style="{StaticResource StressGraph}" IsVisible="False" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                   HorizontalOptions="Fill" VerticalOptions="Fill" Min="0" Series="{Binding Ginops}" UpdateTrigger="{Binding UpdateCounter}">
+        <Label Style="{StaticResource GraphLabel}" Text="{Binding GinopsLabel}"/>
+    </cn2:TimeSeries>
+
+    <cn2:TimeSeries x:Name="tempSeries" Style="{StaticResource StressGraph}" IsVisible="False" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                    HorizontalOptions="Fill" VerticalOptions="Fill" Series="{Binding Temp}" UpdateTrigger="{Binding UpdateCounter}"
+                    AbovePointChar=" " BelowPointChar="·">
+        <Label Style="{StaticResource GraphLabel}" Text="{Binding TempLabel}"/>
+    </cn2:TimeSeries>
+
+    <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="End"
+                     HorizontalOptions="Center" Margin="5,0,0,25">
+
+        <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Stop}" BackgroundColor="Red" HorizontalOptions="Center"
+                IsVisible="{Binding TestStarted}"
+                Command="{Binding Stop}"/>
+        <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Back}" BackgroundColor="Green"
+                Clicked="Back_Clicked" IsVisible="{Binding TestNotStarted}"/>
+        <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Retry}" BackgroundColor="Blue"
+                IsVisible="{Binding TestNotStarted}"
+                Command="{Binding Retry}"/>
+
+        <ContentView IsVisible="{Binding TestNotStarted}" >
+            <OnPlatform x:TypeArguments="View">
+                <On Platform="Android">
+                    <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Share}" BackgroundColor="Green" 
+                            Clicked="Share_Clicked" />
+                </On>
+            </OnPlatform>
+        </ContentView>
+
+    </StackLayout>
 </Grid>

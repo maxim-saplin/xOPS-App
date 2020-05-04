@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saplin.xOPS.Mac", "Saplin.xOPS.Mac\Saplin.xOPS.Mac.csproj", "{E85432D7-FED2-41E7-BE84-5C09DDA84630}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saplin.xOPS.UI", "Saplin.xOPS.UI\Saplin.xOPS.UI.csproj", "{22AB2BE1-1E83-459B-86B1-1387F4A30FD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saplin.xOPS.UI", "Saplin.xOPS.UI\Saplin.xOPS.UI.csproj", "{22AB2BE1-1E83-459B-86B1-1387F4A30FD7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saplin.xOPS.Android", "Saplin.xOPS.Android\Saplin.xOPS.Android.csproj", "{30FAAC84-AA73-482F-A80B-ED150DDD119F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saplin.xOPS.WPF", "Saplin.xOPS.WPF\Saplin.xOPS.WPF.csproj", "{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Saplin.xOPS.WPF", "Saplin.xOPS.WPF\Saplin.xOPS.WPF.csproj", "{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,22 +67,22 @@ Global
 		{30FAAC84-AA73-482F-A80B-ED150DDD119F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{30FAAC84-AA73-482F-A80B-ED150DDD119F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{30FAAC84-AA73-482F-A80B-ED150DDD119F}.Release|x64.ActiveCfg = Release|Any CPU
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Debug Huawei|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Debug Huawei|Any CPU.Build.0 = Debug|Any CPU
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Debug Huawei|x64.ActiveCfg = Debug|x64
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Debug Huawei|x64.Build.0 = Debug|x64
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Debug|x64.ActiveCfg = Debug|x64
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Debug|x64.Build.0 = Debug|x64
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Release Huawei|Any CPU.ActiveCfg = Release|Any CPU
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Release Huawei|Any CPU.Build.0 = Release|Any CPU
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Release Huawei|x64.ActiveCfg = Release|x64
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Release Huawei|x64.Build.0 = Release|x64
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Release|x64.ActiveCfg = Release|x64
-		{8EFB4A48-F01D-4C26-BE83-8D5699ECCF16}.Release|x64.Build.0 = Release|x64
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Debug Huawei|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Debug Huawei|Any CPU.Build.0 = Debug|Any CPU
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Debug Huawei|x64.ActiveCfg = Debug|x64
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Debug Huawei|x64.Build.0 = Debug|x64
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Debug|x64.ActiveCfg = Debug|x64
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Debug|x64.Build.0 = Debug|x64
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Release Huawei|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Release Huawei|Any CPU.Build.0 = Release|Any CPU
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Release Huawei|x64.ActiveCfg = Release|x64
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Release Huawei|x64.Build.0 = Release|x64
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Release|x64.ActiveCfg = Release|x64
+		{EDD3D65E-D480-414D-9C2C-F87D6BA5D2C7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

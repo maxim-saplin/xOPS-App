@@ -32,10 +32,10 @@
         <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="End"
                      HorizontalOptions="Center" Margin="5,0,0,25">
 
-            <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Retry}" BackgroundColor="Blue"
-                Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
             <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Stress}" BackgroundColor="Red"
                 Clicked="Stress_Clicked" IsVisible="{Binding TestNotStarted}"/>
+            <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Retry}" BackgroundColor="Blue"
+                Command="{Binding Retry}" IsVisible="{Binding TestNotStarted}"/>
 
             <ContentView>
                 <OnPlatform x:TypeArguments="View">
@@ -45,7 +45,6 @@
                     </On>
                 </OnPlatform>
             </ContentView>
-
 
         </StackLayout>
 

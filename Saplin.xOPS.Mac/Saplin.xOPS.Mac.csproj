@@ -117,20 +117,10 @@
     <Compile Include="MacDeviceInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Fonts\IBMPlexMono-Thin.ttf" />
-    <BundleResource Include="Resources\Fonts\IBMPlexMono-Bold.ttf" />
-    <BundleResource Include="Resources\Fonts\IBMPlexMono-MediumItalic.ttf" />
-    <BundleResource Include="Resources\Fonts\IBMPlexMono-BoldItalic.ttf" />
     <BundleResource Include="Resources\Fonts\IBMPlexMono-Medium.ttf" />
-    <BundleResource Include="Resources\Fonts\IBMPlexMono-ExtraLight.ttf" />
-    <BundleResource Include="Resources\Fonts\IBMPlexMono-ExtraLightItalic.ttf" />
-    <BundleResource Include="Resources\Fonts\IBMPlexMono-ThinItalic.ttf" />
     <BundleResource Include="Resources\Fonts\IBMPlexMono-Regular.ttf" />
-    <BundleResource Include="Resources\Fonts\IBMPlexMono-Light.ttf" />
     <BundleResource Include="Resources\Fonts\IBMPlexMono-Italic.ttf" />
-    <BundleResource Include="Resources\Fonts\IBMPlexMono-SemiBold.ttf" />
-    <BundleResource Include="Resources\Fonts\IBMPlexMono-SemiBoldItalic.ttf" />
-    <BundleResource Include="Resources\Fonts\IBMPlexMono-LightItalic.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceCodePro-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Saplin.xOPS.UI\Saplin.xOPS.UI.csproj">

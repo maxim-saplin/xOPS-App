@@ -254,5 +254,21 @@ namespace Saplin.xOPS.UI.ViewModels
                 return ResourceManager.GetString("StressWarning", resourceCulture);
             }
         }
+
+        public string Back
+        {
+            get
+            {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+
+        public string Stop
+        {
+            get
+            {
+                return ResourceManager.GetString("Stop", resourceCulture);
+            }
+        }
     }
 }

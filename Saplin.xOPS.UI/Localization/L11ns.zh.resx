@@ -204,5 +204,11 @@ FPU和ALU测试都在单线程和多线程模式下执行，它们反映了CPU�
 如果硬件变形，甚至会损坏
 
 继续?</value>
-    </data>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>« 背部</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>@ 停止</value>
+  </data>
 </root>

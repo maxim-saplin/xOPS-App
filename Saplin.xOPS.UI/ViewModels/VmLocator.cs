@@ -16,6 +16,7 @@ namespace Saplin.xOPS.UI.ViewModels
             container.Register<OnlineDb>().AsSingleton();
             container.Register<QuickComparison>().AsSingleton();
             container.Register<TestRun>().AsSingleton();
+            container.Register<StressTest>().AsSingleton();
         }
 
         public static L11n L11n => container.Resolve<L11n>();
@@ -23,6 +24,7 @@ namespace Saplin.xOPS.UI.ViewModels
         public static Options Options => container.Resolve<Options>();
         public static QuickComparison QuickComparison => container.Resolve<QuickComparison>();
         public static OnlineDb OnlineDb => container.Resolve<OnlineDb>();
+        public static StressTest StressTest => container.Resolve<StressTest>();
 
         public static Task EagerCreateViewModels()
         {
@@ -33,6 +35,7 @@ namespace Saplin.xOPS.UI.ViewModels
                 _ = OnlineDb;
                 _ = QuickComparison;
                 _ = TestRun;
+                _ = StressTest;
             });
         }
     }

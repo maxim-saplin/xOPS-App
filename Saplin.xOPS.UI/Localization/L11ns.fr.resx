@@ -206,4 +206,10 @@ Si le matériel est en mauvais état, il peut même être endommagé.
         
 Procéder?</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>« Retour</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>@ Arrêt</value>
+  </data>
 </root>

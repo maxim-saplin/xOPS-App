@@ -7,5 +7,6 @@ namespace Saplin.xOPS.UI.Misc
         string GetCPU();
         float GetRamSizeGb();
         bool IsChromeOs { get; }
+        double GetCpuTemp();
     }
 }

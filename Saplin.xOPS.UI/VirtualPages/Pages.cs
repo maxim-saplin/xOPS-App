@@ -32,7 +32,7 @@ namespace Saplin.xOPS.UI
 
         public static void SetOnlineDbOk(bool ok) => onlineDbOk = ok;
 
-        private static Task EagerCreatePages()
+        private static Task CreatePagesAsync()
         {
             return Task.Run(() =>
             {
@@ -57,7 +57,6 @@ namespace Saplin.xOPS.UI
                     _HostPage.AddVirtualPage(About);
                     _HostPage.AddVirtualPage(StressTest);
                 });
-                //_HostPage.AddVirtualPage(About);
             });
         }
 
@@ -68,7 +67,7 @@ namespace Saplin.xOPS.UI
             if (!init)
             {
                 _HostPage.AddVirtualPage(StartPage);
-                EagerCreatePages();
+                CreatePagesAsync();
                 init = true;
             }
         }

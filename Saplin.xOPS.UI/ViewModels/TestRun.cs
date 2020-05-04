@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Saplin.xOPS.UI.Misc;
 using Xamarin.Forms;
 
 namespace Saplin.xOPS.UI.ViewModels
@@ -52,6 +53,7 @@ namespace Saplin.xOPS.UI.ViewModels
         public void StartTest()
         {
             VmLocator.OnlineDb.SendPageHit("start");
+            ScreenOn.Enable();
 
             const int iterations = 50 * 1000 * 1000;
 
@@ -99,6 +101,7 @@ namespace Saplin.xOPS.UI.ViewModels
                  {
                     Device.BeginInvokeOnMainThread(() =>
                     {
+                        ScreenOn.Disable();
                         TestNotStarted = true;
                         if (!breakTest && RecentFloatSingleThreaded.HasValue)
                         {
@@ -147,6 +150,7 @@ namespace Saplin.xOPS.UI.ViewModels
             compute?.BreakExecution();
             TestInterrupted = true;
             VmLocator.OnlineDb.SendPageHit("break");
+            ScreenOn.Disable();
         }
 
         private bool testNotStarted = true;

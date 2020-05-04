@@ -206,4 +206,10 @@ If hardware is in bad shape it can even be damaged
         
 Proceed?</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>« Back</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>@ Stop</value>
+  </data>
 </root>
