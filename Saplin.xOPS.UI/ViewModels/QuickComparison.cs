@@ -83,7 +83,7 @@ namespace Saplin.xOPS.UI.ViewModels
                     s = "-"+s.TrimStart(new char[] { '-', '0' });
                 }
 
-                s = s.Replace("-", "⁻")
+                s = s.Replace("-", "¯")
                     .Replace("0", "⁰")
                     .Replace("1", "¹")
                     .Replace("2", "²")
@@ -108,7 +108,12 @@ namespace Saplin.xOPS.UI.ViewModels
             {
                 if (ComparedValue == null) return null;
 
-                var res = ReferenceRecords.Select(i => GetComparisonValue(i) + " " + i.Name);
+                var res = ReferenceRecords.Select(i => GetComparisonValue(i) + " " + i.Name).ToArray<string>();
+
+                var maxLength = res.Max(i => i.Length);
+
+                for (int i = 0; i < res.Length; i++)
+                    if (i % 2 == 0) res[i] = res[i].PadRight(maxLength) + " →";
 
                 return res;
             }

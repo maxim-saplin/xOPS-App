@@ -206,7 +206,7 @@
     <value>⚠️ AХТУНГ!</value>
   </data>
   <data name="StressWarning" xml:space="preserve">
-    <value>Вы начинаете СТРЕСС ТЕСТ. При этом создается повышенная нагрузка на процессор. Во время теста он может перегреться, устрйоство может зависнуть или перезагрузиться. 
+    <value>Вы начинаете СТРЕСС ТЕСТ. При этом создается повышенная нагрузка на процессор. Во время теста он может перегреться, устройоство может зависнуть или перезагрузиться. 
 
 Старое/неисправное оборудование может выйти из строя.
         
@@ -218,4 +218,28 @@
   <data name="Stop" xml:space="preserve">
     <value>@ Стоп</value>
   </data>
+  <data name="threads" xml:space="preserve">
+    <value>потоков</value>
+  </data>
+  <data name="WarmingUp" xml:space="preserve">
+    <value>Разогреваемся</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Начало</value>
+  </data>
+  <data name="Now" xml:space="preserve">
+    <value>Сейчас</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Конец</value>
+  </data>
+  <data name="TempNotAvailable" xml:space="preserve">
+    <value>Температура недоступна</value>
+  </data>
+  <data name="First5Secs" xml:space="preserve">
+    <value>Первые 5 секунд</value>
+  </data>    
+  <data name="Last5Secs" xml:space="preserve">
+    <value>Последние 5 секунд</value>
+  </data>  
 </root>

@@ -6,7 +6,7 @@ namespace Saplin.xOPS.UI.VirtualPages
 {
     public partial class StartPage : StackLayout, IAppearing
     {
-        private int countdown = 2;
+        private int countdown = 3;
 
         public StartPage()
         {
@@ -40,10 +40,10 @@ namespace Saplin.xOPS.UI.VirtualPages
                             countdownLabel.Text = VmLocator.L11n.CountdownOne;
                         else countdownLabel.Text = string.Format(VmLocator.L11n.CountdownMany, countdown);
 
-                        if (padTo == 0) padTo = countdownLabel.Text.Length + countdown;
-
-                        for (int i = 0; i < countdown; i++)
-                            countdownLabel.Text += ".";
+                        if (padTo == 0)
+                        {
+                            padTo = countdownLabel.Text.Length;
+                        }
 
                         if (padTo != countdownLabel.Text.Length)
                             countdownLabel.Text = countdownLabel.Text.PadRight(padTo, ' ');

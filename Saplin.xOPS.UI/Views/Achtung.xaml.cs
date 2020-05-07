@@ -9,6 +9,8 @@ namespace Saplin.xOPS.UI.Views
             InitializeComponent();
         }
 
+        public bool ProceedClicked { get; private set; } = false;
+
         void Cancel_Clicked(System.Object sender, System.EventArgs e)
         {
             IsVisible = false;
@@ -17,6 +19,7 @@ namespace Saplin.xOPS.UI.Views
         void Proceed_Clicked(System.Object sender, System.EventArgs e)
         {
             IsVisible = false;
+            ProceedClicked = true;
             Pages.ShowPage(Pages.StressTest);
         }
     }

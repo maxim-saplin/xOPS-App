@@ -31,6 +31,12 @@
             <On Platform="WPF" Value="./Fonts/IBMPlexMono-Regular.ttf#IBM Plex Mono, 12" />
             <On Platform="Android" Value="IBMPlexMono-Regular.ttf#IBMPlexMono-Regular, 12" />
         </OnPlatform>
+        <OnPlatform x:TypeArguments="Font" x:Key="FontMedium">
+            <On Platform="macOS" Value="IBM Plex Mono, 13" />
+            <On Platform="iOS" Value="IBM Plex Mono, 13" />
+            <On Platform="WPF" Value="./Fonts/IBMPlexMono-Regular.ttf#IBM Plex Mono, 13" />
+            <On Platform="Android" Value="IBMPlexMono-Regular.ttf#IBMPlexMono-Regular, 13" />
+        </OnPlatform>
         <OnPlatform x:TypeArguments="Font" x:Key="FontBold">
             <On Platform="macOS" Value="IBM Plex Mono Medium, 15" />
             <On Platform="iOS" Value="IBM Plex Mono, Bold, 16" />
@@ -42,6 +48,12 @@
             <On Platform="iOS" Value="IBM Plex Mono" />
             <On Platform="WPF" Value="./Fonts/IBMPlexMono-Regular.ttf#IBM Plex Mono" />
             <On Platform="Android" Value="SourceCodePro" />
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontFamilyBold">
+            <On Platform="macOS" Value="IBM Plex Mono Medium" />
+            <On Platform="iOS" Value="IBM Plex Mono, Bold" />
+            <On Platform="WPF" Value="./Fonts/IBMPlexMono-Medium.ttf#IBM Plex Mono Medium" />
+            <On Platform="Android" Value="IBMPlexMono-Medium.ttf#IBMPlexMono-Medium" />
         </OnPlatform>
         <!-- LABELS -->
         <Style TargetType="Label" ApplyToDerivedTypes="True">
@@ -57,8 +69,8 @@
             <Setter Property="Font" Value="{StaticResource FontBold}" />
         </Style>
         <Style x:Key="ComparisonLabel" TargetType="Label" >
-            <Setter Property="TextColor" Value="Gray" />
-            <Setter Property="Font" Value="{StaticResource FontSmall}" />
+            <Setter Property="TextColor" Value="Red" />
+            <Setter Property="Font" Value="{StaticResource FontMedium}" />
         </Style>
         <Style x:Key="OptionLabel" TargetType="Label" ApplyToDerivedTypes="True">
             <Setter Property="Font" Value="{StaticResource FontNormal}" />
@@ -106,7 +118,7 @@
          </Style>
         <Style x:Key="GraphLabel" TargetType="Label">
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="Font" Value="{StaticResource FontSmall}" />
+            <Setter Property="Font" Value="{StaticResource FontMedium}" />
             <Setter Property="BackgroundColor" Value="#65000000" />
             <Setter Property="Padding" Value="5,5,5,5"/>
             <Setter Property="Margin" Value="0,0,0,25"/>

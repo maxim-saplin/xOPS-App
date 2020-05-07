@@ -48,6 +48,15 @@ namespace Saplin.xOPS.UI
 
         protected override void OnSleep()
         {
+            if (VmLocator.TestRun.TestStarted)
+            {
+                VmLocator.TestRun.BreakTest();
+            }
+
+            if (VmLocator.StressTest.TestStarted)
+            {
+                VmLocator.StressTest.StopTest();
+            }
         }
 
         protected override void OnResume()

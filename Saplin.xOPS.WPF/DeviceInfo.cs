@@ -39,6 +39,11 @@ namespace Saplin.xOPS.WPF
             return cpu;
         }
 
+        public double GetCpuTemp()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public string GetModelName()
         {
             if (model == null)

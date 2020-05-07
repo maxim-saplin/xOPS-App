@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
 
         <cn:TappableLabel Grid.Row="1" Text="&#10; ? → &#10;" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
-             Clicked="AboutLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 0, 0, 0"/>
+             Clicked="AboutLabel_Clicked" VerticalOptions="Center" HorizontalOptions="Start" Margin="0, 0, 0, 0"/>
 
         <Label Text="{Binding Source={Static vm:VmLocator.L11n}, Running}"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding ShowRunning}"/>
         <Label Text="{Binding Source={Static vm:VmLocator.L11n}, TestInterrupted}"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,55" IsVisible="{Binding TestInterrupted}"/>
@@ -74,7 +74,7 @@
         <cn:TappableLabel  Grid.Row="2" Grid.Column="3" IsVisible="{Binding TestNotStarted}" Style="{StaticResource NavLabel}"
              Text="{Binding Source={x:Static vm:VmLocator.Options}, ButtonCaption}" 
              Command="{Binding Source={x:Static vm:VmLocator.Options}, SwitchOptionsVisibility }"
-             VerticalOptions="Center" HorizontalOptions="Center" Margin="1, 0, 0, 0" />
+             VerticalOptions="Center" HorizontalOptions="Start" Margin="1, 0, 0, 0" />
 
         <vv:Achtung x:Name="achtung" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" IsVisible="False"/>
     </Grid>

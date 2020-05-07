@@ -270,5 +270,70 @@ namespace Saplin.xOPS.UI.ViewModels
                 return ResourceManager.GetString("Stop", resourceCulture);
             }
         }
+
+        public string threads
+        {
+            get
+            {
+                return ResourceManager.GetString("threads", resourceCulture);
+            }
+        }
+
+        public string WarmingUp
+        {
+            get
+            {
+                return ResourceManager.GetString("WarmingUp", resourceCulture);
+            }
+        }
+
+
+        public string Start
+        {
+            get
+            {
+                return ResourceManager.GetString("Start", resourceCulture);
+            }
+        }
+
+        public string Now
+        {
+            get
+            {
+                return ResourceManager.GetString("Now", resourceCulture);
+            }
+        }
+
+        public string End
+        {
+            get
+            {
+                return ResourceManager.GetString("End", resourceCulture);
+            }
+        }
+
+        public string TempNotAvailable
+        {
+            get
+            {
+                return ResourceManager.GetString("TempNotAvailable", resourceCulture);
+            }
+        }
+
+        public string First5Secs
+        {
+            get
+            {
+                return ResourceManager.GetString("First5Secs", resourceCulture);
+            }
+        }
+
+        public string Last5Secs
+        {
+            get
+            {
+                return ResourceManager.GetString("Last5Secs", resourceCulture);
+            }
+        }
     }
 }

@@ -18,8 +18,6 @@ namespace Saplin.xOPS.UI.Mac
 
         public bool IsChromeOs => false;
 
-        public double GetCpuTemp => throw new NotImplementedException();
-
         public string GetCPU()
         {
             if (cpu == null)
@@ -89,6 +87,11 @@ namespace Saplin.xOPS.UI.Mac
             }
 
             return ram.Value;
+        }
+
+        double IDeviceInfo.GetCpuTemp()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -49,8 +49,10 @@ namespace Saplin.xOPS.UI.VirtualPages
 
             if (share != null)
             {
-                //share.Share(testResults.Core, true, "xOPS CPU Benchmakrk \n" + url);
-                VmLocator.OnlineDb.SendPageHit("share");
+                buttons.IsVisible = false;
+                share.Share(this, true, "xOPS CPU Benchmakrk \n" + url);
+                VmLocator.OnlineDb.SendPageHit("shareStress");
+                buttons.IsVisible = true;
             }
         }
     }

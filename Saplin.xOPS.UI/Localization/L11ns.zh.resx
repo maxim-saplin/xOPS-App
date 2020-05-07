@@ -211,4 +211,28 @@ FPU和ALU测试都在单线程和多线程模式下执行，它们反映了CPU�
   <data name="Stop" xml:space="preserve">
     <value>@ 停止</value>
   </data>
+  <data name="threads" xml:space="preserve">
+    <value>运作</value>
+  </data>
+  <data name="WarmingUp" xml:space="preserve">
+    <value>热身</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="Now" xml:space="preserve">
+    <value>现在</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>结束</value>
+  </data>
+  <data name="TempNotAvailable" xml:space="preserve">
+    <value>温度不可用</value>
+  </data>
+  <data name="First5Secs" xml:space="preserve">
+    <value>前5秒</value>
+  </data>    
+  <data name="Last5Secs" xml:space="preserve">
+    <value>持续5秒</value>
+  </data>  
 </root>

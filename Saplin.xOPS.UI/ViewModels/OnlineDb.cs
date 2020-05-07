@@ -57,24 +57,6 @@ namespace Saplin.xOPS.UI.ViewModels
             Initialized = true;
         }
 
-        private ICommand compare;
-        public ICommand Compare
-        {
-            get
-            {
-                if (compare == null)
-                    compare = new Command((object param) =>
-                    {
-                        var run = param as TestRun;
-                        PreLoadComparison(run, VmLocator.Options);
-                        //IsVisible = true;
-                        SendPageHit("compareResults");
-                    });
-
-                return compare;
-            }
-        }
-
         private const string d_param_format = "ddMMyyHHmmss";
 
         private string GetEnvParams()
@@ -292,13 +274,13 @@ namespace Saplin.xOPS.UI.ViewModels
             return url != webViewUrl;
         }
 
-        public void SendPageHit(string param)
+        public void SendPageHit(string actionName)
         {
             if (!navigatedNotSuccesfully)
                 try // WPF might fail with an unhandled exception if there's no document loaded
                 {
                     webView?.EvaluateJavaScriptAsync(
-                        "gtag('config', 'UA-17809502-3', {page_location:location.toString()+'" + "&" + param + "=" + DateTime.UtcNow.ToString(d_param_format) + "'});");
+                        "gtag('config', 'UA-17809502-3', {page_location:location.toString()+'" + "&" + actionName + "=" + DateTime.UtcNow.ToString(d_param_format) + "'});");
                 }
                 catch { };
         }

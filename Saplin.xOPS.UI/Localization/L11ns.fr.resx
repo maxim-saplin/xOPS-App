@@ -212,4 +212,28 @@ Procéder?</value>
   <data name="Stop" xml:space="preserve">
     <value>@ Arrêt</value>
   </data>
+  <data name="threads" xml:space="preserve">
+    <value>threads</value>
+  </data>
+  <data name="WarmingUp" xml:space="preserve">
+    <value>Échauffement</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Début</value>
+  </data>
+  <data name="Now" xml:space="preserve">
+    <value>Maintenant</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="TempNotAvailable" xml:space="preserve">
+    <value>Température non disponible</value>
+  </data>
+  <data name="First5Secs" xml:space="preserve">
+    <value>5 premières secondes</value>
+  </data>    
+  <data name="Last5Secs" xml:space="preserve">
+    <value>5 dernières secondes</value>
+  </data>  
 </root>

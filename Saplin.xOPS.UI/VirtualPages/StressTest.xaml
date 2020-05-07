@@ -35,7 +35,7 @@
         <Label Style="{StaticResource GraphLabel}" Text="{Binding TempLabel}"/>
     </cn2:TimeSeries>
 
-    <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="End"
+    <StackLayout x:Name="buttons" Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="End"
                      HorizontalOptions="Center" Margin="5,0,0,25">
 
         <Button Text="{Binding Source={Static vm:VmLocator.L11n}, Stop}" BackgroundColor="Red" HorizontalOptions="Center"

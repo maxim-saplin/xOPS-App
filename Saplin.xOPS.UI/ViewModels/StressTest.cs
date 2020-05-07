@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Saplin.xOPS.UI.Misc;
 using Xamarin.Forms;
 
@@ -19,16 +20,21 @@ namespace Saplin.xOPS.UI.ViewModels
         Saplin.xOPS.StressTest stressTest;
         Stopwatch sw = new Stopwatch();
 
+        const int samplingMs = 500;
+        const int smoothing = 2;
+        const int warmUpSample = 7;
+
         public void StartTest()
         {
+            VmLocator.OnlineDb.SendPageHit("stressStart");
             ScreenOn.Enable();
             TestNotStarted = false;
             UpdateCounter = 0;
 
-            stressTest = new Saplin.xOPS.StressTest(Environment.ProcessorCount, true, true) { SamplingPeriodMs = 500, WarmpUpSamples = 7 };
+            stressTest = new Saplin.xOPS.StressTest(samplingMs, smoothing, warmUpSample, Environment.ProcessorCount, true, true);
 
-            Gflops = stressTest.GflopsResults?.Results;
-            Ginops = stressTest.GinopsResults?.Results;
+            Gflops = stressTest.GflopsResults?.SmoothResults;
+            Ginops = stressTest.GinopsResults?.SmoothResults;
             Temp = null;
 
             var di = DependencyService.Get<IDeviceInfo>();
@@ -41,68 +47,81 @@ namespace Saplin.xOPS.UI.ViewModels
             }
             catch { }
 
+            var tempText = string.Empty;
+
+            if (Temp == null)
+            {
+                tempText = TempLabel = VmLocator.L11n.TempNotAvailable + "\n";
+            }
+
             RaisePropertyChanged(nameof(Gflops));
             RaisePropertyChanged(nameof(Ginops));
 
-            var label1 = "Start: {1:0.00} {0}\nNow: {2:0.00} {0}\nSmoothing by {3} points";
+            var label1 = VmLocator.L11n.Start + ": {1:0.00} {0}\n" + VmLocator.L11n.Now + ": {2:0.00} {0}";
             var label2 = "{1:0.00} {0}\n{2:0.00}%";
+
+            var prevCount = 0;
 
             stressTest.ResultsUpdated += (e) =>
             {
                 if (stressTest.WarmpingUp)
                 {
-                    GflopsLabel = GinopsLabel = TempLabel = "Warming up...";
+                    GflopsLabel = GinopsLabel = Environment.ProcessorCount + " "+VmLocator.L11n.threads+" \n" + VmLocator.L11n.WarmingUp + "...";
+                    TempLabel = VmLocator.L11n.WarmingUp + "...";
                 }
                 else
                 {
-                    
+                    var count = Gflops != null ? Gflops.Count
+                        : Ginops != null ? Ginops.Count : 0;
 
-                    if (stressTest.GflopsResults != null)
+                    if (prevCount != count)
                     {
-                        GflopsLabel = UpdateCounter < 10 ?
-                            string.Format(label1,
-                                "GFLOPS",
-                                stressTest.GflopsResults.StartValue,
-                                stressTest.GflopsResults.CurrentValue,
-                                stressTest.SmoothingPoints) :
-                            string.Format(label2,
-                                "GFLOPS",
-                                stressTest.GflopsResults.CurrentValue,
-                                ((stressTest.GflopsResults.CurrentValue - stressTest.GflopsResults.StartValue) / stressTest.GflopsResults.StartValue * 100));
-                    }
+                        prevCount = count;
 
-                    if (stressTest.GinopsResults != null)
-                    {
-                        GinopsLabel = UpdateCounter < 14 ?
-                            string.Format(label1,
-                                "GINOPS",
-                                stressTest.GinopsResults.StartValue,
-                                stressTest.GinopsResults.CurrentValue,
-                                stressTest.SmoothingPoints) :
-                            string.Format(label2,
-                                "GINOPS",
-                                stressTest.GinopsResults.CurrentValue,
-                                ((stressTest.GinopsResults.CurrentValue - stressTest.GinopsResults.StartValue) / stressTest.GinopsResults.StartValue * 100));
-                    }
-
-                    if (Temp != null)
-                    {
-                        try
+                        if (stressTest.GflopsResults != null)
                         {
-                            var temp = di.GetCpuTemp();
-                            Temp.Add(temp);
-                            TempLabel = "CPU "+ temp.ToString("0.0") + "°C "
-                             + (temp > Temp[0] ? "↑"+(temp-Temp[0]).ToString("0.0") + "°C"
-                             : "↓" + (Temp[0]- temp).ToString("0.0") + "°C")
-                              +"\n"+sw.Elapsed.Minutes + ":" + sw.Elapsed.Seconds.ToString("00");
+                            GflopsLabel = UpdateCounter < 10 ?
+                                string.Format(label1,
+                                    "GFLOPS",
+                                    stressTest.GflopsResults.StartSmooth,
+                                    stressTest.GflopsResults.CurrentSmooth) :
+                                string.Format(label2,
+                                    "GFLOPS",
+                                    stressTest.GflopsResults.CurrentSmooth,
+                                    ((stressTest.GflopsResults.CurrentSmooth - stressTest.GflopsResults.StartSmooth) / stressTest.GflopsResults.StartSmooth * 100));
                         }
-                        catch { };
-                    }
-                    else
-                        TempLabel = "Temperature not available\n"
-                            + sw.Elapsed.Minutes + ":" + sw.Elapsed.Seconds.ToString("00");
 
-                    Update();
+                        if (stressTest.GinopsResults != null)
+                        {
+                            GinopsLabel = UpdateCounter < 14 ?
+                                string.Format(label1,
+                                    "GINOPS",
+                                    stressTest.GinopsResults.StartSmooth,
+                                    stressTest.GinopsResults.CurrentSmooth) :
+                                string.Format(label2,
+                                    "GINOPS",
+                                    stressTest.GinopsResults.CurrentSmooth,
+                                    ((stressTest.GinopsResults.CurrentSmooth - stressTest.GinopsResults.StartSmooth) / stressTest.GinopsResults.StartSmooth * 100));
+                        }
+
+                        if (Temp != null)
+                        {
+                            try
+                            {
+                                var temp = di.GetCpuTemp();
+                                Temp.Add(temp);
+                                tempText = "CPU " + temp.ToString("0.0") + "°C "
+                                 + (temp > Temp[0] ? "↑" : "↓")
+                                 + (temp - Temp[0]).ToString("0.0") + "°C";
+
+                            }
+                            catch { };
+                        }                            
+
+                        Update();
+                    }
+
+                    TempLabel = tempText + "\n" + sw.Elapsed.Minutes + (UpdateCounter % 2 == 0 ? ":" : ".") + sw.Elapsed.Seconds.ToString("00"); ;
                 }
 
                 RaisePropertyChanged(nameof(GflopsLabel));
@@ -122,29 +141,24 @@ namespace Saplin.xOPS.UI.ViewModels
         public void StopTest()
         {
             stressTest?.Stop();
+            sw.Stop();
             TestNotStarted = true;
             VmLocator.OnlineDb.SendPageHit("breakStress");
 
-            var label1 = "Start: {1:0.00} {0}\nEnd: {2:0.00} {0}\nDifference: {3:0.00}%";
+            var label1 = string.Empty;
+
+            if (stressTest.GflopsResults?.SmoothResults?.Count > 10 || stressTest.GflopsResults?.SmoothResults?.Count > 10)
+                label1 = VmLocator.L11n.First5Secs + ": {1:0.00} {0}\n" + VmLocator.L11n.Last5Secs + ": {2:0.00} {0}\n{3} {4:0.00}%";
+            else label1 = VmLocator.L11n.Start + ": {1:0.00} {0}\n" + VmLocator.L11n.End + ": {2:0.00} {0}\n{3} {4:0.00}%";
 
             if (stressTest.GflopsResults != null)
             {
-                GflopsLabel =
-                    string.Format(label1,
-                        "GFLOPS",
-                        stressTest.GflopsResults.StartValue,
-                        stressTest.GflopsResults.CurrentValue,
-                        (stressTest.GflopsResults.CurrentValue - stressTest.GflopsResults.StartValue) / stressTest.GflopsResults.StartValue * 100);
+                GflopsLabel = GetResultLabel(stressTest.GflopsResults, label1, "GFLOPS");
             }
 
             if (stressTest.GinopsResults != null)
             {
-                GinopsLabel = 
-                    string.Format(label1,
-                        "GINOPS",
-                        stressTest.GinopsResults.StartValue,
-                        stressTest.GinopsResults.CurrentValue,
-                        (stressTest.GinopsResults.CurrentValue - stressTest.GinopsResults.StartValue) / stressTest.GinopsResults.StartValue * 100);
+                GinopsLabel = GetResultLabel(stressTest.GinopsResults, label1, "GINOPS");
             }
 
             RaisePropertyChanged(nameof(GflopsLabel));
@@ -152,6 +166,40 @@ namespace Saplin.xOPS.UI.ViewModels
             RaisePropertyChanged(nameof(TempLabel));
 
             ScreenOn.Disable();
+            VmLocator.OnlineDb.SendPageHit("stressStop");
+        }
+
+        private string GetResultLabel(TimeSeries ts, string label1, string unit)
+        {
+            double start = -1, end = -1;
+
+            GetStartEnd(ts, out start, out end);
+
+            var diff = (end - start) / start * 100;
+
+            var result =
+                string.Format(label1,
+                    unit,
+                    start,
+                    end,
+                    (diff < -5 ? "↓" : diff > 5 ? "↑" : "⇆"),
+                    diff
+                   );
+            return result;
+        }
+
+        private void GetStartEnd(TimeSeries ts, out double start, out double end)
+        {
+            if (sw.Elapsed.Seconds < 10)
+            {
+                start = ts.StartSmooth;
+                end = ts.CurrentSmooth;
+            }
+            else
+            {
+                start = ts.SmoothResults.Take(5).Average();
+                end = ts.SmoothResults.Skip(ts.SmoothResults.Count - 5).Take(5).Average();
+            }
         }
 
         bool testNotStarted = true;

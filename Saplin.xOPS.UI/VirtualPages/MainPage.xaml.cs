@@ -56,14 +56,12 @@ namespace Saplin.xOPS.UI.VirtualPages
             VmLocator.OnlineDb.SendPageHit("about");
         }
 
-        bool achtungShowed = false;
-
         void Stress_Clicked(System.Object sender, System.EventArgs e)
         {
-            if (!achtungShowed)
+            if (!achtung.ProceedClicked)
             {
+                VmLocator.OnlineDb.SendPageHit("stressWarning");
                 achtung.IsVisible = true;
-                achtungShowed = true;
             }
             else
             {
@@ -91,7 +89,10 @@ namespace Saplin.xOPS.UI.VirtualPages
         void QuickComparison_Tapped(System.Object sender, System.EventArgs e)
         {
             if (Pages.OnlineDb != null)
+            {
+                VmLocator.OnlineDb.SendPageHit("compareResults");
                 Pages.ShowPage(Pages.OnlineDb);
+            }
         }
     }
 }

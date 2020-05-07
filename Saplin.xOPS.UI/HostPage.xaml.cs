@@ -23,6 +23,12 @@ namespace Saplin.xOPS.UI
                 return true;
             }
 
+            if (VmLocator.StressTest.TestStarted)
+            {
+                VmLocator.StressTest.StopTest();
+                return true;
+            }
+
             if (VmLocator.Options.IsVisible)
             {
                 VmLocator.Options.IsVisible = false;
