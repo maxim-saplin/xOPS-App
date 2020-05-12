@@ -41,7 +41,7 @@ namespace Saplin.xOPS.Droid
                 "/sys/devices/platform/s5p-tmu/curr_temp",
                 "/sys/devices/platform/s5p-tmu/temperature",
 
-                // /sys/devices/virtual/thermal/thermal_zone1/temp  - miui.eu custom rom
+                // /sys/devices/virtual/thermal/thermal_zone9/temp  - MI 8 SE with miui.eu custom rom
 
                 "/sys/class/thermal/thermal_zone0/temp",
                 "/sys/class/thermal/thermal_zone1/temp",
