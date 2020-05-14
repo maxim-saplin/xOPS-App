@@ -5,7 +5,7 @@
 - macOS
   - https://github.com/maxim-saplin/xOPS-App/releases/download/1.1.0/xOPS.app.zip
 - Android
-  - https://github.com/maxim-saplin/xOPS-App/releases/download/1.1.0/xcom.saplin.xOPS.apk.zip
+  - https://github.com/maxim-saplin/xOPS-App/releases/download/1.1.0/xcom.saplin.xOPS.apk
 - Google Play
   - https://play.google.com/store/apps/details?id=xcom.saplin.xOPS
  
