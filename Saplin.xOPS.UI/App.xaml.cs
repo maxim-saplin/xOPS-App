@@ -48,6 +48,8 @@ namespace Saplin.xOPS.UI
 
         protected override void OnSleep()
         {
+            if (Device.RuntimePlatform == Device.macOS || Device.RuntimePlatform == Device.WPF) return;
+
             if (VmLocator.TestRun.TestStarted)
             {
                 VmLocator.TestRun.BreakTest();
