@@ -45,8 +45,8 @@
         </OnPlatform>
         <OnPlatform x:TypeArguments="x:String" x:Key="FontFamlyChart">
             <On Platform="macOS" Value="Source Code Pro" />
-            <On Platform="iOS" Value="IBM Plex Mono" />
-            <On Platform="WPF" Value="./Fonts/IBMPlexMono-Regular.ttf#IBM Plex Mono" />
+            <On Platform="iOS" Value="SourceCodePro" />
+            <On Platform="WPF" Value="./Fonts/SourceCodePro-Regular.ttf#Source Code Pro" />
             <On Platform="Android" Value="SourceCodePro" />
         </OnPlatform>
         <OnPlatform x:TypeArguments="x:String" x:Key="FontFamilyBold">

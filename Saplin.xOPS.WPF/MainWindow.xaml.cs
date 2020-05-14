@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Threading;
+using Xamarin.Forms;
 using Xamarin.Forms.Platform.WPF;
 
 namespace Saplin.xOPS.WPF
@@ -10,6 +11,7 @@ namespace Saplin.xOPS.WPF
     {
         public MainWindow()
         {
+            
             InitializeComponent();
             Forms.Init();
             var app = new Saplin.xOPS.UI.App();

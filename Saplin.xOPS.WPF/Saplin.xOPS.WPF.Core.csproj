@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="FodyWeavers.xml" />
+    <None Remove="FodyWeavers.xsd" />
+    <None Remove="Fonts\IBMPlexMono-Italic.ttf" />
+    <None Remove="Fonts\IBMPlexMono-Medium.ttf" />
+    <None Remove="Fonts\IBMPlexMono-Regular.ttf" />
+    <None Remove="Fonts\SourceCodePro-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\IBMPlexMono-Italic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\IBMPlexMono-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\IBMPlexMono-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Saplin.TimeSeries.Xamarin" Version="1.0.0" />
+    <PackageReference Include="System.Management" Version="4.7.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.780-nightly" />
+    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="4.8.0.780-nightly" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Saplin.xOPS.UI\Saplin.xOPS.UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="**\*.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="WebViewRenderer2.cs" />
+    <Compile Remove="WpfWebViewInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\SourceCodePro-Regular.ttf" />
+  </ItemGroup>
+</Project>

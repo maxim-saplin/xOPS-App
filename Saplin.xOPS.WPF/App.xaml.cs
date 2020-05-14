@@ -1,7 +1,4 @@
-﻿using System.Windows;
-using Xamarin.Forms;
-
-namespace Saplin.xOPS.WPF
+﻿namespace Saplin.xOPS.WPF
 {
     /// <summary>
     /// Interaction logic for App.xaml
