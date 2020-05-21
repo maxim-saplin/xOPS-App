@@ -143,7 +143,6 @@ namespace Saplin.xOPS.UI.ViewModels
             stressTest?.Stop();
             sw.Stop();
             TestNotStarted = true;
-            VmLocator.OnlineDb.SendPageHit("breakStress");
 
             var label1 = string.Empty;
 
