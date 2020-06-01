@@ -21,5 +21,10 @@ namespace Saplin.xOPS.UI.VirtualPages
         {
             Pages.ShowPage(Pages.MainPage);
         }
+
+        void version_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Pages.ShowPage(Pages.DopeTest);
+        }
     }
 }

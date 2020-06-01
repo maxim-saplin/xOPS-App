@@ -49,7 +49,7 @@
                           /> <!-- TextDecorations="Underline" isnt working on macOS, TODO check it is fixed ion latter XF versions-->
 
             <Label Text="🌹 Оля ♥" x:Name="rose" IsVisible="False" HorizontalTextAlignment="Center" Margin="-40,0,0,0" />
-            <Label x:Name="version" HorizontalTextAlignment="Center" Margin="-40,0,0,20" />
+            <cn:TappableLabel x:Name="version" HorizontalTextAlignment="Center" Margin="-40,0,0,20" Clicked="version_Clicked" />
         </StackLayout>
     </ScrollView>
 </Grid>

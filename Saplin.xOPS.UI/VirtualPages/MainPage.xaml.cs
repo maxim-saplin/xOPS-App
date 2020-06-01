@@ -74,7 +74,7 @@ namespace Saplin.xOPS.UI.VirtualPages
             var share = DependencyService.Get<IShareViewAsImage>();
 
 #if HUAWEI
-            var url = "https://appgallery.cloud.huawei.com/uowap/index.jsp?#/detailApp/C101914737";
+            var url = "https://appgallery.cloud.huawei.com/ag/n/app/C101914737";
 #else
             var url = "https://play.google.com/store/apps/details?id=xcom.saplin.xOPS";
 #endif

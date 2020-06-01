@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <SynchReleaseVersion>false</SynchReleaseVersion>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -29,21 +29,28 @@
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;HUAWEI</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;HUAWEI;DEBUG_HUAWEI;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Play|AnyCPU' ">
+    <DebugType></DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;RELEASE_PLAY;PLAY;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Saplin.xOPS">
       <HintPath Condition="'$(Configuration)'=='Debug' Or '$(Configuration)'=='Debug Huawei'">..\..\xOPS-Console\Saplin.xOPS\bin\Debug\netstandard2.0\Saplin.xOPS.dll</HintPath>
-      <HintPath Condition="'$(Configuration)'=='Release' Or '$(Configuration)'=='Release Huawei'">..\References\Saplin.xOPS.dll</HintPath>
+      <HintPath Condition="'$(Configuration)'=='Release' Or '$(Configuration)'=='Release Huawei' Or '$(Configuration)'=='Release Play'">..\References\Saplin.xOPS.dll</HintPath>
     </Reference>
     <Reference Include="Saplin.xOPS.Extra">
       <HintPath Condition="'$(Configuration)'=='Debug' Or '$(Configuration)'=='Debug Huawei'">..\..\xOPS-Extra\Saplin.xOPS.Extra\bin\Debug\netstandard2.0\Saplin.xOPS.Extra.dll</HintPath>
-      <HintPath Condition="'$(Configuration)'=='Release' Or '$(Configuration)'=='Release Huawei'">..\References\Saplin.xOPS.Extra.dll</HintPath>
+      <HintPath Condition="'$(Configuration)'=='Release' Or '$(Configuration)'=='Release Huawei'  Or '$(Configuration)'=='Release Play'">..\References\Saplin.xOPS.Extra.dll</HintPath>
+    </Reference>
+    <Reference Include="Saplin.TimeSeries.Xamarin">
+      <HintPath>..\References\Saplin.TimeSeries.Xamarin.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Saplin.TimeSeries.Xamarin" Version="1.0.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.772" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.800" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Misc\rose.png" />

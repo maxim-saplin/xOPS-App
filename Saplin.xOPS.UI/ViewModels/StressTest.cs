@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Serialization;
 using Saplin.xOPS.UI.Misc;
 using Xamarin.Forms;
 
@@ -136,6 +137,21 @@ namespace Saplin.xOPS.UI.ViewModels
         public int UpdateCounter { get; private set; } = 0;
         void Update() { UpdateCounter++; RaisePropertyChanged(nameof(UpdateCounter)); }
 
+        [DataContract]
+        internal class StressSummary
+        {
+            [DataMember] public double FLT_START; 
+            [DataMember] public double FLT_END;
+            [DataMember] public double FLT_DIFP;
+            [DataMember] public double INT_START;
+            [DataMember] public double INT_END;
+            [DataMember] public double INT_DIFP;
+            [DataMember] public double TEMP_START;
+            [DataMember] public double TEMP_END;
+            [DataMember] public double TEMP_DELT;
+            [DataMember] public double SECONDS;
+        }
+
         public Command Stop => new Command(StopTest);
 
         public void StopTest()
@@ -150,14 +166,25 @@ namespace Saplin.xOPS.UI.ViewModels
                 label1 = VmLocator.L11n.First5Secs + ": {1:0.00} {0}\n" + VmLocator.L11n.Last5Secs + ": {2:0.00} {0}\n{3} {4:0.00}%";
             else label1 = VmLocator.L11n.Start + ": {1:0.00} {0}\n" + VmLocator.L11n.End + ": {2:0.00} {0}\n{3} {4:0.00}%";
 
+            var ss = new StressSummary() { SECONDS = Math.Round(sw.Elapsed.TotalSeconds,2)};
+
             if (stressTest.GflopsResults != null)
             {
-                GflopsLabel = GetResultLabel(stressTest.GflopsResults, label1, "GFLOPS");
+                GflopsLabel = GetResultLabel(stressTest.GflopsResults, label1, "GFLOPS",
+                    out ss.FLT_START, out ss.FLT_END, out ss.FLT_DIFP);
             }
 
             if (stressTest.GinopsResults != null)
             {
-                GinopsLabel = GetResultLabel(stressTest.GinopsResults, label1, "GINOPS");
+                GinopsLabel = GetResultLabel(stressTest.GinopsResults, label1, "GINOPS",
+                    out ss.INT_START, out ss.INT_END, out ss.INT_DIFP);
+            }
+
+            if (Temp != null && Temp.Count > 2)
+            {
+                ss.TEMP_START = Temp[0];
+                ss.TEMP_END = Temp.Last();
+                ss.TEMP_DELT = Math.Round(ss.TEMP_END - ss.TEMP_START, 2);
             }
 
             RaisePropertyChanged(nameof(GflopsLabel));
@@ -165,16 +192,19 @@ namespace Saplin.xOPS.UI.ViewModels
             RaisePropertyChanged(nameof(TempLabel));
 
             ScreenOn.Disable();
-            VmLocator.OnlineDb.SendPageHit("stressStop");
+            VmLocator.OnlineDb.SendPageHit("stressStop", ss);
         }
 
-        private string GetResultLabel(TimeSeries ts, string label1, string unit)
+        private string GetResultLabel(TimeSeries ts, string label1, string unit, out double start, out double end, out double diff)
         {
-            double start = -1, end = -1;
-
             GetStartEnd(ts, out start, out end);
 
-            var diff = (end - start) / start * 100;
+            start = Math.Round(start, 2);
+            end = Math.Round(end, 2);
+
+            diff = (end - start) / start * 100;
+
+            diff = Math.Round(diff, 2);
 
             var result =
                 string.Format(label1,

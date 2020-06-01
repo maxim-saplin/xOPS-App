@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
-using System.Windows.Input;
 using Saplin.xOPS.UI.Misc;
 using Xamarin.Forms;
 
@@ -28,8 +28,11 @@ namespace Saplin.xOPS.UI.ViewModels
         const string mdl_param = "mdl=";
         const string v_param = "v=";
         const string d_param = "d=";
+        const string extra_param = "extra=";
 
         public bool Initialized { get; protected set; }
+
+        NumberFormatInfo nfi = new NumberFormatInfo() { NumberDecimalSeparator = "." };
 
         WebView webView;
 
@@ -66,13 +69,19 @@ namespace Saplin.xOPS.UI.ViewModels
                          "&" + v_param + VmLocator.Options.Version +
                          "&" + d_param + DateTime.UtcNow.ToString(d_param_format);
 
+#if HUAWEI
+            prms += "&hwei=";
+#elif PLAY
+            prms += "&play=";
+#endif
+
             var di = DependencyService.Get<IDeviceInfo>();
 
             if (di != null)
             {
                 prms += "&" + cpu_param + Uri.EscapeUriString(di.GetCPU());
                 prms += "&" + mdl_param + Uri.EscapeUriString(di.GetModelName());
-                prms += "&" + ram_param + Uri.EscapeUriString(Math.Round(di.GetRamSizeGb(), 1).ToString());
+                prms += "&" + ram_param + Uri.EscapeUriString(Math.Round(di.GetRamSizeGb(), 1).ToString(nfi));
             }
 
             prms += "&" + cores_param + Environment.ProcessorCount;
@@ -123,6 +132,20 @@ namespace Saplin.xOPS.UI.ViewModels
             [DataMember] public double MT_INT; // GINOPS
         }
 
+        private static string ObjectToJson(object compare)
+        {
+            string json;
+            var mem = new MemoryStream();
+            var ser = new DataContractJsonSerializer(compare.GetType());
+            ser.WriteObject(mem, compare);
+            mem.Position = 0;
+            var sr = new StreamReader(mem);
+            json = sr.ReadToEnd();
+            json = Uri.EscapeDataString(json);
+
+            return json;
+        }
+
         public string GetCompareUrl(TestRun run, Options options)
         {
             var compare = new CompareJson()
@@ -135,14 +158,7 @@ namespace Saplin.xOPS.UI.ViewModels
 
             var json = "";
 
-            var mem = new MemoryStream();
-            var ser = new DataContractJsonSerializer(typeof(CompareJson));
-            ser.WriteObject(mem, compare);
-            mem.Position = 0;
-            var sr = new StreamReader(mem);
-            json = sr.ReadToEnd();
-
-            json = Uri.EscapeDataString(json);
+            json = ObjectToJson(compare);
 
             var prms = inapp_param + Device.RuntimePlatform +
                 "&" + yd_param + json +
@@ -274,13 +290,29 @@ namespace Saplin.xOPS.UI.ViewModels
             return url != webViewUrl;
         }
 
-        public void SendPageHit(string actionName)
+        public void SendPageHit(string actionName, object extra = null)
         {
             if (!navigatedNotSuccesfully)
                 try // WPF might fail with an unhandled exception if there's no document loaded
                 {
-                    webView?.EvaluateJavaScriptAsync(
-                        "gtag('config', 'UA-17809502-3', {page_location:location.toString()+'" + "&" + actionName + "=" + DateTime.UtcNow.ToString(d_param_format) + "'});");
+                    string extraJsonOrString = null;
+
+                    try
+                    {
+                        if (extra != null && !(extra is string))
+                            extraJsonOrString = ObjectToJson(extra);
+                        else if (extra is string && !string.IsNullOrEmpty(extra as string))
+                            extraJsonOrString = extra as string;
+                    }
+                    catch { }
+
+                    var eval =
+                        "gtag('config', 'UA-17809502-3', {page_location:location.toString()+'"
+                        + "&" + actionName + "=" + DateTime.UtcNow.ToString(d_param_format)
+                        + (extraJsonOrString != null ? ("&" + extra_param + extraJsonOrString) : "")
+                        + "'});";
+
+                    webView?.EvaluateJavaScriptAsync(eval);
                 }
                 catch { };
         }

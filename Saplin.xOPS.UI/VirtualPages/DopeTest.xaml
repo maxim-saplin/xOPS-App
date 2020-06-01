@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Saplin.xOPS.UI.VirtualPages.DopeTest"
+             xmlns:vm="clr-namespace:Saplin.xOPS.UI.ViewModels">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="55" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <AbsoluteLayout x:Name="absolute" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
+
+    </AbsoluteLayout>
+
+    <Label x:Name="dopes" Grid.Row="0" Grid.Column="0" Margin="0,20,0,0" Padding="7,7,7,7"  BackgroundColor="Red" TextColor="White"
+           VerticalOptions="Start" HorizontalOptions="Center"/>
+
+    <StackLayout x:Name="buttons" Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalOptions="End"
+                     HorizontalOptions="Center" Margin="5,0,0,25">
+
+        <Button x:Name="stop"
+            Text="{Binding Source={Static vm:VmLocator.L11n}, Stop}" BackgroundColor="Red" HorizontalOptions="Center"
+            IsVisible="False" Clicked="Stop_Clicked"/>
+        <Button x:Name="back"
+            Text="{Binding Source={Static vm:VmLocator.L11n}, Back}" BackgroundColor="Green"
+            Clicked="Back_Clicked" />
+        <Button x:Name="retry"
+            Text="{Binding Source={Static vm:VmLocator.L11n}, Retry}" BackgroundColor="Blue"
+            IsVisible="False" Clicked="Retry_Clicked"/>
+
+    </StackLayout>
+
+</Grid>
