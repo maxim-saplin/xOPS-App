@@ -1,7 +1,35 @@
-﻿using System;
+﻿// Copyright(c) 2020 Maxim Saplin
+
+//Xamarin SDK
+
+//The MIT License(MIT)
+
+//Copyright(c) .NET Foundation Contributors
+
+//All rights reserved.
+
+//Permission is hereby granted, free of charge, to any person obtaining a copy
+//of this software and associated documentation files (the "Software"), to deal
+//in the Software without restriction, including without limitation the rights
+//to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//copies of the Software, and to permit persons to whom the Software is
+//furnished to do so, subject to the following conditions:
+
+//The above copyright notice and this permission notice shall be included in all
+//copies or substantial portions of the Software.
+
+//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
+//AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//SOFTWARE.
+
+using Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT;
+using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Windows.Threading;
 using Xamarin.Forms;
@@ -12,7 +40,7 @@ using Xamarin.Forms.Platform.WPF;
 namespace Saplin.xOPS.WPF
 {
 	// Used source of original renderer though add try catch to avoid app crash when URL is unavailable
-	public class WebViewRenderer2 : ViewRenderer<WebView, WebBrowser>, IWebViewDelegate
+	public class WebViewRenderer2 : ViewRenderer<WebView, Microsoft.Toolkit.Wpf.UI.Controls.WebView>, IWebViewDelegate
 	{
 		WebNavigationEvent _eventState;
 		bool _updating;
@@ -32,9 +60,13 @@ namespace Saplin.xOPS.WPF
 			{
 				if (Control == null) // construct and SetNativeControl and suscribe control event
 				{
-					SetNativeControl(new WebBrowser());
-					Control.Navigated += WebBrowserOnNavigated;
-					Control.Navigating += WebBrowserOnNavigating;
+					SetNativeControl(new Microsoft.Toolkit.Wpf.UI.Controls.WebView());
+
+					Control.NavigationStarting += WebBrowserOnNavigating;
+					Control.NavigationCompleted += WebBrowserOnNavigated;
+
+					//Control.Navigated += WebBrowserOnNavigated;
+					//Control.Navigating += WebBrowserOnNavigating;
 				}
 
 				// Update control property 
@@ -153,7 +185,7 @@ namespace Saplin.xOPS.WPF
 			((IWebViewController)Element).CanGoForward = Control.CanGoForward;
 		}
 
-		void WebBrowserOnNavigated(object sender, System.Windows.Navigation.NavigationEventArgs navigationEventArgs)
+		void WebBrowserOnNavigated(object sender, WebViewControlNavigationCompletedEventArgs navigationEventArgs)
 		{
 			if (navigationEventArgs.Uri == null) return;
 
@@ -162,7 +194,7 @@ namespace Saplin.xOPS.WPF
 			UpdateCanGoBackForward();
 		}
 
-		void WebBrowserOnNavigating(object sender, NavigatingCancelEventArgs navigatingEventArgs)
+		void WebBrowserOnNavigating(object sender, WebViewControlNavigationStartingEventArgs navigatingEventArgs)
 		{
 			if (navigatingEventArgs.Uri == null) return;
 
@@ -197,8 +229,8 @@ namespace Saplin.xOPS.WPF
 			{
 				if (Control != null)
 				{
-					Control.Navigated -= WebBrowserOnNavigated;
-					Control.Navigating -= WebBrowserOnNavigating;
+					Control.NavigationCompleted -= WebBrowserOnNavigated;
+					Control.NavigationStarting -= WebBrowserOnNavigating;
 					Control.Source = null;
 					Control.Dispose();
 				}

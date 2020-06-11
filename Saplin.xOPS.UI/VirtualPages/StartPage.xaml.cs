@@ -6,7 +6,7 @@ namespace Saplin.xOPS.UI.VirtualPages
 {
     public partial class StartPage : StackLayout, IAppearing
     {
-        private int countdown = 1;
+        private int countdown = 3;
 
         public StartPage()
         {

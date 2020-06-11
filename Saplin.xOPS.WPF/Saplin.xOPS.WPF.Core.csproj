@@ -29,10 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Saplin.TimeSeries.Xamarin" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls.WebView" Version="6.0.1" />
+    <PackageReference Include="Saplin.TimeSeries.Xamarin" Version="1.0.1" />
     <PackageReference Include="System.Management" Version="4.7.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.800" />
-    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="4.6.0.800" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.847" />
+    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="4.6.0.847" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,11 +47,6 @@
 
   <ItemGroup>
     <EmbeddedResource Remove="**\*.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="WebViewRenderer2.cs" />
-    <Compile Remove="WpfWebViewInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>

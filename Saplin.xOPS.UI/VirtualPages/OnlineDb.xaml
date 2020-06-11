@@ -7,7 +7,6 @@
              mc:Ignorable="d"
              x:Class="Saplin.xOPS.UI.VirtualPages.OnlineDb">
     <Grid.RowDefinitions>
-        <RowDefinition Height="44" />
         <RowDefinition Height="*" />
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
