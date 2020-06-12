@@ -13,6 +13,6 @@
         <ColumnDefinition Width="40" />
         <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
-    <cn:TappableLabel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Text="&#10;&#10;&#10; ← &#10;&#10;&#10;"
+    <cn:TappableLabel Grid.Row="0" Grid.Column="0" Text="&#10;&#10;&#10; ← &#10;&#10;&#10;"
         Clicked="BackLabel_Clicked" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
 </Grid>

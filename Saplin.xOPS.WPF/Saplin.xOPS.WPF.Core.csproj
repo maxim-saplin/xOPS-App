@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls.WebView" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls.WebView" Version="6.1.0-preview1" />
     <PackageReference Include="Saplin.TimeSeries.Xamarin" Version="1.0.1" />
     <PackageReference Include="System.Management" Version="4.7.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.847" />
@@ -39,6 +39,30 @@
   <ItemGroup>
     <ProjectReference Include="..\Saplin.xOPS.UI\Saplin.xOPS.UI.csproj" />
   </ItemGroup>
+
+  <!--<ItemGroup>
+    <TrimmerRootAssembly Include="Microsoft.Toolkit.Wpf.UI.Controls.WebView" />
+    <TrimmerRootAssembly Include="Saplin.xOPS.WPF.Core" />
+    <TrimmerRootAssembly Include="Saplin.xOPS.UI" />
+
+    <TrimmerRootAssembly Include="Xamarin.Forms.Platform.WPF" />
+    <TrimmerRootAssembly Include="Xamarin.Forms.Core" />
+    <TrimmerRootAssembly Include="Xamarin.Forms.XAML" />
+
+
+    <TrimmerRootAssembly Include="PresentationCore" />
+    <TrimmerRootAssembly Include="PresentationFramework" />
+    <TrimmerRootAssembly Include="System" />
+    <TrimmerRootAssembly Include="System.Core" />
+    <TrimmerRootAssembly Include="System.Design" />
+    <TrimmerRootAssembly Include="System.Drawing" />
+    <TrimmerRootAssembly Include="System.Net" />
+    <TrimmerRootAssembly Include="System.Net.Http" />
+    <TrimmerRootAssembly Include="System.Windows.Forms" />
+    <TrimmerRootAssembly Include="System.Xaml" />
+    <TrimmerRootAssembly Include="WindowsBase" />
+    
+  </ItemGroup>-->
 
   <ItemGroup>
     <Folder Include="Properties\" />

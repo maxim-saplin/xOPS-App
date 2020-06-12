@@ -7,6 +7,7 @@
     {
         public App()
         {
+            var t = typeof(WebViewRenderer2);
         }
     }
 }

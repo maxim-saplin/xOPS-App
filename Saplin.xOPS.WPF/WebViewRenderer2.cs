@@ -126,6 +126,8 @@ namespace Saplin.xOPS.WPF
 
 		async Task<string> OnEvaluateJavaScriptRequested(string script)
 		{
+			if (!navigatingSent) return null; // Had a version of windows where due to some reasons WebView was broken and infinite wait happend in this method. Empericaly found that in that case this method was called without prior Navigating event being fired
+
 			var tcr = new TaskCompletionSource<string>();
 			var task = tcr.Task;
 
@@ -194,8 +196,12 @@ namespace Saplin.xOPS.WPF
 			UpdateCanGoBackForward();
 		}
 
+		bool navigatingSent = false;
+
 		void WebBrowserOnNavigating(object sender, WebViewControlNavigationStartingEventArgs navigatingEventArgs)
 		{
+			navigatingSent = true;
+			
 			if (navigatingEventArgs.Uri == null) return;
 
 			string url = navigatingEventArgs.Uri.IsAbsoluteUri ? navigatingEventArgs.Uri.AbsoluteUri : navigatingEventArgs.Uri.OriginalString;
