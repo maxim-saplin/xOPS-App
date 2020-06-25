@@ -34,7 +34,7 @@
                     Style="{StaticResource LocaleLabel}" WidthRequest="60" HorizontalTextAlignment="Center" HorizontalOptions="StartAndExpand"/>
     </StackLayout>
 
-    <ScrollView Grid.Row="1" Grid.Column="1" VerticalOptions="Fill" HorizontalOptions="Fill" 
+    <ScrollView x:Name="sv" Grid.Row="1" Grid.Column="1" VerticalOptions="Fill" HorizontalOptions="Fill" 
                         HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Margin="0,0,10,0" >
         <StackLayout>
             <Label Text="{Binding Source={x:Static vm:VmLocator.L11n}, About}" TextColor="White">

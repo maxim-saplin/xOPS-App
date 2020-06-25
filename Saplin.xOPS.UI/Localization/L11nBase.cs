@@ -335,5 +335,13 @@ namespace Saplin.xOPS.UI.ViewModels
                 return ResourceManager.GetString("Last5Secs", resourceCulture);
             }
         }
+
+        public string TryAdmin
+        {
+            get
+            {
+                return ResourceManager.GetString("TryAdmin", resourceCulture);
+            }
+        }
     }
 }

@@ -1,17 +1,24 @@
 ﻿using Xamarin.Forms;
 using Saplin.xOPS.UI.Misc;
 using System.Management;
+using System.Security.Principal;
+using OpenHardwareMonitor.Hardware;
+using System.Linq;
+using System;
 
 [assembly: Dependency(typeof(Saplin.xOPS.WPF.DeviceInfo))]
 namespace Saplin.xOPS.WPF
 {
-    public class DeviceInfo : IDeviceInfo
+    public class DeviceInfo : IDeviceInfo, IDisposable
     {
         private string cpu = null;
         private string model = null;
         private float? ram = null;
 
         public bool IsChromeOs => false;
+
+        public bool IsAdmin => (new WindowsPrincipal(WindowsIdentity.GetCurrent()))
+             .IsInRole(WindowsBuiltInRole.Administrator);
 
         public string GetCPU()
         {
@@ -39,10 +46,57 @@ namespace Saplin.xOPS.WPF
             return cpu;
         }
 
+        class UpdateVisitor : IVisitor
+        {
+            public void VisitComputer(IComputer computer)
+            {
+                computer.Traverse(this);
+            }
+            public void VisitHardware(IHardware hardware)
+            {
+                hardware.Update();
+                foreach (IHardware subHardware in hardware.SubHardware) subHardware.Accept(this);
+            }
+            public void VisitSensor(ISensor sensor) { }
+            public void VisitParameter(IParameter parameter) { }
+        }
+
+        UpdateVisitor updateVisitor;
+        Computer computer;
+        ISensor sensor;
+
         public double GetCpuTemp()
         {
-            throw new System.NotImplementedException();
+            if (updateVisitor == null)
+                updateVisitor = new UpdateVisitor();
+
+            if (computer == null)
+            {
+                computer = new Computer();
+                computer.Open();
+                computer.CPUEnabled = true;
+            }
+
+            computer.Accept(updateVisitor);
+
+            if (sensor == null)
+                sensor = computer.Hardware.Where(i => i.HardwareType == HardwareType.CPU).FirstOrDefault()?.Sensors.Where(s => s.SensorType == SensorType.Temperature).LastOrDefault();
+
+            return (double)sensor.Value;
         }
+
+        ~DeviceInfo()
+        {
+            computer?.Close();
+        }
+
+        public void Dispose()
+        {
+            computer?.Close();
+            computer = null;
+            updateVisitor = null;
+            sensor = null;
+        }            
 
         public string GetModelName()
         {
@@ -95,5 +149,6 @@ namespace Saplin.xOPS.WPF
 
             return ram.Value;
         }
+
     }
 }

@@ -231,8 +231,11 @@ FPU和ALU测试都在单线程和多线程模式下执行，它们反映了CPU�
   </data>
   <data name="First5Secs" xml:space="preserve">
     <value>前5秒</value>
-  </data>    
+  </data>
   <data name="Last5Secs" xml:space="preserve">
     <value>持续5秒</value>
-  </data>  
+  </data>
+  <data name="TryAdmin" xml:space="preserve">
+    <value>尝试以管理员身份运行xOPS</value>
+  </data>
 </root>

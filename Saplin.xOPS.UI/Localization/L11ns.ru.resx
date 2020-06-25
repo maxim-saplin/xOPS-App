@@ -190,13 +190,13 @@
   <data name="AveragesOneRu" xml:space="preserve">
     <value>{0} тест, средние значения</value>
   </data>
- <data name="AveragesTwoRu" xml:space="preserve">
+  <data name="AveragesTwoRu" xml:space="preserve">
     <value>{0} тестa, средние значения</value>
- </data>
- <data name="Stress" xml:space="preserve">
+  </data>
+  <data name="Stress" xml:space="preserve">
     <value>≈ Стресс</value>
- </data>
- <data name="Cancel" xml:space="preserve">
+  </data>
+  <data name="Cancel" xml:space="preserve">
     <value>× Отмена</value>
   </data>
   <data name="Proceed" xml:space="preserve">
@@ -238,8 +238,11 @@
   </data>
   <data name="First5Secs" xml:space="preserve">
     <value>Первые 5 секунд</value>
-  </data>    
+  </data>
   <data name="Last5Secs" xml:space="preserve">
     <value>Последние 5 секунд</value>
-  </data>  
+  </data>
+  <data name="TryAdmin" xml:space="preserve">
+    <value>Попробуйте запустить xOPS под Администратором</value>
+  </data>
 </root>

@@ -232,8 +232,11 @@ Proceed?</value>
   </data>
   <data name="First5Secs" xml:space="preserve">
     <value>First 5 seconds</value>
-  </data>    
+  </data>
   <data name="Last5Secs" xml:space="preserve">
     <value>Last 5 seconds</value>
-  </data>  
+  </data>
+  <data name="TryAdmin" xml:space="preserve">
+    <value>Try running xOPS as Administrator</value>
+  </data>
 </root>

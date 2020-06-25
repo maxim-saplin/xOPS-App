@@ -187,7 +187,7 @@ Vous pouvez en savoir plus sur les versions d'application et de téléchargement
   <data name="AveragesOne" xml:space="preserve">
     <value>1 test</value>
   </data>
-   <data name="Stress" xml:space="preserve">
+  <data name="Stress" xml:space="preserve">
     <value>≈ Stress</value>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -232,8 +232,11 @@ Procéder?</value>
   </data>
   <data name="First5Secs" xml:space="preserve">
     <value>5 premières secondes</value>
-  </data>    
+  </data>
   <data name="Last5Secs" xml:space="preserve">
     <value>5 dernières secondes</value>
-  </data>  
+  </data>
+  <data name="TryAdmin" xml:space="preserve">
+    <value>Essayez d'exécuter xOPS en tant qu'administrateur</value>
+  </data>
 </root>

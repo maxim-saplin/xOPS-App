@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Saplin.xOPS.UI.Misc;
 using Saplin.xOPS.UI.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -26,6 +27,10 @@ namespace Saplin.xOPS.UI.VirtualPages
                 }
                 else //WPF has issues with WebView, it always stays on top of label. If moved to separate Grid column then there's white vertical stripe between webview and back label - some layout issues
                 {
+                    var di = DependencyService.Get<IDeviceInfo>();
+
+                    if (di != null && di.IsAdmin) throw new InvalidOperationException("WPF WebView can't work in Admin mode... Such a shame MS");
+
                     this.Children.Add(webView, 0, 0);
                     Grid.SetColumnSpan(webView, 2);
                     webView.TranslationX = +30;

@@ -25,6 +25,7 @@ namespace Saplin.xOPS.UI.ViewModels
         const int smoothing = 2;
         const int warmUpSample = 7;
 
+        IDeviceInfo di;
         public void StartTest()
         {
             VmLocator.OnlineDb.SendPageHit("stressStart");
@@ -38,7 +39,7 @@ namespace Saplin.xOPS.UI.ViewModels
             Ginops = stressTest.GinopsResults?.SmoothResults;
             Temp = null;
 
-            var di = DependencyService.Get<IDeviceInfo>();
+            di = DependencyService.Get<IDeviceInfo>();
 
             try
             {
@@ -52,7 +53,9 @@ namespace Saplin.xOPS.UI.ViewModels
 
             if (Temp == null)
             {
-                tempText = TempLabel = VmLocator.L11n.TempNotAvailable + "\n";
+                tempText = TempLabel = VmLocator.L11n.TempNotAvailable + 
+                    (Device.RuntimePlatform == Device.WPF && !di.IsAdmin ?  " - " + VmLocator.L11n.TryAdmin : "")
+                    + "\n";
             }
 
             RaisePropertyChanged(nameof(Gflops));
@@ -190,6 +193,8 @@ namespace Saplin.xOPS.UI.ViewModels
             RaisePropertyChanged(nameof(GflopsLabel));
             RaisePropertyChanged(nameof(GinopsLabel));
             RaisePropertyChanged(nameof(TempLabel));
+
+            if (di is IDisposable) (di as IDisposable).Dispose(); // WPF CPU temp uses some hard staff for CPU temp monitoring
 
             ScreenOn.Disable();
             VmLocator.OnlineDb.SendPageHit("stressStop", ss);
