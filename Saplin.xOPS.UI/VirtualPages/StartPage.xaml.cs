@@ -47,6 +47,7 @@ namespace Saplin.xOPS.UI.VirtualPages
 
                         if (padTo != countdownLabel.Text.Length)
                             countdownLabel.Text = countdownLabel.Text.PadRight(padTo, ' ');
+
                     }
                     else
                     {

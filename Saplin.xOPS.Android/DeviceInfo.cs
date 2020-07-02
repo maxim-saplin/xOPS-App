@@ -83,6 +83,8 @@ namespace Saplin.xOPS.Droid
             }
         }
 
+        public bool IsAdmin => false;
+
         public double GetCpuTemp()
         {
             if (cpuTempFile == null) throw new NotSupportedException("CPU Temp not available");
