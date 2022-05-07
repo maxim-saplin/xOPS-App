@@ -18,6 +18,8 @@ namespace Saplin.xOPS.UI.Mac
 
         public bool IsChromeOs => false;
 
+        public bool IsAdmin => false;
+
         public string GetCPU()
         {
             if (cpu == null)

@@ -93,10 +93,7 @@ namespace Saplin.xOPS.UI.ViewModels
                         RaisePropertyChanged(nameof(RecentIntMultiThreaded));
                     });
                  }
-                 catch(Exception ex)
-                 {
-
-                 }
+                 catch{ }
                  finally
                  {
                     Device.BeginInvokeOnMainThread(() =>

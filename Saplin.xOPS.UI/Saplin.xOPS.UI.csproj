@@ -4,7 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <SynchReleaseVersion>false</SynchReleaseVersion>
-    <Version>1.1.3</Version>
+    <Version>1.1.4</Version>
+    <Configurations>Debug;Release;Release Huawei;Debug Huawei;Release Play</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -16,19 +17,19 @@
     <DebugType></DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Huawei|AnyCPU' ">
-    <IntermediateOutputPath>obj\Release Huawei</IntermediateOutputPath>
+    <IntermediateOutputPath>obj\Release Huawei\netstandard2.0</IntermediateOutputPath>
     <DebugType></DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>bin\Release\netstandard2.0</OutputPath>
     <DefineConstants>TRACE;RELEASE;HUAWEI;RELEASE_HUAWEI;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
     <NoWarn>1701;1702</NoWarn>
     <NoStdLib>true</NoStdLib>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug Huawei|AnyCPU' ">
-    <IntermediateOutputPath>obj\Debug Huawei</IntermediateOutputPath>
+    <IntermediateOutputPath>obj\Debug Huawei\netstandard2.0</IntermediateOutputPath>
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
+    <OutputPath>bin\Debug\netstandard2.0</OutputPath>
     <DefineConstants>TRACE;DEBUG;HUAWEI;DEBUG_HUAWEI;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Play|AnyCPU' ">
@@ -50,7 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Misc\rose.png" />

@@ -16,7 +16,7 @@ namespace Saplin.xOPS.UI.ViewModels
 
         public Command Retry => new Command(StartTest);
 
-        private volatile bool stopTest = false;
+        //private volatile bool stopTest = false;
 
         Saplin.xOPS.StressTest stressTest;
         Stopwatch sw = new Stopwatch();

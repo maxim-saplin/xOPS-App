@@ -42,7 +42,7 @@ namespace Saplin.xOPS.UI.VirtualPages
                 this.Children.Remove(lbl);
                 this.Children.Add(lbl);
             }
-            catch(Exception ex) { Pages.SetOnlineDbOk(false); }
+            catch { Pages.SetOnlineDbOk(false); }
         }
 
         private void BackLabel_Clicked(object sender, EventArgs e)
