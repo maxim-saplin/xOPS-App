@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidTlsProvider>legacy</AndroidTlsProvider>
+    <LangVersion>latestmajor</LangVersion>
   </PropertyGroup>
     
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' or '$(Configuration)' == 'Release Play' or '$(Configuration)' == 'Release Huawei' ">
@@ -62,9 +63,14 @@
     
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <AndroidPackageFormat>aab</AndroidPackageFormat>
+<LangVersion>latestmajor</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Play|AnyCPU' ">
     <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <LangVersion>latestmajor</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Huawei|AnyCPU' ">
+    <LangVersion>latestmajor</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
