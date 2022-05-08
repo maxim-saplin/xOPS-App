@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <SynchReleaseVersion>false</SynchReleaseVersion>
-    <Version>1.1.4</Version>
+    <Version>1.1.5</Version>
     <Configurations>Debug;Release;Release Huawei;Debug Huawei;Release Play</Configurations>
   </PropertyGroup>
 
