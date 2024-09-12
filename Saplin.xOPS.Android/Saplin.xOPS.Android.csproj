@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -15,10 +15,9 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <TargetFrameworkVersion>v12.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v13.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
-    <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -34,7 +33,6 @@
     <AndroidTlsProvider>legacy</AndroidTlsProvider>
     <LangVersion>latestmajor</LangVersion>
   </PropertyGroup>
-    
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' or '$(Configuration)' == 'Release Play' or '$(Configuration)' == 'Release Huawei' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
@@ -49,21 +47,26 @@
     <AndroidLinkTool>r8</AndroidLinkTool>
     <!-- R8 no tree shaking seems helping with app crash on A4.4 -->
     <AndroidR8ExtraArguments>--no-tree-shaking</AndroidR8ExtraArguments>
-    
     <AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86;x86_64</AndroidSupportedAbis>
     <AndroidLinkSkip>Saplin.xOPS.UI;Saplin.xOPS; Saplin.xOPS.Extra; Saplin.xOPS.Extra.Android</AndroidLinkSkip>
     <AndroidTlsProvider>legacy</AndroidTlsProvider>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <AndroidHttpClientHandlerType>System.Net.Http.HttpClientHandler</AndroidHttpClientHandlerType>
   </PropertyGroup>
-    
   <PropertyGroup Condition=" '$(Configuration)' == 'Release Play' ">
     <AndroidPackageFormat>aab</AndroidPackageFormat>
   </PropertyGroup>
-    
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <AndroidPackageFormat>aab</AndroidPackageFormat>
-<LangVersion>latestmajor</LangVersion>
+    <LangVersion>latestmajor</LangVersion>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
+    <AndroidTlsProvider>
+    </AndroidTlsProvider>
+    <AndroidKeyStore>false</AndroidKeyStore>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
+    <AndroidCreatePackagePerAbi>false</AndroidCreatePackagePerAbi>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Play|AnyCPU' ">
     <AndroidPackageFormat>aab</AndroidPackageFormat>
@@ -75,10 +78,9 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
-
     <Reference Include="Saplin.xOPS.Extra.Android">
       <HintPath Condition="'$(Configuration)'=='Debug'">..\..\xOPS-Extra\Saplin.xOPS.Extra.Android\bin\Debug\Saplin.xOPS.Extra.Android.dll</HintPath>
-      <HintPath Condition="'$(Configuration)'=='Release' or '$(Configuration)' == 'Release Play' or '$(Configuration)' == 'Release Huawei'">..\References\Saplin.xOPS.Extra.Android.dll</HintPath>  
+      <HintPath Condition="'$(Configuration)'=='Release' or '$(Configuration)' == 'Release Play' or '$(Configuration)' == 'Release Huawei'">..\References\Saplin.xOPS.Extra.Android.dll</HintPath>
     </Reference>
     <Reference Include="Saplin.xOPS.Extra">
       <HintPath Condition="'$(Configuration)'=='Debug'">..\..\xOPS-Extra\Saplin.xOPS.Extra\bin\Debug\netstandard2.0\Saplin.xOPS.Extra.dll</HintPath>
@@ -107,46 +109,55 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\drawable-xxhdpi\splash_screen.xml">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable-xxhdpi\splash.png">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\values-v21\styles.xml">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\drawable-xxhdpi\" />
-    <Folder Include="Resources\mipmap-hdpi\" />
-    <Folder Include="Resources\mipmap-mdpi\" />
-    <Folder Include="Resources\mipmap-xhdpi\" />
-    <Folder Include="Resources\mipmap-xxhdpi\" />
-    <Folder Include="Resources\mipmap-xxxhdpi\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Saplin.xOPS.UI\Saplin.xOPS.UI.csproj">
       <Project>{22AB2BE1-1E83-459B-86B1-1387F4A30FD7}</Project>

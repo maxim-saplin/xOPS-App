@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <SynchReleaseVersion>false</SynchReleaseVersion>
-    <Version>1.1.5</Version>
+    <Version>1.1.6</Version>
     <Configurations>Debug;Release;Release Huawei;Debug Huawei;Release Play</Configurations>
   </PropertyGroup>
 
@@ -14,11 +14,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType></DebugType>
+    <DebugType>none</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Huawei|AnyCPU' ">
     <IntermediateOutputPath>obj\Release Huawei\netstandard2.0\netstandard2.0</IntermediateOutputPath>
-    <DebugType></DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\netstandard2.0\netstandard2.0</OutputPath>
     <DefineConstants>TRACE;RELEASE;HUAWEI;RELEASE_HUAWEI;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
@@ -33,7 +33,7 @@
     <DefineConstants>TRACE;DEBUG;HUAWEI;DEBUG_HUAWEI;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Play|AnyCPU' ">
-    <DebugType></DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <DefineConstants>TRACE;RELEASE_PLAY;PLAY;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
